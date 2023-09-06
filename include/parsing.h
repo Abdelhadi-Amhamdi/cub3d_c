@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/08/17 17:18:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/06 16:04:59 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "../libs/libft/get_next_line.h"
-# include "../libs/libft/libft.h"
+// # include "../libs/libft/get_next_line.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
 
