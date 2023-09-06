@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 16:04:59 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:56:40 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 // # include "../libs/libft/get_next_line.h"
 # include "../libft/libft.h"
+#include "cub3d.h"
 # include <stdlib.h>
 # include <stdio.h>
+
+# define W_WIDTH 1600
+# define W_HEIGHT 1000
+# define CUB_SIZE 64
 
 # define WALL 49
 # define N_PLAYER 78
@@ -26,8 +31,44 @@
 # define WH_SAPCE 32
 # define EMPTY 48
 
+typedef struct s_line
+{
+    float xinter;
+    float yinter;
+    float alpha_x;
+    float alpha_y;
+    float horz_x;
+    float horz_y;
+    float vert_x;
+    float vert_y;
+    float   v_hitx;
+    float   v_hity;
+    float   h_hitx;
+    float   h_hity;
+}t_line;
+
+typedef struct s_ray{
+    float   rayAngle;
+    float x_hit;
+    float y_hit;
+    int     is_verthit;
+    float Distance;
+    int isFacingDown;
+    int isFacingUp;
+    int isFacingRight;
+    int isFacingLeft;
+    int wallHitContent;
+}t_rays;
+
 typedef struct s_map_data
 {
+	int     num_rays;
+    float   turnDirc;
+    float   walkDirc;
+    float   roatAngle;
+    float   walkSpeed;
+    float   turnSpeed;
+    float   fov;
 	char	*north_img_path;
 	char	*south_img_path;
 	char	*west_img_path;
@@ -41,6 +82,13 @@ typedef struct s_map_data
 	int		cols;
 	int		player_x;
 	int		player_y;
+	int		win_height;
+    int		win_width;
+    t_rays  *rays;
+    mlx_t	*mlx;
+    mlx_image_t	*img;
+    mlx_texture_t *texture;
+    mlx_image_t	*plyr;	
 }	t_map_data;
 
 // main

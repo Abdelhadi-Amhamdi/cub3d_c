@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_content.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:39:49 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 15:16:26 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:15:39 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../include/cub3d.h"
 
 char	**create_new_map(int rows, int cols, char **map)
 {

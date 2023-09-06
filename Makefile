@@ -6,7 +6,7 @@
 #    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/22 11:34:11 by aagouzou          #+#    #+#              #
-#    Updated: 2023/09/06 16:09:43 by aagouzou         ###   ########.fr        #
+#    Updated: 2023/09/06 20:10:28 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ CFLAGS = -Wall -Wextra -Werror
 CC = CC -g
 
 # FILES = main.c error.c init.c hook.c draw.c raycasting.c projection.c
-FILES = src/main.c src/raycasting.c parse/parse_colors.c parse/parse_content.c parse/parse_main.c parse/utils.c \
-	parse/utils1.c parse/utils2.c
+FILES = src/main.c src/raycasting.c src/init.c src/error.c parse/parse_colors.c parse/parse_content.c parse/parse_main.c parse/utils.c \
+	parse/utils1.c parse/utils2.c src/hook.c src/draw.c src/projection.c
 OBJS = $(FILES:.c=.o)
 
 SANI = -fsanitize=address

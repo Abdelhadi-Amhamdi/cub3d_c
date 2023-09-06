@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 17:14:57 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 18:15:56 by aagouzou         ###   ########.fr       */
+/*   Created: 2023/08/22 12:52:11 by aagouzou          #+#    #+#             */
+/*   Updated: 2023/09/06 16:27:43 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	destroy_map_data(t_map_data *data)
+void    ft_error(char *error)
 {
-	if (!data)
-		return ;
-	free (data->south_img_path);
-	free (data->west_img_path);
-	free (data->east_img_path);
-	free (data->north_img_path);
-	ft_free(data->map_body);
-	free (data);
+    ft_putendl_fd(error, 2);
+    exit(1);
 }

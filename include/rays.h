@@ -6,13 +6,14 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 16:11:50 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:56:08 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYS_H
 #define RAYS_H
 
+#include "cub3d.h"
 
 typedef struct s_line
 {
@@ -42,5 +43,6 @@ typedef struct s_ray{
     int isFacingLeft;
     int wallHitContent;
 }t_rays;
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 16:13:03 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/06 20:06:17 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,34 @@ float normalize_angle(float angle)
     return (angle);
 }
 
-int check_wall(t_data *data, float x, float y)
+int check_wall(t_map_data *data, float x, float y)
 {
     int check_x;
     int check_y;
 
     if(x <= 0 || x >= data->win_width || y <= 0 || y >= data->win_height)
         return (1);
-    check_x = (int)(floor(x / data->grid));
-    check_y = (int)(floor(y / data->grid));
-    return (data->map[check_y][check_x] == '1');
+    check_x = (int)(floor(x / CUB_SIZE));
+    check_y = (int)(floor(y / CUB_SIZE));
+    printf("y:%d x:%d\n",check_y, check_x);
+    return (data->map_body[check_y][check_x] == '1');
 }
 
 float cal_distance(float x1, float y1, float x2, float y2) {
     return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 }
 
-float    cast_horz(t_data *data,float angle ,int id, t_line *line)
+float    cast_horz(t_map_data *data,float angle ,int id, t_line *line)
 {    
-    line->yinter = floor(data->plyr_y / data->grid) * data->grid;
+    line->yinter = floor(data->player_y / CUB_SIZE) * CUB_SIZE;
     if(data->rays[id].isFacingDown)
-        line->yinter += data->grid;
-    line->xinter = data->plyr_x + ((line->yinter - data->plyr_y) / tan(angle));
+        line->yinter += CUB_SIZE;
+    line->xinter = data->player_x + ((line->yinter - data->player_y) / tan(angle));
 
-    line->alpha_y = data->grid;
+    line->alpha_y = CUB_SIZE;
     if(data->rays[id].isFacingUp)
         line->alpha_y *= -1;
-    line->alpha_x = data->grid / tan(angle);
+    line->alpha_x = CUB_SIZE / tan(angle);
     if(data->rays[id].isFacingLeft && line->alpha_x > 0)
         line->alpha_x *= -1;
     if (data->rays[id].isFacingRight && line->alpha_x < 0)
@@ -67,6 +68,7 @@ float    cast_horz(t_data *data,float angle ,int id, t_line *line)
             ycheck -= 1;
         if(check_wall(data, xcheck, ycheck))
         {
+            // printf("y:%f x:%f\n",ycheck / CUB_SIZE, xcheck / CUB_SIZE);
             line->h_hitx = xcheck;
             line->h_hity = ycheck;
             break;
@@ -79,21 +81,21 @@ float    cast_horz(t_data *data,float angle ,int id, t_line *line)
     }
     
    
-    float distance = cal_distance(data->plyr_x, data->plyr_y, line->horz_x, line->horz_y);
+    float distance = cal_distance(data->player_x, data->player_y, line->horz_x, line->horz_y);
     // draw_line(data,data->plyr_x, data->plyr_y, data->plyr_x + cos(angle) * distance, data->plyr_y + sin(angle) * distance);
     return(distance);
     // printf("%f\n", distance);
 }
 
 
-float    cast_vert(t_data *data, float angle, int id, t_line *line)
+float    cast_vert(t_map_data *data, float angle, int id, t_line *line)
 {
-    line->xinter = floor(data->plyr_x / data->grid) * data->grid;
+    line->xinter = floor(data->player_x / CUB_SIZE) * CUB_SIZE;
     if(data->rays[id].isFacingRight)
-        line->xinter += data->grid;
-    line->yinter  = data->plyr_y + (line->xinter - data->plyr_x) * tan(angle);
+        line->xinter += CUB_SIZE;
+    line->yinter  = data->player_y + (line->xinter - data->player_x) * tan(angle);
 
-    line->alpha_x = data->grid;
+    line->alpha_x = CUB_SIZE;
     if(data->rays[id].isFacingLeft)
         line->alpha_x *= -1;
     line->alpha_y = line->alpha_x * tan(angle);
@@ -121,14 +123,14 @@ float    cast_vert(t_data *data, float angle, int id, t_line *line)
             line->vert_y += line->alpha_y;
         }
     }
-    float distance = cal_distance(data->plyr_x, data->plyr_y, line->vert_x, line->vert_y);
+    float distance = cal_distance(data->player_x, data->player_y, line->vert_x, line->vert_y);
     // draw_line(data,data->plyr_x, data->plyr_y, data->plyr_x + cos(angle) * distance, data->plyr_y + sin(angle) * distance);
     
     return (distance);
 
 }
 
-void    check_angle_dir(t_data *data, float angle, int id)
+void    check_angle_dir(t_map_data *data, float angle, int id)
 {
     data->rays[id].isFacingDown = 0;
     data->rays[id].isFacingLeft = 0;
@@ -144,7 +146,7 @@ void    check_angle_dir(t_data *data, float angle, int id)
 
 }
 
-void    raycasting(t_data *data)
+void    raycasting(t_map_data *data)
 {
     int id;
     t_line line;
@@ -168,14 +170,14 @@ void    raycasting(t_data *data)
                 data->rays[id].is_verthit = 1;
                 data->rays[id].x_hit = line.v_hitx;
                 data->rays[id].y_hit = line.v_hity;
-                // draw_line(data, data->plyr_x, data->plyr_y, data->plyr_x + (cos(rayangle) * vert_dis), data->plyr_y + (sin(rayangle) * vert_dis));
+                // draw_line(data, data->player_x, data->player_y, data->player_x + (cos(rayangle) * vert_dis), data->player_y + (sin(rayangle) * vert_dis));
             }
             else
             {
                 data->rays[id].Distance = horz_dis;
                 data->rays[id].x_hit = line.h_hitx;
                 data->rays[id].y_hit = line.h_hity;
-                // draw_line(data, data->plyr_x, data->plyr_y, data->plyr_x + cos(rayangle) * horz_dis, data->plyr_y + sin(rayangle) * horz_dis);
+                // draw_line(data, data->player_x, data->player_y, data->player_x + cos(rayangle) * horz_dis, data->player_y + sin(rayangle) * horz_dis);
             }
         // }
         rayangle += (data->fov / data->num_rays);

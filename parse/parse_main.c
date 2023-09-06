@@ -6,11 +6,11 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 15:48:20 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/06 18:15:45 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../parsing.h"
+#include "../include/cub3d.h"
 
 int	parse_images_paths(t_map_data *map_data)
 {
