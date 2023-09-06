@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/08/17 17:18:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/06 15:59:29 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include "../libs/libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
+
+# define W_WIDTH 1600
+# define W_HEIGHT 1000
+# define CUB_SIZE 64
 
 # define WALL 49
 # define N_PLAYER 78
