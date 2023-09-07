@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/07 14:25:47 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:54:29 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void    update_plyr(t_map_data *data)
 	// printf("turn dirc: %f\n",data->turnDirc);
 	
 	step = data->walkDirc * data->walkSpeed;
-	printf("p_x: %f\n",data->player_x);
-	printf("p_y: %f\n",data->player_y);
+	// printf("p_x: %f\n",data->player_x);
+	// printf("p_y: %f\n",data->player_y);
 	new_x = data->player_x + cos(data->roatAngle) * step;
 	new_y = data->player_y + sin(data->roatAngle) * step;
 	if(!check_wall(data, new_x, new_y))
 	{
 		data->player_x = new_x;
 		data->player_y = new_y;
-		printf("p_x: %f\n",data->player_x);
-		printf("p_y: %f\n",data->player_y);
+		// printf("p_x: %f\n",data->player_x);
+		// printf("p_y: %f\n",data->player_y);
 	}
 }
 
@@ -107,9 +107,10 @@ void    hook_handler(void   *param)
 	update_plyr(data);
 	// draw_map(data);
 	raycasting(data);
-//     draw_plyr(data);
-	// draw_line(data,data->player_x, data->player_y, data->player_x + cos(data->roatAngle) * 50, data->player_y + (sin(data->roatAngle) * 50));
+    // draw_plyr(data);
 	wall_projection(data);
+	_draw_map(data);
+	draw_line(data,data->player_x * MINI_MAP, data->player_y * MINI_MAP, (data->player_x + cos(data->roatAngle) * 50) * MINI_MAP, (data->player_y + (sin(data->roatAngle) * 50)) * MINI_MAP);
 }
 
 void    key_handler(mlx_key_data_t keycode, void    *param)

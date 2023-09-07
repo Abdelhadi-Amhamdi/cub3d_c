@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/07 14:22:57 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:53:39 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,14 +170,16 @@ void    raycasting(t_map_data *data)
                 data->rays[id].is_verthit = 1;
                 data->rays[id].x_hit = line.v_hitx;
                 data->rays[id].y_hit = line.v_hity;
-                // draw_line(data, data->player_x, data->player_y, data->player_x + (cos(rayangle) * vert_dis), data->player_y + (sin(rayangle) * vert_dis));
+                // draw_line(data, data->player_x * MINI_MAP, data->player_y * MINI_MAP, \
+                // (data->player_x + (cos(rayangle) * vert_dis)) * MINI_MAP, (data->player_y + (sin(rayangle) * vert_dis)) * MINI_MAP);
             }
             else
             {
                 data->rays[id].Distance = horz_dis;
                 data->rays[id].x_hit = line.h_hitx;
                 data->rays[id].y_hit = line.h_hity;
-                // draw_line(data, data->player_x, data->player_y, data->player_x + cos(rayangle) * horz_dis, data->player_y + sin(rayangle) * horz_dis);
+                // draw_line(data, data->player_x * MINI_MAP, data->player_y * MINI_MAP, \
+                // (data->player_x + cos(rayangle) * horz_dis) * MINI_MAP, (data->player_y + sin(rayangle) * horz_dis) * MINI_MAP);
             }
         // }
         rayangle += (data->fov / data->num_rays);

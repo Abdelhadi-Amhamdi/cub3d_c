@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 21:07:02 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:41:34 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,32 +69,24 @@ t_rect	init_rect(int x, int y, int size, char item)
 // 		game->data->end_x = game->data->cols;
 // }
 
-// void	_draw_player(t_game *game, t_player *player, t_data *data, char type)
-// {
-// 	int		x;
-// 	int		y;
-// 	t_rect	rect;
-// 	t_line	line;
+void	_draw_player(t_map_data *data)
+{
+	int		x;
+	int		y;
+	t_rect	rect;
+	// t_line	line;
 
-// 	if (type == COSTUM_MAP)
-// 	{
-// 		x = (((player->x / ITEM_SIZE) - data->start_x) * ITEM_SIZE) * MINI_MAP;
-// 		y = (((player->y / ITEM_SIZE) - data->start_y) * ITEM_SIZE) * MINI_MAP;
-// 	}
-// 	else
-// 	{
-// 		x = player->x * (float)MINI_MAP;
-// 		y = player->y * (float)MINI_MAP;
-// 	}
-// 	x -= 6;
-// 	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
-// 	render_rect(rect, game);
-// 	line.x1 = x + 2;
-// 	line.y1 = y + 2;
-// 	line.x2 = x + (cos(player->angle) * 16);
-// 	line.y2 = y + (sin(player->angle) * 16);
-// 	dda(line, game);
-// }
+
+	x = data->player_x * (float)MINI_MAP;
+	y = data->player_y * (float)MINI_MAP;
+	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
+	render_rect(rect, data);
+	// line.x1 = x + 2;
+	// line.y1 = y + 2;
+	// line.x2 = x + (cos(player->angle) * 16);
+	// line.y2 = y + (sin(player->angle) * 16);
+	// dda(line, game);
+}
 
 void	_draw_map(t_map_data *data)
 {
@@ -112,13 +104,14 @@ void	_draw_map(t_map_data *data)
 			item = data->map_body[y][x];
 			if (item == '1')
 			{
-				rect = init_rect(x, y, CUB_SIZE * 0.4, item);
+				rect = init_rect(x, y, CUB_SIZE * MINI_MAP, item);
 				render_rect(rect, data);
 			}
 			x++;
 		}
 		y++;
 	}
+	_draw_player(data);
 }
 
 // void	_draw_costum_map(t_data *data, t_game *game)
