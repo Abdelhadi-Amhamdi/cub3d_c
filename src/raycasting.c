@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:43:39 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:22:57 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,6 @@ void    raycasting(t_map_data *data)
             }
         // }
         rayangle += (data->fov / data->num_rays);
-        id++;;
+        id++;
     }
 } 

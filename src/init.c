@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 21:07:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:24:37 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void    get_plyr_pos(t_map_data *data, char **map)
 
 void   set_plyr_attr(t_map_data *data)
 {
-	get_plyr_pos(data, data->map_body);
-	data->roatAngle = (M_PI / 2);;
-	data->walkDirc = 0;
-	data->turnSpeed = 2 * (M_PI / 180);
-	data->walkSpeed = 2;
-	data->turnDirc = 0;
-	data->fov = 60 * (M_PI / 180);
+    get_plyr_pos(data, data->map_body);
+    data->roatAngle = (M_PI / 2);
+    data->walkDirc = 0;
+    data->turnSpeed = 3 * (M_PI / 180);
+    data->walkSpeed = 2;
+    data->turnDirc = 0;
+    data->fov = 60 * (M_PI / 180);
 }
 
 void    init_data(t_map_data *data)
@@ -64,4 +64,17 @@ void    init_data(t_map_data *data)
 	mlx_image_to_window (data->mlx, data->img, 0, 0);
 	mlx_key_hook(data->mlx,key_handler,data);
 	mlx_loop_hook(data->mlx,hook_handler,data);
+    // set_plyr_attr(data);
+    // data->num_rays = data->win_width;
+    // data->rays = (t_rays *)malloc (sizeof(t_rays) * data->num_rays);
+    // if(!data->rays)
+    //     ft_error("error: failed to malloc");
+    // data->mlx = mlx_init(data->win_width,data->win_height, "cub3d", 1);
+    // if(!data->mlx)
+    //     ft_error("error: failed to init mlx");
+    // data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+    // if(!data->img || mlx_image_to_window (data->mlx, data->img, 0, 0))
+    //     ft_error("error: mlx_new_image / image to win failed");
+    // mlx_key_hook(data->mlx,key_handler,data);
+    // mlx_loop_hook(data->mlx,hook_handler,data);
 }

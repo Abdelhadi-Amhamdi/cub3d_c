@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:46:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:27:40 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void    wall_projection(t_map_data *data)
 	{
 		
 		real_dis = data->rays[i].Distance * cos(data->rays[i].rayAngle - data->roatAngle);
-		distance_pp = (data->win_height / 2) / (tan(data->fov / 2));
+		distance_pp = (data->win_width / 2) / (tan(data->fov / 2));
 		wall_height = distance_pp * (CUB_SIZE / real_dis);
 		start = (data->win_height / 2) - ((int)wall_height / 2);
-		if(start <= 0)
+		if(start < 0)
 			start = 0;
 		end = (data->win_height / 2) + ((int)wall_height / 2);
 		if(end > data->win_height)

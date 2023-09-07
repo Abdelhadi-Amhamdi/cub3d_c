@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 21:03:00 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:19:14 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ int     check_wall(t_map_data *data, float x, float y);
 void    wall_projection(t_map_data *data);
 
 void	_draw_map(t_map_data *data);
+float normalize_angle(float angle);
 #endif
