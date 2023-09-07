@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:14:54 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:45:54 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void    update_plyr(t_map_data *data)
         data->player_x = new_x;
         data->player_y = new_y;
     }
-    
 }
 
 int ft_abs(int n) { return ((n > 0) ? n : (n * (-1))); }
@@ -116,17 +115,17 @@ void    key_handler(mlx_key_data_t keycode, void    *param)
         data->walkDirc = 1;
 	if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_PRESS)
         data->walkDirc = -1;
-	if ((keycode.key == MLX_KEY_RIGHT || keycode.key == MLX_KEY_D) && keycode.action == MLX_PRESS)
+	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_PRESS)
         data->turnDirc = 1;
-	if ((keycode.key == MLX_KEY_LEFT || keycode.key == MLX_KEY_A) && keycode.action == MLX_PRESS)
+	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_PRESS)
         data->turnDirc = -1;
 
     if ((keycode.key == MLX_KEY_UP || keycode.key == MLX_KEY_W) && keycode.action == MLX_RELEASE)
         data->walkDirc = 0;
     if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_RELEASE)
         data->walkDirc = 0;
-	if ((keycode.key == MLX_KEY_RIGHT || keycode.key == MLX_KEY_D) && keycode.action == MLX_RELEASE)
+	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_RELEASE)
         data->turnDirc = 0;
-	if ((keycode.key == MLX_KEY_LEFT || keycode.key == MLX_KEY_A) && keycode.action == MLX_RELEASE)
+	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_RELEASE)
         data->turnDirc = 0;
 }
