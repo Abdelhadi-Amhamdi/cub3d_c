@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:10:02 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:06:38 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	get_responive_sizes(t_map_data *data)
 {
     get_map_col_row(data);
 	data->win_width = data->cols * CUB_SIZE;
-	// if (W_WIDTH < data->win_width)
-	// 	data->win_width = W_WIDTH;
+	if (W_WIDTH < data->win_width)
+		data->win_width = W_WIDTH;
 	data->win_height = data->rows * CUB_SIZE;
-	// if (W_HEIGHT < data->win_height)
-	// 	data->win_height = W_HEIGHT;
+	if (W_HEIGHT < data->win_height)
+		data->win_height = W_HEIGHT;
 }
 
 int	main(int argc, char *argv[])
