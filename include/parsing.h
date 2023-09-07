@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 18:56:40 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:26:29 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ typedef struct s_ray{
     int isFacingUp;
     int isFacingRight;
     int isFacingLeft;
-    int wallHitContent;
 }t_rays;
 
 typedef struct s_map_data
@@ -80,8 +79,8 @@ typedef struct s_map_data
 	char	**map_body;
 	int		rows;
 	int		cols;
-	int		player_x;
-	int		player_y;
+	float		player_x;
+	float		player_y;
 	int		win_height;
     int		win_width;
     t_rays  *rays;

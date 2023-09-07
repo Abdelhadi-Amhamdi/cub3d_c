@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:26:06 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:30:08 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void    draw_strip(t_map_data *data, int id, int start, int end, float wall_heig
         // color = txtr[yoffset * data->texture->width + xoffset];
         // s+=texture_scale;
         // color = reverse_bytes(color);
-        mlx_put_pixel(data->img, id, start , 0xFFFFFFFF);
+        mlx_put_pixel(data->img, id, start , 0x000000FF);
         start++;
     }
 }

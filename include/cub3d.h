@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:09:18 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:29:04 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void    draw_line(t_map_data    *data, int x0, int y0, int x1, int y1);
 void    raycasting(t_map_data *data);
 int check_wall(t_map_data *data, float x, float y);
 void    wall_projection(t_map_data *data);
+float normalize_angle(float angle);
 #endif

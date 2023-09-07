@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 19:55:33 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:50:16 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void    get_plyr_pos(t_map_data *data, char **map)
 void   set_plyr_attr(t_map_data *data)
 {
     get_plyr_pos(data, data->map_body);
-    data->roatAngle = (M_PI / 2);;
+    data->roatAngle = (M_PI / 2);
     data->walkDirc = 0;
-    data->turnSpeed = 2 * (M_PI / 180);
+    data->turnSpeed = 3 * (M_PI / 180);
     data->walkSpeed = 2;
     data->turnDirc = 0;
     data->fov = 60 * (M_PI / 180);
@@ -56,10 +56,8 @@ void    init_data(t_map_data *data)
     if(!data->mlx)
         ft_error("error: failed to init mlx");
     data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-    if(!data->img)
+    if(!data->img || mlx_image_to_window (data->mlx, data->img, 0, 0))
         ft_error("error: mlx_new_image / image to win failed");
-    printf("%d %d\n",data->player_x, data->player_y);
-    mlx_image_to_window (data->mlx, data->img, 0, 0);
     mlx_key_hook(data->mlx,key_handler,data);
     mlx_loop_hook(data->mlx,hook_handler,data);
 }

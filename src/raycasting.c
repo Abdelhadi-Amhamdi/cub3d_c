@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:06:17 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:28:54 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int check_wall(t_map_data *data, float x, float y)
         return (1);
     check_x = (int)(floor(x / CUB_SIZE));
     check_y = (int)(floor(y / CUB_SIZE));
-    printf("y:%d x:%d\n",check_y, check_x);
     return (data->map_body[check_y][check_x] == '1');
 }
 

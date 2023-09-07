@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 20:14:54 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/07 13:32:05 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,22 @@ void    update_plyr(t_map_data *data)
 
     data->roatAngle += data->turnDirc * data->turnSpeed;
 
-    
+    // printf("%f\n",data->roatAngle * (180/M_PI));
+    // data->roatAngle = normalize_angle(data->roatAngle);
     // printf("roating angle: %f\n",data->roatAngle);
     // printf("turn dirc: %f\n",data->turnDirc);
+    
     step = data->walkDirc * data->walkSpeed;
-
-    new_x = (data->player_x + cos(data->roatAngle) * step);
-    new_y = (data->player_y + sin(data->roatAngle) * step);
+    printf("p_x: %f\n",data->player_x);
+    printf("p_y: %f\n",data->player_y);
+    new_x = data->player_x + cos(data->roatAngle) * step;
+    new_y = data->player_y + sin(data->roatAngle) * step;
     if(!check_wall(data, new_x, new_y))
     {
         data->player_x = new_x;
         data->player_y = new_y;
+        printf("p_x: %f\n",data->player_x);
+        printf("p_y: %f\n",data->player_y);
     }
     
 }
@@ -81,9 +86,9 @@ void    coloriez(t_map_data *data)
         while(j < data->win_width)
         {
             if(i < (data->win_height / 2))
-                mlx_put_pixel(data->img, j, i, 0xfcba03FF);
-            else
                 mlx_put_pixel(data->img, j, i, 0x66ebffFF);
+            else
+                mlx_put_pixel(data->img, j, i, 0xfcba03FF);
             j++;
         }
         i++;
@@ -104,7 +109,7 @@ void    hook_handler(void   *param)
     // draw_map(data);
     raycasting(data);
 //     draw_plyr(data);
-//     draw_line(data,(data->player_x), (data->player_y), (data->player_x + cos(data->roatAngle) * 50), (data->player_y + sin(data->roatAngle) * 50));
+    // draw_line(data,data->player_x, data->player_y, data->player_x + cos(data->roatAngle) * 50, data->player_y + (sin(data->roatAngle) * 50));
     wall_projection(data);
 }
 
