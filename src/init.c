@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 10:07:17 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:26:22 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,6 @@ void	init_data(t_map_data *data)
 	set_plyr_attr(data);
 	data->texture = mlx_load_png("./sci-fi.png");
 	data->num_rays = data->win_width;
-	// data->rays = (t_rays *)malloc (sizeof(t_rays) * data->num_rays);
-	// if(!data->rays)
-	// 	ft_error("error: failed to malloc");
 	data->mlx = mlx_init(data->win_width,data->win_height, "cub3d", 1);
 	if(!data->mlx)
 		ft_error("error: failed to init mlx");

@@ -3,7 +3,7 @@ SO ./sci-fi.png
 WE ./sci-fi.png
 EA ./sci-fi.png
 
-F 220,100,0
+F 255,0,0
 C 225,30,0
 
 1111111111111111111111111

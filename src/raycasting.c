@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:09:02 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:28:09 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 float normalize_angle(float angle)
 {
-    // printf("angle before nor:%f\n",angle);
     angle = remainder(angle, (M_PI * 2));
     if(angle < 0)
         angle = (M_PI * 2) + angle;
-    // printf("angle after nor:%f\n\n",angle);
     return (angle);
 }
 
@@ -31,7 +29,6 @@ int check_wall(t_map_data *data, float x, float y)
         return (1);
     check_x = (int)(floor(x / CUB_SIZE));
     check_y = (int)(floor(y / CUB_SIZE));
-    // printf("y:%d x:%d\n",check_y, check_x);
     return (data->map_body[check_y][check_x] == '1');
 }
 
@@ -57,19 +54,15 @@ float    cast_horz(t_map_data *data,float angle ,int id, t_line *line)
         line->alpha_x *= -1;
     line->horz_x = line->xinter;
     line->horz_y = line->yinter;
-    // printf("win_w :%d -- x:%f\n",data->win_width, line->xinter);
-    // printf("win_h :%d -- y:%f --- %f\n",data->win_height, line->yinter, line->alpha_y);
     while(line->horz_x >=0 && line->horz_x <= data->win_width && line->horz_y >= 0 && line->horz_y <= data->win_height)
     {
         float xcheck = line->horz_x;
         float ycheck = line->horz_y;
-        // printf("win_w :%d -- x:%f\n",data->win_width, xcheck);
-        // printf("af win_h :%d -- y:%f --- %f\n",data->win_height, ycheck, line->alpha_y);
+        
         if(data->rays.isFacingUp)
             ycheck -= 1;
         if(check_wall(data, xcheck, ycheck))
         {
-            // printf("y:%f x:%f\n",ycheck / CUB_SIZE, xcheck / CUB_SIZE);
             line->h_hitx = xcheck;
             line->h_hity = ycheck;
             break;
@@ -80,12 +73,8 @@ float    cast_horz(t_map_data *data,float angle ,int id, t_line *line)
             line->horz_y += line->alpha_y;
         }
     }
-    
-   
     float distance = cal_distance(data->player_x, data->player_y, line->horz_x, line->horz_y);
-    // draw_line(data,data->plyr_x, data->plyr_y, data->plyr_x + cos(angle) * distance, data->plyr_y + sin(angle) * distance);
     return(distance);
-    // printf("%f\n", distance);
 }
 
 
@@ -126,8 +115,6 @@ float    cast_vert(t_map_data *data, float angle, int id, t_line *line)
         }
     }
     float distance = cal_distance(data->player_x, data->player_y, line->vert_x, line->vert_y);
-    // draw_line(data,data->plyr_x, data->plyr_y, data->plyr_x + cos(angle) * distance, data->plyr_y + sin(angle) * distance);
-    
     return (distance);
 
 }
@@ -160,32 +147,24 @@ void    raycasting(t_map_data *data)
     id = 0;
     while(id < data->num_rays)
     {
-        // if(id == (data->num_rays / 2))
-        // {
-            rayangle = normalize_angle(rayangle);
-            // data->rays[id].rayAngle = rayangle;
-            data->rays.rayAngle = rayangle;
-            check_angle_dir(data, rayangle, id);
-            horz_dis = cast_horz(data, rayangle ,id, &line);
-            vert_dis =  cast_vert(data,rayangle, id, &line);
-            if(vert_dis < horz_dis)
-            {
-                data->rays.Distance = vert_dis;
-                data->rays.is_verthit = 1;
-                data->rays.x_hit = line.v_hitx;
-                data->rays.y_hit = line.v_hity;
-                // draw_line(data, data->player_x * MINI_MAP, data->player_y * MINI_MAP, \
-                // (data->player_x + (cos(rayangle) * vert_dis)) * MINI_MAP, (data->player_y + (sin(rayangle) * vert_dis)) * MINI_MAP);
-            }
-            else
-            {
-                data->rays.Distance = horz_dis;
-                data->rays.x_hit = line.h_hitx;
-                data->rays.y_hit = line.h_hity;
-                // draw_line(data, data->player_x * MINI_MAP, data->player_y * MINI_MAP, \
-                // (data->player_x + cos(rayangle) * horz_dis) * MINI_MAP, (data->player_y + sin(rayangle) * horz_dis) * MINI_MAP);
-            }
-        // }
+        rayangle = normalize_angle(rayangle);
+        data->rays.rayAngle = rayangle;
+        check_angle_dir(data, rayangle, id);
+        horz_dis = cast_horz(data, rayangle ,id, &line);
+        vert_dis =  cast_vert(data,rayangle, id, &line);
+        if(vert_dis < horz_dis)
+        {
+            data->rays.Distance = vert_dis;
+            data->rays.is_verthit = 1;
+            data->rays.x_hit = line.v_hitx;
+            data->rays.y_hit = line.v_hity;
+        }
+        else
+        {
+            data->rays.Distance = horz_dis;
+            data->rays.x_hit = line.h_hitx;
+            data->rays.y_hit = line.h_hity;
+        }
         wall_projection(data, id);
         rayangle += (data->fov / data->num_rays);
         id++;

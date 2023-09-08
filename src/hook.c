@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:10:18 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:30:12 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ void    coloriez(t_map_data *data)
 		while(j < data->win_width)
 		{
 			if(i < (data->win_height / 2))
-				mlx_put_pixel(data->img, j, i, 0x66ebffFF);
+				mlx_put_pixel(data->img, j, i, data->ceil_rgb);
 			else
-				mlx_put_pixel(data->img, j, i, 0xfcba03FF);
+				mlx_put_pixel(data->img, j, i, data->floor_rgb);
 			j++;
 		}
 		i++;
@@ -105,12 +105,8 @@ void    hook_handler(void   *param)
 		ft_error("error: mlx new image failed");
 	coloriez(data);
 	update_plyr(data);
-	// draw_map(data);
 	raycasting(data);
-    // draw_plyr(data);
-	// wall_projection(data);
 	_draw_map(data);
-	// draw_line(data,data->player_x * MINI_MAP, data->player_y * MINI_MAP, (data->player_x + cos(data->roatAngle) * 50) * MINI_MAP, (data->player_y + (sin(data->roatAngle) * 50)) * MINI_MAP);
 }
 
 void    key_handler(mlx_key_data_t keycode, void    *param)
