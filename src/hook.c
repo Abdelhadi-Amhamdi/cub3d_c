@@ -6,23 +6,11 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:30:12 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 11:47:31 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-// int check_wall(t_map_data *data, float x, float y)
-// {
-//     int check_x;
-//     int check_y;
-
-//     if(x <= 0 || x >= data->win_width || y <= 0 || y >= data->win_height)
-//         return (1);
-//     check_x = (int)(floor(x / CUB_SIZE));
-//     check_y = (int)(floor(y / CUB_SIZE));
-//     return (data->map_body[check_y][check_x] == '1');
-// }
 
 void    update_plyr(t_map_data *data)
 {
@@ -31,27 +19,21 @@ void    update_plyr(t_map_data *data)
 	float new_y;
 
 	data->roatAngle += data->turnDirc * data->turnSpeed;
-
-	// printf("%f\n",data->roatAngle * (180/M_PI));
-	// data->roatAngle = normalize_angle(data->roatAngle);
-	// printf("roating angle: %f\n",data->roatAngle);
-	// printf("turn dirc: %f\n",data->turnDirc);
-	
+	data->roatAngle = normalize_angle(data->roatAngle);
 	step = data->walkDirc * data->walkSpeed;
-	// printf("p_x: %f\n",data->player_x);
-	// printf("p_y: %f\n",data->player_y);
 	new_x = data->player_x + cos(data->roatAngle) * step;
 	new_y = data->player_y + sin(data->roatAngle) * step;
 	if(!check_wall(data, new_x, new_y))
 	{
 		data->player_x = new_x;
 		data->player_y = new_y;
-		// printf("p_x: %f\n",data->player_x);
-		// printf("p_y: %f\n",data->player_y);
 	}
 }
 
-int ft_abs(int n) { return ((n > 0) ? n : (n * (-1))); }
+int ft_abs(int n) 
+{
+	return ((n > 0) ? n : (n * (-1)));
+}
 
 void    draw_line(t_map_data    *data, int x0, int y0, int x1, int y1)
 {

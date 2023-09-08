@@ -6,14 +6,14 @@
 #    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/08 10:26:36 by aagouzou         ###   ########.fr        #
+#    Updated: 2023/09/08 11:35:18 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ---- global vars ----- #
 
 NAME		= cub3d
-CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math -fsanitize=address
+CC			= cc -g -Wall -Wextra -Werror #-o3 -ffast-math -fsanitize=address
 MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
 # ---- libs ---------- #
