@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection.c                                       :+:      :+:    :+:   */
+/*   _projection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:07:49 by aagouzou         ###   ########.fr       */
+/*   Created: 2023/09/08 09:59:49 by aagouzou          #+#    #+#             */
+/*   Updated: 2023/09/08 10:00:44 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-// uint32_t get_color(t_data *data, int xoff, int yoff)
-// {
-//     uint32_t *txtr = (uint32_t *)data->texture->pixels;
-//     uint32_t index = (data->texture->width * yoff) + xoff;
-//     return(txtr[index]);
-// }
 
 uint32_t    reverse_bytes(uint32_t num)
 {
@@ -34,10 +27,10 @@ void    draw_strip(t_map_data *data, int id, int start, int end, float wall_heig
 	double s;
 	
 	x_step =  data->texture->width / CUB_SIZE;
-	if(data->rays.is_verthit)
-		xoffset = ((int)((double)data->rays.y_hit * x_step) % data->texture->width);
+	if(data->rays[id].is_verthit)
+		xoffset = ((int)((double)data->rays[id].y_hit * x_step) % data->texture->width);
 	else
-		xoffset = ((int)((double)data->rays.x_hit * x_step) % data->texture->width);
+		xoffset = ((int)((double)data->rays[id].x_hit * x_step) % data->texture->width);
 	uint32_t *txtr = (uint32_t *)data->texture->pixels;
 	float texture_scale = (float)data->texture->height / wall_height;
 	s = ((start - data->win_height / 2 + wall_height / 2) * texture_scale);
@@ -53,20 +46,20 @@ void    draw_strip(t_map_data *data, int id, int start, int end, float wall_heig
 	}
 }
 
-void    wall_projection(t_map_data *data, int id)
+void    wall_projection(t_map_data *data)
 {
 	float distance_pp;
 	float wall_height;
 	float real_dis;
 	int start;
 	int end;
-	// int i;
+	int i;
 
-	// i = 0;
+	i = 0;
 	// while(i < data->num_rays)
 	// {
 		
-		real_dis = data->rays.Distance * cos(data->rays.rayAngle - data->roatAngle);
+		real_dis = data->rays[i].Distance * cos(data->rays[i].rayAngle - data->roatAngle);
 		distance_pp = (data->win_width / 2) / (tan(data->fov / 2));
 		wall_height = distance_pp * (CUB_SIZE / real_dis);
 		start = (data->win_height / 2) - ((int)wall_height / 2);
@@ -75,7 +68,7 @@ void    wall_projection(t_map_data *data, int id)
 		end = (data->win_height / 2) + ((int)wall_height / 2);
 		if(end > data->win_height)
 			end = data->win_height;
-		draw_strip(data, id, start,end, wall_height);
-		// i++;
+		draw_strip(data ,i, start, end, wall_height);
+		i++;
 	// }
 }

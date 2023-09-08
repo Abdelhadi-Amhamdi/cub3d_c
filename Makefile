@@ -5,44 +5,74 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/22 11:34:11 by aagouzou          #+#    #+#              #
-#    Updated: 2023/09/06 20:10:28 by aagouzou         ###   ########.fr        #
+#    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
+#    Updated: 2023/09/08 10:26:36 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+# ---- global vars ----- #
 
-CFLAGS = -Wall -Wextra -Werror
-CC = CC -g
+NAME		= cub3d
+CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math -fsanitize=address
+MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
-# FILES = main.c error.c init.c hook.c draw.c raycasting.c projection.c
-FILES = src/main.c src/raycasting.c src/init.c src/error.c parse/parse_colors.c parse/parse_content.c parse/parse_main.c parse/utils.c \
-	parse/utils1.c parse/utils2.c src/hook.c src/draw.c src/projection.c
-OBJS = $(FILES:.c=.o)
+# ---- libs ---------- #
 
-SANI = -fsanitize=address
+# MLX42		= /Users/${USER}/MLX42/build/libmlx42.a
+MLX42		= MLX42/build/libmlx42.a
+LIBFT		= $(LIBFT_PATH)/libft.a
 
-MLX42 = MLX42/build/libmlx42.a
-I=-I/Users/aagouzou/.brew/Cellar/glfw/3.3.8/include/GLFW
-L=-L/Users/aagouzou/.brew/Cellar/glfw/3.3.8/lib/
-MLX = -framework Cocoa -framework OpenGL -framework IOKit -lglfw
-LIBFT = libft/libft.a
+# ----- PATH && includes ---- #
 
-all: $(NAME)
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(SANI) $(OBJS) $(LIBFT) $(MLX42) $(I) $(L) $(MLX) -o $(NAME)
+INC			= includes/
+RAY_CAST	= src/
+PARSE		= parse/
+PARSE		= parse/
+LIBFT_PATH	= libft
+I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
+L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
 
-%.o: %.c cub3d.h
-	$(CC) $(CFLAGS) -c $< -o $@
+BUILD_DIR	= build/
 
-clean:
-	rm -f $(OBJS)
+# ---- files ------ #
+
+src			= main.c error.c init.c hook.c raycasting.c projection.c mini_map.c draw.c
+srcs		= $(addprefix $(RAY_CAST), $(src))
+
+p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c
+p_srcs		= $(addprefix $(PARSE), $(p_src))
+
+obj 		= $(src:.c=.o) $(p_src:.c=.o)
+objs 		= $(addprefix $(BUILD_DIR), $(obj))
+
+
+# ---- RULES ---- #
+
+$(BUILD_DIR)%.o: %.c
+	$(CC) $< -c -o $@ $(I)
+
+all : $(LIBFT) $(BUILD_DIR) $(NAME)
+
+$(BUILD_DIR)%.o: $(RAY_CAST)%.c
+	$(CC) $< -c -o $@
+	
+$(BUILD_DIR)%.o: $(PARSE)%.c
+	$(CC) $< -c -o $@
+
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
+
+$(NAME) : $(objs)
+	$(CC) $(objs) $(MLX42) $(LIBFT) -o $@ $(I) $(L) $(MLX)
+
+$(LIBFT):
+	make -s -C $(LIBFT_PATH)
+
+clean :
+	rm -rf $(BUILD_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
+	make fclean -s -C $(LIBFT_PATH)
 
-re: fclean all
-
-.PHONY: all clean fclean re
-
-# gcc main.c draw.c hook.c update.c  libft/libft.a MLX42/build/libmlx42.a -I/Users/aagouzou/.brew/Cellar/glfw/3.3.8/include/GLFW -L/Users/aagouzou/.brew/Cellar/glfw/3.3.8/lib/ -framework Cocoa -framework OpenGL -framework IOKit -lglfw -o lol
+re:	fclean all

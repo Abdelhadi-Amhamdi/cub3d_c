@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/06 18:34:57 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 10:26:55 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,21 @@ void    draw_map(t_map_data *data)
     }
 }
 
-void    draw_plyr(t_map_data *data)
-{
-    int x;
-    int y;
+// void    draw_plyr(t_map_data *data)
+// {
+//     int x;
+//     int y;
 
-    x = 0;
-    y = 0;
-    while(y < 10)
-    {
-        x = 0;
-        while(x < 10)
-        {
-            mlx_put_pixel(data->img,(data->player_x + x),(data->player_y + y) ,  0xff2424FF);
-            x++;
-        }
-        y++;
-    }
-}
+//     x = 0;
+//     y = 0;
+//     while(y < 10)
+//     {
+//         x = 0;
+//         while(x < 10)
+//         {
+//             mlx_put_pixel(data->img,(data->player_x + x),(data->player_y + y) ,  0xff2424FF);
+//             x++;
+//         }
+//         y++;
+//     }
+// }
