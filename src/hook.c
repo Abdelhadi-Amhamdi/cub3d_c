@@ -6,7 +6,11 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/09/08 15:36:50 by aamhamdi         ###   ########.fr       */
+=======
+/*   Updated: 2023/09/08 11:30:12 by aagouzou         ###   ########.fr       */
+>>>>>>> 195e9486a56f31f1376f76c2341f9b239219fd7a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +88,15 @@ void	coloriez(t_data *data)
 		j = 0;
 		while(j < data->win_width)
 		{
+<<<<<<< HEAD
 			if(i < (data->window_height / 2))
 				mlx_put_pixel(data->img, j, i, 0x66ebffFF);
+=======
+			if(i < (data->win_height / 2))
+				mlx_put_pixel(data->img, j, i, data->ceil_rgb);
+>>>>>>> 195e9486a56f31f1376f76c2341f9b239219fd7a
 			else
-				mlx_put_pixel(data->img, j, i, 0xfcba03FF);
+				mlx_put_pixel(data->img, j, i, data->floor_rgb);
 			j++;
 		}
 		i++;
@@ -127,9 +136,11 @@ void	hook_handler(void	*param)
 	// coloriez(data);
 	update_plyr(data);
 	raycasting(data);
+<<<<<<< HEAD
 	wall_projection(data);
+=======
+>>>>>>> 195e9486a56f31f1376f76c2341f9b239219fd7a
 	_draw_map(data);
-	// draw_line(data,data->player_x * MINI_MAP, data->player_y * MINI_MAP, (data->player_x + cos(data->roatAngle) * 50) * MINI_MAP, (data->player_y + (sin(data->roatAngle) * 50)) * MINI_MAP);
 }
 
 void    key_handler(mlx_key_data_t keycode, void    *param)
