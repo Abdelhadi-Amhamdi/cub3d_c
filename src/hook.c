@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:15:57 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:10:18 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/08 15:36:50 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ void    draw_line(t_map_data    *data, int x0, int y0, int x1, int y1)
 	}
 }
 
-void    coloriez(t_map_data *data)
+void	coloriez(t_data *data)
 {
 	int i = 0;
 	int j = 0;
-	while(i < data->win_height)            
+	while(i < data->window_height)
 	{
 		j = 0;
 		while(j < data->win_width)
 		{
-			if(i < (data->win_height / 2))
+			if(i < (data->window_height / 2))
 				mlx_put_pixel(data->img, j, i, 0x66ebffFF);
 			else
 				mlx_put_pixel(data->img, j, i, 0xfcba03FF);
@@ -94,21 +94,40 @@ void    coloriez(t_map_data *data)
 	}
 }
 
-void    hook_handler(void   *param)
+void	_draw(t_data *data)
 {
-	t_map_data *data;
+	if (data->img)
+		mlx_delete_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
+	coloriez(data);
+	// raycasting(data);
+	// if (game->map_type == NORMAL_MAP)
+	// {
+	// 	_draw_map(data, game);
+	// 	_draw_player(game, game->player, game->data, NORMAL_MAP);
+	// }
+	// else if (game->map_type == COSTUM_MAP)
+	// {
+	// 	_draw_player(game, game->player, game->data, COSTUM_MAP);
+	// 	_draw_costum_map(data, game);
+	// }
+	mlx_image_to_window(game->mlx, game->img, 0, 0);
+}
+
+void	hook_handler(void	*param)
+{
+	t_data *data;
 	
-	data = (t_map_data *)param;
-	mlx_delete_image(data->mlx, data->img);
-	data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+	data = (t_data *)param;
+	if (data->img)
+		mlx_delete_image(data->mlx, data->img);
+	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
 	if(!data->img || mlx_image_to_window(data->mlx,data->img, 0,0))
 		ft_error("error: mlx new image failed");
-	coloriez(data);
+	// coloriez(data);
 	update_plyr(data);
-	// draw_map(data);
 	raycasting(data);
-    // draw_plyr(data);
-	// wall_projection(data);
+	wall_projection(data);
 	_draw_map(data);
 	// draw_line(data,data->player_x * MINI_MAP, data->player_y * MINI_MAP, (data->player_x + cos(data->roatAngle) * 50) * MINI_MAP, (data->player_y + (sin(data->roatAngle) * 50)) * MINI_MAP);
 }

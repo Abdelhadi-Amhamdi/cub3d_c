@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
+#    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/08 10:26:36 by aagouzou         ###   ########.fr        #
+#    Updated: 2023/09/08 15:45:25 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
 # ---- libs ---------- #
 
-# MLX42		= /Users/${USER}/MLX42/build/libmlx42.a
-MLX42		= MLX42/build/libmlx42.a
+MLX42		= /Users/${USER}/MLX42/build/libmlx42.a
+# MLX42		= MLX42/build/libmlx42.a
 LIBFT		= $(LIBFT_PATH)/libft.a
 
 # ----- PATH && includes ---- #
@@ -36,7 +36,7 @@ BUILD_DIR	= build/
 
 # ---- files ------ #
 
-src			= main.c error.c init.c hook.c raycasting.c projection.c mini_map.c draw.c
+src			= main.c init.c #error.c  hook.c raycasting.c projection.c mini_map.c draw.c
 srcs		= $(addprefix $(RAY_CAST), $(src))
 
 p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c
