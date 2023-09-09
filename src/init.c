@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/09/08 15:46:49 by aamhamdi         ###   ########.fr       */
-=======
-/*   Updated: 2023/09/08 11:26:22 by aagouzou         ###   ########.fr       */
->>>>>>> 195e9486a56f31f1376f76c2341f9b239219fd7a
+/*   Updated: 2023/09/09 16:04:34 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +49,8 @@ t_player_data	*init_player(t_map_data *map_data)
 	player_data = malloc(sizeof(t_player_data));
 	if (!player_data)
 		return (NULL);
-	player_data->player_x = map_data->player_x;
-	player_data->player_y = map_data->player_y;
+	player_data->player_x = (map_data->player_x * CUB_SIZE) + (CUB_SIZE / 2);
+	player_data->player_y = (map_data->player_y * CUB_SIZE) + (CUB_SIZE / 2);
 	player_data->turnDirc = 0;
 	player_data->walkDirc = 0;
 	player_data->player_Angle = player_angle(map_data);
@@ -115,13 +111,14 @@ void	coloriez(t_data *data)
 	}
 }
 
-void	_draw(t_data *data)
+void	_draw(t_data *data, t_map_data *m_data)
 {
 	if (data->img)
 		mlx_delete_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
 	coloriez(data);
-	// raycasting(data);
+	_draw_map(m_data, data);
+	raycasting(data);
 	// if (game->map_type == NORMAL_MAP)
 	// {
 	// 	_draw_map(data, game);
@@ -134,22 +131,19 @@ void	_draw(t_data *data)
 	// }
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
-<<<<<<< HEAD
-=======
 
-void	init_data(t_map_data *data)
-{
-	set_plyr_attr(data);
-	data->texture = mlx_load_png("./sci-fi.png");
-	data->num_rays = data->win_width;
-	data->mlx = mlx_init(data->win_width,data->win_height, "cub3d", 1);
-	if(!data->mlx)
-		ft_error("error: failed to init mlx");
-	data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-	if(!data->img)
-		ft_error("error: mlx_new_image / image to win failed");
-	mlx_image_to_window (data->mlx, data->img, 0, 0);
-	mlx_key_hook(data->mlx,key_handler,data);
-	mlx_loop_hook(data->mlx,hook_handler,data);
-}
->>>>>>> 195e9486a56f31f1376f76c2341f9b239219fd7a
+// void	init_data(t_map_data *data)
+// {
+// 	set_plyr_attr(data);
+// 	data->texture = mlx_load_png("./sci-fi.png");
+// 	data->num_rays = data->win_width;
+// 	data->mlx = mlx_init(data->win_width,data->win_height, "cub3d", 1);
+// 	if(!data->mlx)
+// 		ft_error("error: failed to init mlx");
+// 	data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
+// 	if(!data->img)
+// 		ft_error("error: mlx_new_image / image to win failed");
+// 	mlx_image_to_window (data->mlx, data->img, 0, 0);
+// 	mlx_key_hook(data->mlx,key_handler,data);
+// 	mlx_loop_hook(data->mlx,hook_handler,data);
+// }

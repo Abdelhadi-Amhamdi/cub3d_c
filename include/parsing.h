@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/08 11:49:17 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/09 15:57:28 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define W_WIDTH 1600
-# define W_HEIGHT 1000
+# define W_WIDTH 1200
+# define W_HEIGHT 800
+
 # define CUB_SIZE 64
-# define MINI_MAP 0.4
+# define MINI_MAP 0.5
 
 # define WALL 49
 # define N_PLAYER 78

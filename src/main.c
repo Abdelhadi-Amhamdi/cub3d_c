@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 15:42:05 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/09 15:51:15 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map_data	*map_data;
+	t_map_data		*map_data;
 	t_data 			*data;
 	t_player_data	*p_data;
 	t_img_data		*img_data;
@@ -41,10 +41,12 @@ int	main(int argc, char *argv[])
 	if(argc != 2)
 		return(0);
 	map_data = parser(argc, argv);
+	if (!map_data)
+		return (0);
 	p_data = init_player(map_data);
 	img_data = init_images(map_data);
 	data = init_data(map_data, p_data, img_data);
-	_draw(data);
+	_draw(data, map_data);
 	// init_data(map_data);
 	mlx_loop(data->mlx);
 	return (0);

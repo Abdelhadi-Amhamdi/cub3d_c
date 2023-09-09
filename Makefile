@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
+#    By: original <original@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/08 15:45:25 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/09 16:07:08 by original         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,16 @@ RAY_CAST	= src/
 PARSE		= parse/
 PARSE		= parse/
 LIBFT_PATH	= libft
-I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
-L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
+I			= -I/usr/local/Cellar/glfw/3.3.8/include/GLFW
+L			= -L/usr/local/Cellar/glfw/3.3.8/lib
+# I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
+# L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
 
 BUILD_DIR	= build/
 
 # ---- files ------ #
 
-src			= main.c init.c #error.c  hook.c raycasting.c projection.c mini_map.c draw.c
+src			= main.c init.c mini_map.c raycasting.c #error.c  hook.c  projection.c  draw.c
 srcs		= $(addprefix $(RAY_CAST), $(src))
 
 p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 15:40:40 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:06:54 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <limits.h>
 #include <math.h>
 #include <limits.h>
-#include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
+#include "/Users/original/MLX42/include/MLX42/MLX42.h"
 // #include "../MLX42/include/MLX42/MLX42.h"
 #include "../libft/libft.h"
 #include "parsing.h"
@@ -80,11 +80,12 @@ void			get_responive_sizes(t_data *data, t_map_data *map_data);
 // void    draw_plyr(t_map_data *data);
 // void    key_handler(mlx_key_data_t keycode, void    *param);
 // void    draw_line(t_map_data    *data, int x0, int y0, int x1, int y1);
-// void    raycasting(t_map_data *data);
+void    raycasting(t_data *data);
 // int     check_wall(t_map_data *data, float x, float y);
 // void    wall_projection(t_map_data *data, int id);
 
 // void	_draw_map(t_map_data *data);
 // float normalize_angle(float angle);
-void	_draw(t_data *data);
+void	_draw(t_data *data, t_map_data *m_data);
+void	_draw_map(t_map_data *m_data, t_data *data);
 #endif
