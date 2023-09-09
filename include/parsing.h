@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/08 11:10:44 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/09 15:57:28 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define W_WIDTH 1600
-# define W_HEIGHT 1000
+# define W_WIDTH 1200
+# define W_HEIGHT 800
+
 # define CUB_SIZE 64
-# define MINI_MAP 0.4
+# define MINI_MAP 0.5
 
 # define WALL 49
 # define N_PLAYER 78
@@ -61,13 +62,6 @@ typedef struct s_ray{
 
 typedef struct s_map_data
 {
-	int     num_rays;
-	float   turnDirc;
-	float   walkDirc;
-	float   roatAngle;
-	float   walkSpeed;
-	float   turnSpeed;
-	float   fov;
 	char	*north_img_path;
 	char	*south_img_path;
 	char	*west_img_path;
@@ -79,15 +73,11 @@ typedef struct s_map_data
 	char	**map_body;
 	int		rows;
 	int		cols;
-	float		player_x;
-	float		player_y;
+	int		player_x;
+	int		player_y;
 	int		win_height;
 	int		win_width;
 	t_rays  rays;
-	mlx_t	*mlx;
-	mlx_image_t	*img;
-	mlx_texture_t *texture;
-	mlx_image_t	*plyr;	
 }	t_map_data;
 
 // main

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/08 11:28:09 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:06:37 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,15 +136,15 @@ void    check_angle_dir(t_map_data *data, float angle, int id)
 
 }
 
-void    raycasting(t_map_data *data)
+void    raycasting(t_data *data)
 {
     int id;
     t_line line;
     float vert_dis;
     float horz_dis;
     
-    float  rayangle = data->roatAngle - (data->fov / 2);
     id = 0;
+    float  rayangle = data->p_data->player_Angle - (data->fov / 2);
     while(id < data->num_rays)
     {
         rayangle = normalize_angle(rayangle);
@@ -165,7 +165,7 @@ void    raycasting(t_map_data *data)
             data->rays.x_hit = line.h_hitx;
             data->rays.y_hit = line.h_hity;
         }
-        wall_projection(data, id);
+        // wall_projection(data, id);
         rayangle += (data->fov / data->num_rays);
         id++;
     }

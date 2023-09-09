@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/07 14:41:34 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/09 16:04:20 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	render_rect(t_rect rect, t_map_data *data)
+int	render_rect(t_rect rect, t_data *data)
 {
 	int	i;
 	int	j;
@@ -69,26 +69,20 @@ t_rect	init_rect(int x, int y, int size, char item)
 // 		game->data->end_x = game->data->cols;
 // }
 
-void	_draw_player(t_map_data *data)
+void	_draw_player(t_data *data)
 {
 	int		x;
 	int		y;
 	t_rect	rect;
-	// t_line	line;
 
 
-	x = data->player_x * (float)MINI_MAP;
-	y = data->player_y * (float)MINI_MAP;
+	x = data->p_data->player_x * (float)MINI_MAP;
+	y = data->p_data->player_y * (float)MINI_MAP;
 	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
 	render_rect(rect, data);
-	// line.x1 = x + 2;
-	// line.y1 = y + 2;
-	// line.x2 = x + (cos(player->angle) * 16);
-	// line.y2 = y + (sin(player->angle) * 16);
-	// dda(line, game);
 }
 
-void	_draw_map(t_map_data *data)
+void	_draw_map(t_map_data *m_data, t_data *data)
 {
 	int		y;
 	int		x;
@@ -96,12 +90,12 @@ void	_draw_map(t_map_data *data)
 	char	item;
 
 	y = 0;
-	while (y < data->rows)
+	while (y < m_data->rows)
 	{
 		x = 0;
-		while (x < data->cols)
+		while (x < m_data->cols)
 		{
-			item = data->map_body[y][x];
+			item = m_data->map_body[y][x];
 			if (item == '1')
 			{
 				rect = init_rect(x, y, CUB_SIZE * MINI_MAP, item);
