@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:10:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/09 18:11:07 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:24:57 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int ft_abs(int n)
 	return ((n > 0) ? n : (n * (-1)));
 }
 
-void    draw_line(t_map_data    *data, int x0, int y0, int x1, int y1)
+void    draw_line(t_data    *data, int x0, int y0, int x1, int y1)
 {
 	int dx = x1 - x0;
 	int dy = y1 - y0;
@@ -96,44 +96,44 @@ void	_draw(t_data *data)
 	mlx_image_to_window(game->mlx, game->img, 0, 0);
 }
 
-void	hook_handler(void	*param)
-{
-	t_data *data;
+// void	hook_handler(void	*param)
+// {
+// 	t_data *data;
 	
-	data = (t_data *)param;
-	if (data->img)
-		mlx_delete_image(data->mlx, data->img);
-	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
-	if(!data->img || mlx_image_to_window(data->mlx,data->img, 0,0))
-		ft_error("error: mlx new image failed");
-	// coloriez(data);
-	update_plyr(data);
-	raycasting(data);
-	wall_projection(data);
-	_draw_map(data);
-}
+// 	data = (t_data *)param;
+// 	if (data->img)
+// 		mlx_delete_image(data->mlx, data->img);
+// 	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
+// 	if(!data->img || mlx_image_to_window(data->mlx,data->img, 0,0))
+// 		ft_error("error: mlx new image failed");
+// 	// coloriez(data);
+// 	update_plyr(data);
+// 	raycasting(data);
+// 	wall_projection(data);
+// 	_draw_map(data);
+// }
 
-void    key_handler(mlx_key_data_t keycode, void    *param)
-{
-	t_map_data  *data;
-	data = (t_map_data  *)param;
-	if ((keycode.key == MLX_KEY_UP || keycode.key == MLX_KEY_W) && keycode.action == MLX_PRESS)
-		data->walkDirc = 1;
-	if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_PRESS)
-		data->walkDirc = -1;
-	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_PRESS)
-		data->turnDirc = 1;
-	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_PRESS)
-		data->turnDirc = -1;
-	if ((keycode.key == MLX_KEY_ESCAPE) && keycode.action == MLX_PRESS)
-		exit (0);
+// void    key_handler(mlx_key_data_t keycode, void    *param)
+// {
+// 	t_map_data  *data;
+// 	data = (t_map_data  *)param;
+// 	if ((keycode.key == MLX_KEY_UP || keycode.key == MLX_KEY_W) && keycode.action == MLX_PRESS)
+// 		data->walkDirc = 1;
+// 	if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_PRESS)
+// 		data->walkDirc = -1;
+// 	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_PRESS)
+// 		data->turnDirc = 1;
+// 	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_PRESS)
+// 		data->turnDirc = -1;
+// 	if ((keycode.key == MLX_KEY_ESCAPE) && keycode.action == MLX_PRESS)
+// 		exit (0);
 
-	if ((keycode.key == MLX_KEY_UP || keycode.key == MLX_KEY_W) && keycode.action == MLX_RELEASE)
-		data->walkDirc = 0;
-	if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_RELEASE)
-		data->walkDirc = 0;
-	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_RELEASE)
-		data->turnDirc = 0;
-	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_RELEASE)
-		data->turnDirc = 0;
-}
+// 	if ((keycode.key == MLX_KEY_UP || keycode.key == MLX_KEY_W) && keycode.action == MLX_RELEASE)
+// 		data->walkDirc = 0;
+// 	if ((keycode.key == MLX_KEY_DOWN || keycode.key == MLX_KEY_S) && keycode.action == MLX_RELEASE)
+// 		data->walkDirc = 0;
+// 	if ((keycode.key == MLX_KEY_RIGHT) && keycode.action == MLX_RELEASE)
+// 		data->turnDirc = 0;
+// 	if ((keycode.key == MLX_KEY_LEFT) && keycode.action == MLX_RELEASE)
+// 		data->turnDirc = 0;
+// }

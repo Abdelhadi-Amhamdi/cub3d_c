@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/09 15:57:28 by original         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:54:00 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,33 @@
 # define WH_SAPCE 32
 # define EMPTY 48
 
-typedef struct s_line
-{
-	float xinter;
-	float yinter;
-	float alpha_x;
-	float alpha_y;
-	float horz_x;
-	float horz_y;
-	float vert_x;
-	float vert_y;
-	float   v_hitx;
-	float   v_hity;
-	float   h_hitx;
-	float   h_hity;
-}t_line;
+// typedef struct s_line
+// {
+// 	float xinter;
+// 	float yinter;
+// 	float alpha_x;
+// 	float alpha_y;
+// 	float horz_x;
+// 	float horz_y;
+// 	float vert_x;
+// 	float vert_y;
+// 	float   v_hitx;
+// 	float   v_hity;
+// 	float   h_hitx;
+// 	float   h_hity;
+// }t_line;
 
-typedef struct s_ray{
-	float   rayAngle;
-	float x_hit;
-	float y_hit;
-	int     is_verthit;
-	float Distance;
-	int isFacingDown;
-	int isFacingUp;
-	int isFacingRight;
-	int isFacingLeft;
-}t_rays;
+// typedef struct s_ray{
+// 	float   rayAngle;
+// 	float x_hit;
+// 	float y_hit;
+// 	int     is_verthit;
+// 	float Distance;
+// 	int isFacingDown;
+// 	int isFacingUp;
+// 	int isFacingRight;
+// 	int isFacingLeft;
+// }t_rays;
 
 typedef struct s_map_data
 {
@@ -77,7 +77,7 @@ typedef struct s_map_data
 	int		player_y;
 	int		win_height;
 	int		win_width;
-	t_rays  rays;
+	// t_rays  rays;
 }	t_map_data;
 
 // main

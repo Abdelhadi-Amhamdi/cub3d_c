@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/09 18:18:54 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 20:30:34 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	get_responive_sizes(t_data *data, t_map_data *map_data)
 {
 	data->window_width = map_data->cols * CUB_SIZE;
-	if (W_WIDTH < data->window_width)
-		data->window_width = W_WIDTH;
+	// if (W_WIDTH < data->window_width)
+	// 	data->window_width = W_WIDTH;
 	data->window_height = map_data->rows * CUB_SIZE;
-	if (W_HEIGHT < data->window_height)
-		data->window_height = W_HEIGHT;
+	// if (W_HEIGHT < data->window_height)
+	// 	data->window_height = W_HEIGHT;
 }
 
 float	player_angle(t_map_data *map_data)
@@ -50,7 +50,9 @@ t_player_data	*init_player(t_map_data *map_data)
 	if (!player_data)
 		return (NULL);
 	player_data->player_x = (map_data->player_x * CUB_SIZE) + (CUB_SIZE / 2);
+	// player_data->player_x = (map_data->player_x * CUB_SIZE);
 	player_data->player_y = (map_data->player_y * CUB_SIZE) + (CUB_SIZE / 2);
+	// player_data->player_y = (map_data->player_y * CUB_SIZE);
 	player_data->turnDirc = 0;
 	player_data->walkDirc = 0;
 	player_data->player_Angle = player_angle(map_data);
@@ -117,8 +119,8 @@ void	_draw(t_data *data, t_map_data *m_data)
 		mlx_delete_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
 	coloriez(data);
+	raycasting(data, m_data);
 	_draw_map(m_data, data);
-	// raycasting(data);
 	// if (game->map_type == NORMAL_MAP)
 	// {
 	// 	_draw_map(data, game);
@@ -132,18 +134,3 @@ void	_draw(t_data *data, t_map_data *m_data)
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
 
-// void	init_data(t_map_data *data)
-// {
-// 	set_plyr_attr(data);
-// 	data->texture = mlx_load_png("./sci-fi.png");
-// 	data->num_rays = data->win_width;
-// 	data->mlx = mlx_init(data->win_width,data->win_height, "cub3d", 1);
-// 	if(!data->mlx)
-// 		ft_error("error: failed to init mlx");
-// 	data->img = mlx_new_image(data->mlx, data->win_width, data->win_height);
-// 	if(!data->img)
-// 		ft_error("error: mlx_new_image / image to win failed");
-// 	mlx_image_to_window (data->mlx, data->img, 0, 0);
-// 	mlx_key_hook(data->mlx,key_handler,data);
-// 	mlx_loop_hook(data->mlx,hook_handler,data);
-// }

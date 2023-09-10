@@ -6,14 +6,14 @@
 #    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/09 18:19:18 by aagouzou         ###   ########.fr        #
+#    Updated: 2023/09/10 14:32:26 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ---- global vars ----- #
 
 NAME		= cub3d
-CC			= cc -g -Wall -Wextra -Werror #-o3 -ffast-math -fsanitize=address
+CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math -fsanitize=address
 MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
 # ---- libs ---------- #
@@ -38,7 +38,7 @@ BUILD_DIR	= build/
 
 # ---- files ------ #
 
-src			= main.c init.c mini_map.c #raycasting.c #error.c  hook.c  projection.c  draw.c
+src			= main.c init.c mini_map.c raycasting.c draw.c raycasting_utils.c projection.c #error.c  hook.c   draw.c
 srcs		= $(addprefix $(RAY_CAST), $(src))
 
 p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c
