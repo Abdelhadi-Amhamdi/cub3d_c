@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/09 20:54:00 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 20:56:08 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define W_HEIGHT 800
 
 # define CUB_SIZE 64
-# define MINI_MAP 0.5
+# define MINI_MAP 0.3
 
 # define WALL 49
 # define N_PLAYER 78
@@ -75,9 +75,6 @@ typedef struct s_map_data
 	int		cols;
 	int		player_x;
 	int		player_y;
-	int		win_height;
-	int		win_width;
-	// t_rays  rays;
 }	t_map_data;
 
 // main

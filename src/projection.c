@@ -3,50 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 20:30:04 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 21:13:52 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-uint32_t    reverse_bytes(uint32_t num)
+uint32_t	reverse_bytes(uint32_t num)
 {
 	return (((num >> 24) & 0xFF) | ((num >> 8) & 0xFF00) \
 	| ((num << 8) & 0xFF0000) | ((num << 24) & 0xFF000000));
 }
 
-void    draw_strip(t_data *data, int id, int start, int end, float wall_height)
+void	draw_strip(t_data *data, int id, int start, int end, float wall_height)
 {
-	uint32_t color = 0;
-	// int xoffset;
-	// int yoffset;
-	// double x_step;
-	// double s;
+	uint32_t color;
+	int xoffset;
+	int yoffset;
+	double x_step;
+	double s;
 	
-	(void)wall_height;
-	// x_step = data->mlx->width / CUB_SIZE;
-	// if(data->ray.is_verthit)
-	// 	xoffset = ((int)((double)data->ray.y_hit * x_step) % data->mlx->width);
-	// else
-	// 	xoffset = ((int)((double)data->ray.x_hit * x_step) % data->mlx->width);
-	// uint32_t *txtr = (uint32_t *)data->texture->pixels;
-	// float texture_scale = (float)data->texture->height / wall_height;
-	// s = ((start - data->win_height / 2 + wall_height / 2) * texture_scale);
+	x_step = data->img_data->east->width / CUB_SIZE;
+	xoffset = ((int)((double)data->ray.x_hit * x_step) % data->img_data->east->width);
+	if(data->ray.is_verthit)
+		xoffset = ((int)((double)data->ray.y_hit * x_step) % data->img_data->east->width);
+	uint32_t *txtr = (uint32_t *)data->img_data->east->pixels;
+	float texture_scale = (float)data->img_data->east->height / wall_height;
+	s = ((start - data->window_height / 2 + wall_height / 2) * texture_scale);
 	while(start < end)
 	{
-		// yoffset = (int)s;
-		// color = txtr[yoffset * data->mlx->width + xoffset];
-		// s+=texture_scale;
-		// color = reverse_bytes(color);
+		yoffset = (int)s;
+		color = txtr[yoffset * data->img_data->east->height + xoffset];
+		s+=texture_scale;
+		color = reverse_bytes(color);
 		mlx_put_pixel(data->img, id, start , color);
 		start++;
 	}
 }
 
-void    wall_projection(t_data *data, int id)
+void	wall_projection(t_data *data, int id)
 {
 	float distance_pp;
 	float wall_height;

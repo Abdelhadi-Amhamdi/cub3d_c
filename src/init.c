@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 20:30:34 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 20:57:12 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@ t_player_data	*init_player(t_map_data *map_data)
 	if (!player_data)
 		return (NULL);
 	player_data->player_x = (map_data->player_x * CUB_SIZE) + (CUB_SIZE / 2);
-	// player_data->player_x = (map_data->player_x * CUB_SIZE);
 	player_data->player_y = (map_data->player_y * CUB_SIZE) + (CUB_SIZE / 2);
-	// player_data->player_y = (map_data->player_y * CUB_SIZE);
 	player_data->turnDirc = 0;
 	player_data->walkDirc = 0;
 	player_data->player_Angle = player_angle(map_data);
 	player_data->turnSpeed = 2 * (M_PI / 180);
-	player_data->walkSpeed = CUB_SIZE / 4;
+	player_data->walkSpeed = CUB_SIZE / 7;
 	return (player_data);
 }
 
@@ -77,6 +75,7 @@ t_player_data *p_data, t_img_data *m_data)
 	data->img = NULL;
 	data->p_data = p_data;
 	data->img_data = m_data;
+	data->map_data = map_data;
 	return (data);
 }
 
@@ -121,16 +120,6 @@ void	_draw(t_data *data, t_map_data *m_data)
 	coloriez(data);
 	raycasting(data, m_data);
 	_draw_map(m_data, data);
-	// if (game->map_type == NORMAL_MAP)
-	// {
-	// 	_draw_map(data, game);
-	// 	_draw_player(game, game->player, game->data, NORMAL_MAP);
-	// }
-	// else if (game->map_type == COSTUM_MAP)
-	// {
-	// 	_draw_player(game, game->player, game->data, COSTUM_MAP);
-	// 	_draw_costum_map(data, game);
-	// }
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
 
