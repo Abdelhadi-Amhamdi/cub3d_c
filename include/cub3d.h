@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 20:57:41 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 21:27:55 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <limits.h>
 #include <math.h>
 #include <limits.h>
-// #include "/Users/original/MLX42/include/MLX42/MLX42.h"
+// #include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
 #include "../MLX42/include/MLX42/MLX42.h"
 #include "../libft/libft.h"
 #include "parsing.h"
@@ -92,6 +92,7 @@ typedef struct s_data
 	t_ray ray;
 	t_player_data *p_data;
 	t_img_data *img_data;
+	t_map_data *map_data;
 } t_data;
 
 // init
@@ -116,7 +117,7 @@ void    wall_projection(t_data *data, int id);
 // void    draw_map(t_data *data ,t_map_data *m_data);
 // void    draw_plyr(t_map_data *data);
 // void    key_handler(mlx_key_data_t keycode, void    *param);
-// void    draw_line(t_data    *data, int x0, int y0, int x1, int y1);
+void	draw_line(t_data	*data, int x0, int y0, int x1, int y1);
 // int     check_wall(t_map_data *data, float x, float y);
 
 // void	_draw_map(t_map_data *data);
