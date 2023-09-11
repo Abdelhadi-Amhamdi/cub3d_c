@@ -6,14 +6,14 @@
 #    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/11 17:36:34 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/11 18:08:19 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ---- global vars ----- #
 
 NAME		= cub3d
-CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math -fsanitize=address
+CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math #-fsanitize=address
 MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
 # ---- libs ---------- #

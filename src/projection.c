@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 18:05:59 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:14:49 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	draw_strip(t_data *data, int id, int start, int end, float wall_height)
 		texture_data.color = pixels[texture_data.y_offset * txtr->height + texture_data.x_offset];
 		texture_data.first_pixel+=texture_data.y_step;
 		texture_data.color = reverse_bytes(texture_data.color);
-		mlx_put_pixel(data->img, id, start , texture_data.color);
+		if (id >= 0 && id < data->window_width && start >= 0 && start < data->window_height)
+			mlx_put_pixel(data->img, id, start , texture_data.color);
 		start++;
 	}
 }

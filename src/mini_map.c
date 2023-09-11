@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/11 17:39:43 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:11:57 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int	render_rect(t_rect rect, t_data *data)
 
 	i = rect.y;
 	while (i < rect.y + rect.height && \
-	i >= 0 && i < W_HEIGHT)
+	i >= 0 && i < data->window_height)
 	{
 		j = rect.x;
 		while (j < rect.x + rect.width && \
-		j >= 0 && j < W_WIDTH)
+		j >= 0 && j < data->window_width)
 			mlx_put_pixel(data->img, j++, i, rect.color);
 		++i;
 	}

@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 17:39:04 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:14:37 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 	int i = 0;
 	while(i < step)
 	{
-		mlx_put_pixel(data->img, x, y, 0xFFFFFFFF);
+		if (x >= 0 && x < data->window_width && y >= 0 && y < data->window_height)
+			mlx_put_pixel(data->img, x, y, 0xFFFFFFFF);
 		x+=xstep;
 		y+=ystep;
 		i++;
