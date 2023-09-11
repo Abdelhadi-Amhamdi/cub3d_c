@@ -1,7 +1,7 @@
-NO ./sci-fi.png
-SO ./sci-fi.png
-WE ./sci-fi.png
-EA ./sci-fi.png
+NO ./assets/NNN1152.png
+SO ./assets/SSS1152.png
+WE ./assets/WWW1152.png
+EA ./assets/EEE1152.png
 
 F 20,0,0
 C 0,0,10

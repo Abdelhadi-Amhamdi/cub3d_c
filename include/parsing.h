@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/10 20:56:08 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:35:36 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-# define W_WIDTH 1200
-# define W_HEIGHT 800
-
-# define CUB_SIZE 64
-# define MINI_MAP 0.3
-
 # define WALL 49
 # define N_PLAYER 78
 # define S_PLAYER 83
@@ -31,34 +25,6 @@
 # define E_PLAYER 69
 # define WH_SAPCE 32
 # define EMPTY 48
-
-// typedef struct s_line
-// {
-// 	float xinter;
-// 	float yinter;
-// 	float alpha_x;
-// 	float alpha_y;
-// 	float horz_x;
-// 	float horz_y;
-// 	float vert_x;
-// 	float vert_y;
-// 	float   v_hitx;
-// 	float   v_hity;
-// 	float   h_hitx;
-// 	float   h_hity;
-// }t_line;
-
-// typedef struct s_ray{
-// 	float   rayAngle;
-// 	float x_hit;
-// 	float y_hit;
-// 	int     is_verthit;
-// 	float Distance;
-// 	int isFacingDown;
-// 	int isFacingUp;
-// 	int isFacingRight;
-// 	int isFacingLeft;
-// }t_rays;
 
 typedef struct s_map_data
 {

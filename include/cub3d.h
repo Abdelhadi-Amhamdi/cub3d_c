@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 15:31:40 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:48:16 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@
 // #include "../MLX42/include/MLX42/MLX42.h"
 #include "../libft/libft.h"
 #include "parsing.h"
+
+# define W_WIDTH 1200
+# define W_HEIGHT 800
+# define MINI_MAP 0.3
+# define CUB_SIZE 64
+# define COSTUM_SIZE 10
+
+# define NORMAL_MAP 1
+# define COSUTM_MAP 2
+# define NONE_MAP 3
 
 typedef struct s_line
 {
@@ -55,13 +65,14 @@ typedef struct s_ray
 
 typedef struct s_player_data
 {
-	int walkSpeed;
-	float turnSpeed;
-	int turnDirc;
-	int walkDirc;
-	float player_Angle;
-	float player_x;
-	float player_y;
+	int		walkSpeed;
+	float	turnSpeed;
+	int		turnDirc;
+	int		walkDirc;
+	int		move_dirc;
+	float	player_Angle;
+	float	player_x;
+	float	player_y;
 } t_player_data;
 
 typedef struct s_img_data
@@ -83,45 +94,54 @@ typedef struct s_rect
 
 typedef struct s_data
 {
-	mlx_t *mlx;
-	mlx_image_t *img;
-	float fov;
-	int num_rays;
-	int window_width;
-	int window_height;
-	t_ray ray;
-	t_player_data *p_data;
-	t_img_data *img_data;
-	t_map_data *map_data;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	float			fov;
+	int				mouse_x;
+	int				mouse_y;
+	int				map_type;
+	int				num_rays;
+	int				window_width;
+	int				window_height;
+	t_ray			ray;
+	t_player_data	*p_data;
+	t_img_data		*img_data;
+	t_map_data		*map_data;
 } t_data;
 
+typedef struct s_mini_map
+{
+	int	start_x;
+	int	end_x;
+	int	start_y;
+	int	end_y;
+} t_mini_map;
+
 // init
-t_img_data *init_images(t_map_data *map_data);
-t_data *init_data(t_map_data *map_data,
-				  t_player_data *p_data, t_img_data *m_data);
-t_player_data *init_player(t_map_data *map_data);
-float player_angle(t_map_data *map_data);
-void get_responive_sizes(t_data *data, t_map_data *map_data);
+t_img_data		*init_images(t_map_data *map_data);
+t_data			*init_data(t_map_data *map_data, t_player_data *p_data,\
+ t_img_data *m_data);
+t_player_data	*init_player(t_map_data *map_data);
+t_rect			init_rect(int x, int y, int size, char item);
+
+// utils
+float			player_angle(t_map_data *map_data);
+void			get_responive_sizes(t_data *data, t_map_data *map_data);
 
 //raycasting
-void raycasting(t_data *data, t_map_data *m_data);
-void check_angle_dir(t_data *data, float angle, int id);
-float cal_distance(float x1, float y1, float x2, float y2);
-int check_wall(t_data *data, t_map_data *m_data, float x, float y);
-float normalize_angle(float angle);
-void    wall_projection(t_data *data, int id);
+void		raycasting(t_data *data, t_map_data *m_data);
+void		check_angle_dir(t_data *data, float angle, int id);
+float		cal_distance(float x1, float y1, float x2, float y2);
+int			check_wall(t_data *data, t_map_data *m_data, float x, float y);
+float		normalize_angle(float angle);
+void		wall_projection(t_data *data, int id);
 
-// void    init_data(t_map_data *data);
 // void    ft_error(char *error);
-// void    hook_handler(void   *param);
-void    draw_map(t_data *data ,t_map_data *m_data);
-// void    draw_plyr(t_map_data *data);
-// void    key_handler(mlx_key_data_t keycode, void    *param);
-void	draw_line(t_data	*data, int x0, int y0, int x1, int y1);
-// int     check_wall(t_map_data *data, float x, float y);
+void		draw_line(t_data	*data, int x0, int y0, int x1, int y1);
+void		_draw(t_data *data, t_map_data *m_data);
+void		_draw_map(t_map_data *m_data, t_data *data);
+int			render_rect(t_rect rect, t_data *data);
+void		mini_map_helper(t_data *data);
+void	_draw_player(t_data *data, t_mini_map *map);
 
-// void	_draw_map(t_map_data *data);
-// float normalize_angle(float angle);
-void _draw(t_data *data, t_map_data *m_data);
-void _draw_map(t_map_data *m_data, t_data *data);
 #endif
