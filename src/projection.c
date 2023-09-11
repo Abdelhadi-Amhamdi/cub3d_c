@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 16:46:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:05:59 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,47 +18,46 @@ uint32_t	reverse_bytes(uint32_t num)
 	| ((num << 8) & 0xFF0000) | ((num << 24) & 0xFF000000));
 }
 
-uint32_t	*get_texture(t_ray ray, t_data *data)
+mlx_texture_t	*get_texture(t_ray ray, t_data *data)
 {
 	if (!ray.is_verthit)
 	{
 		if (ray.rayAngle > M_PI && ray.rayAngle < 2 * M_PI)
-			return ((uint32_t *)data->img_data->north->pixels);
+			return (data->img_data->north);
 		else
-			return ((uint32_t *)data->img_data->south->pixels);
+			return (data->img_data->south);
 	}
 	else
 	{
 		if (ray.rayAngle > M_PI / 2 && ray.rayAngle < 1.5 * M_PI)
-			return ((uint32_t *)data->img_data->west->pixels);
+			return (data->img_data->west);
 		else
-			return ((uint32_t *)data->img_data->east->pixels);
+			return (data->img_data->east);
 	}
 	return (NULL);
 }
 
 void	draw_strip(t_data *data, int id, int start, int end, float wall_height)
 {
-	uint32_t color=0;
-	int xoffset;
-	int yoffset;
-	double x_step;
-	double s;
+	t_txtr_data 	texture_data;
+	mlx_texture_t	*txtr;
+	uint32_t 		*pixels;
 	
-	uint32_t *txtr = get_texture(data->ray, data);
-	x_step = data->img_data->east->width / CUB_SIZE;
-	xoffset = ((int)((double)data->ray.x_hit * x_step) % data->img_data->east->width);
+	txtr = get_texture(data->ray, data);
+	pixels = (uint32_t *)txtr->pixels;
+	texture_data.x_step = txtr->width / CUB_SIZE;
+	texture_data.x_offset = ((int)((double)data->ray.x_hit * texture_data.x_step) % txtr->width);
 	if(data->ray.is_verthit)
-		xoffset = ((int)((double)data->ray.y_hit * x_step) % data->img_data->east->width);
-	float texture_scale = (float)data->img_data->east->height / wall_height;
-	s = ((start - data->window_height / 2 + wall_height / 2) * texture_scale);
+		texture_data.x_offset = ((int)((double)data->ray.y_hit * texture_data.x_step) % txtr->width);
+	texture_data.y_step = (float)txtr->height / wall_height;
+	texture_data.first_pixel = ((start - (data->window_height / 2) + (wall_height / 2)) * texture_data.y_step);
 	while(start < end)
 	{
-		yoffset = (int)s;
-		color = txtr[yoffset * data->img_data->east->height + xoffset];
-		s+=texture_scale;
-		color = reverse_bytes(color);
-		mlx_put_pixel(data->img, id, start , color);
+		texture_data.y_offset = (int)texture_data.first_pixel;
+		texture_data.color = pixels[texture_data.y_offset * txtr->height + texture_data.x_offset];
+		texture_data.first_pixel+=texture_data.y_step;
+		texture_data.color = reverse_bytes(texture_data.color);
+		mlx_put_pixel(data->img, id, start , texture_data.color);
 		start++;
 	}
 }
