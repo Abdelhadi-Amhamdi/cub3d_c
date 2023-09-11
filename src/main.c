@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 17:36:46 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:22:40 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,23 @@ void	_update_data_helper(t_data *data)
 
 void	_update_data(t_data *data)
 {
-	float		new_y;
-	float		new_x;
-	float		steps;
+	float			new_y;
+	float			new_x;
+	float			steps;
+	int				distance;
 	t_player_data	*player;
 
 	player = data->p_data;
+	distance = CUB_SIZE / 10;
 	player->player_Angle += (player->turnDirc * player->turnSpeed);
 	player->player_Angle = normalize_angle(player->player_Angle);
 	steps = player->walkDirc * (player->walkSpeed);
 	new_x = player->player_x + (cos(player->player_Angle) * steps);
 	new_y = player->player_y + (sin(player->player_Angle) * steps);
 	if (!is_wall(new_x, new_y, data->map_data) && !is_wall(new_x, player->player_y, \
-	data->map_data) && !is_wall(player->player_x, new_y, data->map_data))
+	data->map_data) && !is_wall(player->player_x, new_y, data->map_data) \
+	&& !is_wall(new_x + distance, new_y + distance, data->map_data) && \
+	!is_wall(new_x - distance, new_y - distance, data->map_data))
 	{
 		player->player_x = floor(new_x);
 		player->player_y = floor(new_y);
