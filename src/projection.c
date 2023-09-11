@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 13:36:41 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:46:22 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ uint32_t	reverse_bytes(uint32_t num)
 	| ((num << 8) & 0xFF0000) | ((num << 24) & 0xFF000000));
 }
 
+uint32_t	*get_texture(t_ray ray, t_data *data)
+{
+	if (!ray.is_verthit)
+	{
+		if (ray.rayAngle > M_PI && ray.rayAngle < 2 * M_PI)
+			return ((uint32_t *)data->img_data->north->pixels);
+		else
+			return ((uint32_t *)data->img_data->south->pixels);
+	}
+	else
+	{
+		if (ray.rayAngle > M_PI / 2 && ray.rayAngle < 1.5 * M_PI)
+			return ((uint32_t *)data->img_data->west->pixels);
+		else
+			return ((uint32_t *)data->img_data->east->pixels);
+	}
+	return (NULL);
+}
+
 void	draw_strip(t_data *data, int id, int start, int end, float wall_height)
 {
 	uint32_t color=0;
@@ -26,11 +45,11 @@ void	draw_strip(t_data *data, int id, int start, int end, float wall_height)
 	double x_step;
 	double s;
 	
+	uint32_t *txtr = get_texture(data->ray, data);
 	x_step = data->img_data->east->width / CUB_SIZE;
 	xoffset = ((int)((double)data->ray.x_hit * x_step) % data->img_data->east->width);
 	if(data->ray.is_verthit)
 		xoffset = ((int)((double)data->ray.y_hit * x_step) % data->img_data->east->width);
-	uint32_t *txtr = (uint32_t *)data->img_data->east->pixels;
 	float texture_scale = (float)data->img_data->east->height / wall_height;
 	s = ((start - data->window_height / 2 + wall_height / 2) * texture_scale);
 	while(start < end)
