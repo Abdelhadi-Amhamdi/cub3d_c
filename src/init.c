@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 20:57:12 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:27:46 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ void	coloriez(t_data *data)
 		while(j < data->window_width)
 		{
 			if(i < (data->window_height / 2))
-				mlx_put_pixel(data->img, j, i, 0x66ebffFF);
+				mlx_put_pixel(data->img, j, i, (data->map_data->ceil_rgb << 8) + 255);
 			else
-				mlx_put_pixel(data->img, j, i, 0xfcba03FF);
+				mlx_put_pixel(data->img, j, i, (data->map_data->floor_rgb << 8) + 255);
 			j++;
 		}
 		i++;
