@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 17:36:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:49:02 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	get_responive_sizes(t_data *data, t_map_data *map_data)
 {
 	data->window_width = map_data->cols * CUB_SIZE;
-	// if (W_WIDTH < data->window_width)
-	// 	data->window_width = W_WIDTH;
+	if (W_WIDTH < data->window_width)
+		data->window_width = W_WIDTH;
 	data->window_height = map_data->rows * CUB_SIZE;
-	// if (W_HEIGHT < data->window_height)
-	// 	data->window_height = W_HEIGHT;
+	if (W_HEIGHT < data->window_height)
+		data->window_height = W_HEIGHT;
 }
 
 float	player_angle(t_map_data *map_data)

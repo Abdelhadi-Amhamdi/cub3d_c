@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/06 18:15:45 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:41:50 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	print_error(char *error)
+{
+	printf("ERROR : %s\n", error);
+}
 
 int	parse_images_paths(t_map_data *map_data)
 {
@@ -32,10 +37,10 @@ int	parse_map_content(t_map_data *map_data)
 	if (!map_data->map_body)
 		return (1);
 	if (check_items(map_data->map_body))
-		return (1);
+		return (print_error(NITEM), 1);
 	fill_map(map_data);
 	if (check_if_enclosed_by_walls(map_data))
-		return (1);
+		return (print_error(NWALLS), 1);
 	return (0);
 }
 
@@ -57,10 +62,10 @@ t_map_data	*parser(int args_count, char **args_values)
 		return (NULL);
 	map_filename = args_values[1];
 	if (check_map_extension(map_filename))
-		return (NULL);
+		return (print_error(NEXTENSION), NULL);
 	map = read_map_file(map_filename);
 	if (!map)
-		return (NULL);
+		return (print_error(NMAP), NULL);
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
 		return (ft_free(map), NULL);
@@ -68,6 +73,6 @@ t_map_data	*parser(int args_count, char **args_values)
 	if (parse_map_data(map_data))
 		return (destroy_map_data(map_data), NULL);
 	if (get_palyer_position(map_data))
-		return (NULL);
+		return (print_error(NPLAYER), NULL);
 	return (map_data);
 }

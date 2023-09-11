@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/10 20:49:25 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:39:26 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	costumaize_map_data(t_map_data *map_data, char **map)
 int	parse_map_data(t_map_data *map_data)
 {
 	if (parse_images_paths(map_data))
-		return (1);
+		return (print_error(NIMG), 1);
 	if (parse_colors_values(map_data))
-		return (1);
+		return (print_error(NCOLOR), 1);
 	if (parse_map_content(map_data))
 		return (1);
 	return (0);

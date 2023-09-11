@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/11 15:35:36 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:41:12 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 # define E_PLAYER 69
 # define WH_SAPCE 32
 # define EMPTY 48
+
+# define NPLAYER "no player, or more than one found!"
+# define NITEM "invalid item on the map"
+# define NWALLS "the map not sourended by walls"
+# define NEXTENSION "map filename extension not valid"
+# define NIMG "images missing or not valid"
+# define NCOLOR "rgb color missing or not valid"
+# define NMAP "empty file"
+
 
 typedef struct s_map_data
 {
@@ -82,5 +91,7 @@ int			parse_images_paths(t_map_data *map_data);
 char		**read_map_file(char *file_name);
 int			parse_map_data(t_map_data *map_data);
 void		costumaize_map_data(t_map_data *map_data, char **map);
+
+void		print_error(char *error);
 
 #endif

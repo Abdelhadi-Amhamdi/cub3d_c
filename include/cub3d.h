@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 17:53:15 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:50:43 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #include "../libft/libft.h"
 #include "parsing.h"
 
-# define W_WIDTH 1200
-# define W_HEIGHT 800
+# define W_WIDTH 1600
+# define W_HEIGHT 1000
 # define MINI_MAP 0.3
 # define CUB_SIZE 64
 # define COSTUM_SIZE 10
