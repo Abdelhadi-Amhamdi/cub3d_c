@@ -6,19 +6,44 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 21:15:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:38:12 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	hook(void *param)
+void	mouse_hook_helper(t_data *data)
 {
-	t_data	*data;
-	// int		new_mouse_x;
-	// int		new_mouse_y;
+	int		new_mouse_x;
+	int		new_mouse_y;
+	
+	mlx_get_mouse_pos(data->mlx, &new_mouse_x, &new_mouse_y);
+	if (new_mouse_x >= 0 && new_mouse_x <= data->window_width && \
+	new_mouse_x != data->mouse_x && new_mouse_y \
+	>= 0 && new_mouse_y <= data->window_height)
+	{
+		if (new_mouse_x < data->mouse_x)
+			data->p_data->turnDirc = -1;
+		else
+			data->p_data->turnDirc = 1;
+		data->mouse_x = new_mouse_x;
+	}
+}
 
-	data = (t_data *)param;
+void map_hook_helper(t_data *data)
+{
+	if (mlx_is_key_down(data->mlx, MLX_KEY_1))
+		data->map_type = NONE_MAP;
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_2))
+		data->map_type = NORMAL_MAP;
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_3))
+		data->map_type = COSUTM_MAP;
+	else if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		exit (0);
+}
+
+void	hook(t_data *data)
+{
 	if (mlx_is_key_down(data->mlx, MLX_KEY_UP) \
 	|| mlx_is_key_down(data->mlx, MLX_KEY_W))
 		data->p_data->walkDirc = 1;
@@ -29,29 +54,12 @@ void	hook(void *param)
 		data->p_data->turnDirc = -1;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
 		data->p_data->turnDirc = 1;
-	// if (mlx_is_key_down(data->mlx, MLX_KEY_1))
-	// 	data->map_type = NONE_MAP;
-	// if (mlx_is_key_down(data->mlx, MLX_KEY_D))
-	// 	data->player->move = 1;
-	// if (mlx_is_key_down(data->mlx, MLX_KEY_A))
-	// 	data->player->move = -1;
-	// else if (mlx_is_key_down(data->mlx, MLX_KEY_2))
-	// 	data->map_type = NORMAL_MAP;
-	// else if (mlx_is_key_down(data->mlx, MLX_KEY_3))
-	// 	data->map_type = COSTUM_MAP;
-	else if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		exit (0);
-	// mlx_get_mouse_pos(data->mlx, &new_mouse_x, &new_mouse_y);
-	// if (new_mouse_x >= 0 && new_mouse_x <= W_WIDTH && \
-	// new_mouse_x != data->data->x_mouse && new_mouse_y \
-	// >= 0 && new_mouse_y <= W_HEIGHT)
-	// {
-	// 	if (new_mouse_x < data->data->x_mouse)
-	// 		data->player->turn = -1;
-	// 	else
-	// 		data->player->turn = 1;
-	// 	data->data->x_mouse = new_mouse_x;
-	// }
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D))
+		data->p_data->move_dirc = 1;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A))
+		data->p_data->move_dirc = -1;
+	map_hook_helper(data);
+	mouse_hook_helper(data);
 }
 
 int	is_wall(int xinter, int yinter, t_map_data *data)
@@ -64,6 +72,31 @@ int	is_wall(int xinter, int yinter, t_map_data *data)
 	if (new_x < 0 || new_x >= data->cols || new_y < 0 || new_y >= data->rows)
 		return (1);
 	return (data->map_body[new_y][new_x] == '1');
+}
+
+void	_update_data_helper(t_data *data)
+{
+	t_player_data	*player;
+	double			new_angle;
+	float			steps;
+	float			new_x;
+	float			new_y;
+
+	player = data->p_data;
+	if (player->move_dirc)
+	{
+		new_angle = player->player_Angle + (90 * (M_PI / 180) * player->move_dirc);
+		new_angle = normalize_angle(new_angle);
+		steps = 1 * (player->walkSpeed);
+		new_x = player->player_x + (cos(new_angle) * steps);
+		new_y = player->player_y + (sin(new_angle) * steps);
+		if (!is_wall(new_x, new_y, data->map_data) && !is_wall(new_x, player->player_y, \
+		data->map_data) && !is_wall(player->player_x, new_y, data->map_data))
+		{
+			player->player_x = floor(new_x);
+			player->player_y = floor(new_y);
+		}
+	}
 }
 
 void	_update_data(t_data *data)
@@ -85,10 +118,7 @@ void	_update_data(t_data *data)
 		player->player_x = floor(new_x);
 		player->player_y = floor(new_y);
 	}
-	// _update_data_helper(game);
-	// if (game->map_type == COSTUM_MAP)
-	// 	calc_start_and_end(game);
-	// _draw(game->data, game);
+	_update_data_helper(data);
 }
 
 void	key_handler(void *param)
@@ -100,10 +130,9 @@ void	key_handler(void *param)
 	_update_data(data);
 	data->p_data->walkDirc = 0;
 	data->p_data->turnDirc = 0;
+	data->p_data->move_dirc = 0;
 	_draw(data, data->map_data);
-	// game->player->move = 0;
 }
-
 
 int	main(int argc, char *argv[])
 {

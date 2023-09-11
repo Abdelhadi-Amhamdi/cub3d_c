@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 15:31:17 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:47:05 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_player_data	*init_player(t_map_data *map_data)
 	player_data->player_y = (map_data->player_y * CUB_SIZE) + (CUB_SIZE / 2);
 	player_data->turnDirc = 0;
 	player_data->walkDirc = 0;
+	player_data->move_dirc = 0;
 	player_data->player_Angle = player_angle(map_data);
 	player_data->turnSpeed = 2 * (M_PI / 180);
 	player_data->walkSpeed = CUB_SIZE / 7;
@@ -76,6 +77,8 @@ t_player_data *p_data, t_img_data *m_data)
 	data->p_data = p_data;
 	data->img_data = m_data;
 	data->map_data = map_data;
+	data->map_type = COSUTM_MAP;
+	mlx_get_mouse_pos(data->mlx, &data->mouse_x, &data->mouse_x);
 	return (data);
 }
 
@@ -87,9 +90,9 @@ t_img_data	*init_images(t_map_data *map_data)
 	if (!img_data)
 		return (NULL);
 	img_data->south = mlx_load_png(map_data->south_img_path);
-	img_data->west = mlx_load_png(map_data->south_img_path);
-	img_data->north = mlx_load_png(map_data->south_img_path);
-	img_data->east = mlx_load_png(map_data->south_img_path);
+	img_data->west = mlx_load_png(map_data->west_img_path);
+	img_data->north = mlx_load_png(map_data->north_img_path);
+	img_data->east = mlx_load_png(map_data->east_img_path);
 	return (img_data);
 }
 
@@ -119,8 +122,7 @@ void	_draw(t_data *data, t_map_data *m_data)
 	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
 	coloriez(data);
 	raycasting(data, m_data);
-	_draw_map(m_data, data);
-	// draw_map(data, m_data);
+	mini_map_helper(data);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
 
