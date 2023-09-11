@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 16:47:05 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:36:11 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ t_player_data *p_data, t_img_data *m_data)
 	data->img_data = m_data;
 	data->map_data = map_data;
 	data->map_type = COSUTM_MAP;
+	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
 	mlx_get_mouse_pos(data->mlx, &data->mouse_x, &data->mouse_x);
 	return (data);
 }
@@ -93,26 +94,9 @@ t_img_data	*init_images(t_map_data *map_data)
 	img_data->west = mlx_load_png(map_data->west_img_path);
 	img_data->north = mlx_load_png(map_data->north_img_path);
 	img_data->east = mlx_load_png(map_data->east_img_path);
+	if (!img_data->south || !img_data->west || !img_data->east || !img_data->north)
+		return (NULL);
 	return (img_data);
-}
-
-void	coloriez(t_data *data)
-{
-	int i = 0;
-	int j = 0;
-	while(i < data->window_height)
-	{
-		j = 0;
-		while(j < data->window_width)
-		{
-			if(i < (data->window_height / 2))
-				mlx_put_pixel(data->img, j, i, (data->map_data->ceil_rgb << 8) + 255);
-			else
-				mlx_put_pixel(data->img, j, i, (data->map_data->floor_rgb << 8) + 255);
-			j++;
-		}
-		i++;
-	}
 }
 
 void	_draw(t_data *data, t_map_data *m_data)

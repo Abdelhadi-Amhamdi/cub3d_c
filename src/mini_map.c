@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/11 16:24:29 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:39:43 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,3 @@ void	_draw_map(t_map_data *m_data, t_data *data)
 	}
 	_draw_player(data, NULL);
 }
-
-

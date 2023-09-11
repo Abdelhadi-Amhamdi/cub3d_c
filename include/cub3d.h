@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 16:48:16 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:53:15 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,11 +111,22 @@ typedef struct s_data
 
 typedef struct s_mini_map
 {
-	int	start_x;
-	int	end_x;
-	int	start_y;
-	int	end_y;
+	int			start_x;
+	int			end_x;
+	int			start_y;
+	int			end_y;
+	uint32_t	color;
 } t_mini_map;
+
+typedef struct s_txtr_data
+{
+	uint32_t	color;
+	int			x_offset;
+	int			y_offset;
+	double		x_step;
+	double		y_step;
+	double		first_pixel;
+} t_txtr_data;
 
 // init
 t_img_data		*init_images(t_map_data *map_data);
@@ -142,6 +153,8 @@ void		_draw(t_data *data, t_map_data *m_data);
 void		_draw_map(t_map_data *m_data, t_data *data);
 int			render_rect(t_rect rect, t_data *data);
 void		mini_map_helper(t_data *data);
-void	_draw_player(t_data *data, t_mini_map *map);
+void		_draw_player(t_data *data, t_mini_map *map);
+
+void		coloriez(t_data *data);
 
 #endif

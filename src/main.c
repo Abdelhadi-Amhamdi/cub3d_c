@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 16:38:12 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:36:46 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	mouse_hook_helper(t_data *data)
 			data->p_data->turnDirc = 1;
 		data->mouse_x = new_mouse_x;
 	}
+	if (new_mouse_x >= data->window_width || new_mouse_x <= 0)
+		mlx_set_mouse_pos(data->mlx, data->window_width / 2, new_mouse_y);
 }
 
 void map_hook_helper(t_data *data)
@@ -148,6 +150,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	p_data = init_player(map_data);
 	img_data = init_images(map_data);
+	if (!img_data)
+		return (0);
 	data = init_data(map_data, p_data, img_data);
 	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);

@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 16:22:01 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:39:04 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,19 @@ void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 	}
 }
 
-void	draw_grid(t_data *data, int x, int y, int color)
+void	coloriez(t_data *data)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while(i < (CUB_SIZE ))
+	int i = 0;
+	int j = 0;
+	while(i < data->window_height)
 	{
 		j = 0;
-		while(j < (CUB_SIZE ))
+		while(j < data->window_width)
 		{
-			mlx_put_pixel(data->img, (x + i), (y + j) , color );
-			if (j == 0 || i == 0 || j == CUB_SIZE - 1 || i == CUB_SIZE - 1)
-				mlx_put_pixel(data->img, (x + i), (y + j), 0x0047910F);
+			if(i < (data->window_height / 2))
+				mlx_put_pixel(data->img, j, i, (data->map_data->ceil_rgb << 8) + 255);
+			else
+				mlx_put_pixel(data->img, j, i, (data->map_data->floor_rgb << 8) + 255);
 			j++;
 		}
 		i++;
