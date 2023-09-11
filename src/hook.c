@@ -6,29 +6,29 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 18:10:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/09 21:24:57 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/10 20:59:58 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void    update_plyr(t_map_data *data)
-{
-	float step;
-	float new_x;
-	float new_y;
+// void    update_plyr(t_map_data *data)
+// {
+// 	float step;
+// 	float new_x;
+// 	float new_y;
 
-	data->roatAngle += data->turnDirc * data->turnSpeed;
-	data->roatAngle = normalize_angle(data->roatAngle);
-	step = data->walkDirc * data->walkSpeed;
-	new_x = data->player_x + cos(data->roatAngle) * step;
-	new_y = data->player_y + sin(data->roatAngle) * step;
-	if(!check_wall(data, new_x, new_y))
-	{
-		data->player_x = new_x;
-		data->player_y = new_y;
-	}
-}
+// 	data->roatAngle += data->turnDirc * data->turnSpeed;
+// 	data->roatAngle = normalize_angle(data->roatAngle);
+// 	step = data->walkDirc * data->walkSpeed;
+// 	new_x = data->player_x + cos(data->roatAngle) * step;
+// 	new_y = data->player_y + sin(data->roatAngle) * step;
+// 	if(!check_wall(data, new_x, new_y))
+// 	{
+// 		data->player_x = new_x;
+// 		data->player_y = new_y;
+// 	}
+// }
 
 int ft_abs(int n) 
 {

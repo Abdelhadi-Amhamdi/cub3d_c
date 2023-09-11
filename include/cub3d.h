@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/10 21:19:54 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/11 15:31:40 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ t_data *init_data(t_map_data *map_data,
 t_player_data *init_player(t_map_data *map_data);
 float player_angle(t_map_data *map_data);
 void get_responive_sizes(t_data *data, t_map_data *map_data);
+
 //raycasting
 void raycasting(t_data *data, t_map_data *m_data);
 void check_angle_dir(t_data *data, float angle, int id);
@@ -113,7 +114,7 @@ void    wall_projection(t_data *data, int id);
 // void    init_data(t_map_data *data);
 // void    ft_error(char *error);
 // void    hook_handler(void   *param);
-// void    draw_map(t_data *data ,t_map_data *m_data);
+void    draw_map(t_data *data ,t_map_data *m_data);
 // void    draw_plyr(t_map_data *data);
 // void    key_handler(mlx_key_data_t keycode, void    *param);
 void	draw_line(t_data	*data, int x0, int y0, int x1, int y1);
