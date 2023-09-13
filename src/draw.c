@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 15:08:47 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:53:50 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,29 @@ int	ft_abs(int n)
 
 void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
 {
-	int dx = x1 - x0;
-	int dy = y1 - y0;
-	
-	int	step;
-	
-	step = ft_abs(dx) > ft_abs(dy) ? ft_abs(dx) : ft_abs(dy); 
-	float xstep = dx / (float)step;
-	float ystep = dy / (float)step;
+	t_line	line;
+	int		step;
+	int		i;
+	int		dx;
+	int		dy;
 
-	float x = x0;
-	float y = y0;
-	int i = 0;
-	while(i < step)
+	dx = x1 - x0;
+	dy = y1 - y0;
+	step = ft_abs(dx);
+	if (ft_abs(dx) < ft_abs(dy))
+		step = ft_abs(dy);
+	line.delta_x = dx / (float)step;
+	line.delta_y = dy / (float)step;
+	line.next_x = x0;
+	line.next_y = y0;
+	i = 0;
+	while (i < step)
 	{
-		if (x >= 0 && x < data->window_width && y >= 0 && y < data->window_height)
-			mlx_put_pixel(data->img, x, y, 0xFFFFFFFF);
-		x+=xstep;
-		y+=ystep;
+		if (line.next_x >= 0 && line.next_x < data->window_width && \
+		line.next_y >= 0 && line.next_y < data->window_height)
+			mlx_put_pixel(data->img, line.next_x, line.next_y, 0xFFFFFFFF);
+		line.next_x += line.delta_x;
+		line.next_y += line.delta_y;
 		i++;
 	}
 }

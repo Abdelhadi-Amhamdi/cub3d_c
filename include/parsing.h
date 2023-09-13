@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/11 18:41:12 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:58:33 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSING_H
 
 # include "../libft/libft.h"
-#include "cub3d.h"
+# include "cub3d.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -33,7 +33,6 @@
 # define NIMG "images missing or not valid"
 # define NCOLOR "rgb color missing or not valid"
 # define NMAP "empty file"
-
 
 typedef struct s_map_data
 {
