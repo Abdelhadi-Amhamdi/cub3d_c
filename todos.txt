@@ -1,0 +1,8 @@
+
+
+// if not floor or ceil or duplicate
+// espaces before images paths
+// clean memory before exit
+// mini_map new version
+
+// line in start with spaces
