@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 03:18:54 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:27:54 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ int	check_map_extension(char *filename)
 
 int	check_data(t_map_data *map_data)
 {
-	if (!map_data->map_body || !map_data->north_img_path || !map_data->south_img_path \
-	|| !map_data->west_img_path || !map_data->east_img_path || !map_data->floor_color \
-	|| !map_data->ceil_color)
+	if (!map_data->map_body || !map_data->north_img_path || \
+	!map_data->south_img_path || !map_data->west_img_path || \
+	!map_data->east_img_path || !map_data->floor_color || \
+	!map_data->ceil_color)
 		return (1);
 	return (0);
 }

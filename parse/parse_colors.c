@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 23:01:18 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:27:08 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_value(int value)
 	return (value < 0 || value > 255);
 }
 
-int ft_is_space(char c)
+int	ft_is_space(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 15:55:15 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:28:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ void	_draw_player(t_data *data, t_mini_map *map)
 		x = data->p_data->player_x * (float)MINI_MAP;
 		y = data->p_data->player_y * (float)MINI_MAP;
 	}
+	x -= 4;
+	y -= 4;
 	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
 	render_rect(rect, data);
 	draw_line(data, x + 2, y + 2, x + 2 + cos(data->p_data->player_angle) \

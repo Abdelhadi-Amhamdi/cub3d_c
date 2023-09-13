@@ -6,12 +6,11 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 23:13:32 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:28:09 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
 
 int	is_player(int x, int y, t_map_data *map)
 {

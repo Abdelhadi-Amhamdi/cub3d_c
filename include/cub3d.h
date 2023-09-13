@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 22:38:37 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:29:43 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <limits.h>
 # include <math.h>
 # include <limits.h>
-#include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
+# include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
 // # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "parsing.h"
@@ -149,7 +149,6 @@ float			normalize_angle(float angle);
 void			wall_projection(t_data *data, int id);
 void			init_ray_attr(t_data *data, t_line *line);
 
-// void    ft_error(char *error);
 void			draw_line(t_data	*data, int x0, int y0, int x1, int y1);
 void			_draw(t_data *data, t_map_data *m_data);
 void			_draw_map(t_map_data *m_data, t_data *data);
