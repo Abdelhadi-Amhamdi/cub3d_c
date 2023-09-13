@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 00:39:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 14:56:02 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ float	player_angle(t_map_data *map_data)
 	y = map_data->player_y;
 	item = map_data->map_body[y][x];
 	if (item == 'N')
-		return(2 * M_PI);
+		return (2 * M_PI);
 	else if (item == 'S')
-		return(M_PI);
+		return (M_PI);
 	else if (item == 'W')
-		return(1.5 * M_PI);
+		return (1.5 * M_PI);
 	else if (item == 'E')
-		return(0.5 * M_PI);
+		return (0.5 * M_PI);
 	return (0);
 }
 
@@ -51,12 +51,12 @@ t_player_data	*init_player(t_map_data *map_data)
 		return (NULL);
 	player_data->player_x = (map_data->player_x * CUB_SIZE) + (CUB_SIZE / 2);
 	player_data->player_y = (map_data->player_y * CUB_SIZE) + (CUB_SIZE / 2);
-	player_data->turnDirc = 0;
-	player_data->walkDirc = 0;
+	player_data->turndirc = 0;
+	player_data->walkdirc = 0;
 	player_data->move_dirc = 0;
-	player_data->player_Angle = player_angle(map_data);
-	player_data->turnSpeed = 2 * (M_PI / 180);
-	player_data->walkSpeed = CUB_SIZE / 7;
+	player_data->player_angle = player_angle(map_data);
+	player_data->turnspeed = 2 * (M_PI / 180);
+	player_data->walkspeed = CUB_SIZE / 7;
 	return (player_data);
 }
 
@@ -64,7 +64,7 @@ t_player_data	*init_player(t_map_data *map_data)
 t_data	*init_data(t_map_data *map_data, \
 t_player_data *p_data, t_img_data *m_data)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -85,7 +85,7 @@ t_player_data *p_data, t_img_data *m_data)
 
 t_img_data	*init_images(t_map_data *map_data)
 {
-	t_img_data *img_data;
+	t_img_data	*img_data;
 
 	img_data = malloc(sizeof(t_img_data));
 	if (!img_data)
@@ -94,19 +94,8 @@ t_img_data	*init_images(t_map_data *map_data)
 	img_data->west = mlx_load_png(map_data->west_img_path);
 	img_data->north = mlx_load_png(map_data->north_img_path);
 	img_data->east = mlx_load_png(map_data->east_img_path);
-	if (!img_data->south || !img_data->west || !img_data->east || !img_data->north)
+	if (!img_data->south || !img_data->west || \
+	!img_data->east || !img_data->north)
 		return (NULL);
 	return (img_data);
 }
-
-void	_draw(t_data *data, t_map_data *m_data)
-{
-	if (data->img)
-		mlx_delete_image(data->mlx, data->img);
-	data->img = mlx_new_image(data->mlx, data->window_width, data->window_height);
-	coloriez(data);
-	raycasting(data, m_data);
-	mini_map_helper(data);
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
-}
-

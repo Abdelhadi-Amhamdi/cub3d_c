@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 03:18:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:37:51 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PARSING_H
 
 # include "../libft/libft.h"
-#include "cub3d.h"
+# include "cub3d.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -34,7 +34,6 @@
 # define NCOLOR "rgb color missing or not valid"
 # define NDATA "game data missing or not completed"
 # define NMAP "empty file"
-
 
 typedef struct s_map_data
 {

@@ -6,23 +6,23 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 00:51:21 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 22:38:37 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define CUB3D_H
+# define CUB3D_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <limits.h>
-#include <math.h>
-#include <limits.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <limits.h>
+# include <math.h>
+# include <limits.h>
 #include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
-// #include "../MLX42/include/MLX42/MLX42.h"
-#include "../libft/libft.h"
-#include "parsing.h"
+// # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
+# include "parsing.h"
 
 # define W_WIDTH 1600
 # define W_HEIGHT 1000
@@ -36,61 +36,62 @@
 
 typedef struct s_line
 {
-	float xinter;
-	float yinter;
-	float delta_x;
-	float delta_y;
-	float horz_x;
-	float horz_y;
-	float vert_x;
-	float vert_y;
-	float v_hitx;
-	float v_hity;
-	float h_hitx;
-	float h_hity;
-} t_line;
+	float	xinter;
+	float	yinter;
+	float	delta_x;
+	float	delta_y;
+	float	next_x;
+	float	next_y;
+	float	v_hitx;
+	float	v_hity;
+	float	h_hitx;
+	float	h_hity;
+	float	v_dis;
+	float	h_dis;
+}	t_line;
 
 typedef struct s_ray
 {
-	float rayAngle;
-	float x_hit;
-	float y_hit;
-	int is_verthit;
-	float Distance;
-	int isdown;
-	int isup;
-	int isright;
-	int isleft;
-} t_ray;
+	float	wall_height;
+	float	rayangle;
+	float	x_hit;
+	float	y_hit;
+	int		is_verthit;
+	float	distance;
+	int		isdown;
+	int		isup;
+	int		isright;
+	int		isleft;
+}	t_ray;
 
 typedef struct s_player_data
 {
-	int		walkSpeed;
-	float	turnSpeed;
-	int		turnDirc;
-	int		walkDirc;
+	int		walkspeed;
+	float	turnspeed;
+	int		turndirc;
+	int		walkdirc;
 	int		move_dirc;
-	float	player_Angle;
+	float	player_angle;
 	float	player_x;
 	float	player_y;
-} t_player_data;
+}	t_player_data;
 
 typedef struct s_img_data
 {
-	mlx_texture_t *south;
-	mlx_texture_t *north;
-	mlx_texture_t *west;
-	mlx_texture_t *east;
-} t_img_data;
+	mlx_texture_t	*south;
+	mlx_texture_t	*north;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
+}	t_img_data;
 
 typedef struct s_rect
 {
-	int x;
-	int y;
-	int width;
-	int height;
-	uint32_t color;
-} t_rect;
+	uint32_t	color;
+	int			x;
+	int			y;
+	int			width;
+	int			height;
+}	t_rect;
 
 typedef struct s_data
 {
@@ -107,7 +108,7 @@ typedef struct s_data
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 	t_map_data		*map_data;
-} t_data;
+}	t_data;
 
 typedef struct s_mini_map
 {
@@ -116,7 +117,7 @@ typedef struct s_mini_map
 	int			start_y;
 	int			end_y;
 	uint32_t	color;
-} t_mini_map;
+}	t_mini_map;
 
 typedef struct s_txtr_data
 {
@@ -126,12 +127,12 @@ typedef struct s_txtr_data
 	double		x_step;
 	double		y_step;
 	double		first_pixel;
-} t_txtr_data;
+}	t_txtr_data;
 
 // init
 t_img_data		*init_images(t_map_data *map_data);
-t_data			*init_data(t_map_data *map_data, t_player_data *p_data,\
- t_img_data *m_data);
+t_data			*init_data(t_map_data *map_data, t_player_data *p_data, \
+t_img_data	*m_data);
 t_player_data	*init_player(t_map_data *map_data);
 t_rect			init_rect(int x, int y, int size, char item);
 
@@ -140,21 +141,26 @@ float			player_angle(t_map_data *map_data);
 void			get_responive_sizes(t_data *data, t_map_data *map_data);
 
 //raycasting
-void		raycasting(t_data *data, t_map_data *m_data);
-void		check_angle_dir(t_data *data, float angle, int id);
-float		cal_distance(float x1, float y1, float x2, float y2);
-int			check_wall(t_data *data, t_map_data *m_data, float x, float y);
-float		normalize_angle(float angle);
-void		wall_projection(t_data *data, int id);
+void			raycasting(t_data *data, t_map_data *m_data);
+void			check_angle_dir(t_data *data, float angle, int id);
+float			cal_distance(float x1, float y1, float x2, float y2);
+int				check_wall(t_data *data, t_map_data *m_data, float x, float y);
+float			normalize_angle(float angle);
+void			wall_projection(t_data *data, int id);
+void			init_ray_attr(t_data *data, t_line *line);
 
 // void    ft_error(char *error);
-void		draw_line(t_data	*data, int x0, int y0, int x1, int y1);
-void		_draw(t_data *data, t_map_data *m_data);
-void		_draw_map(t_map_data *m_data, t_data *data);
-int			render_rect(t_rect rect, t_data *data);
-void		mini_map_helper(t_data *data);
-void		_draw_player(t_data *data, t_mini_map *map);
+void			draw_line(t_data	*data, int x0, int y0, int x1, int y1);
+void			_draw(t_data *data, t_map_data *m_data);
+void			_draw_map(t_map_data *m_data, t_data *data);
+int				render_rect(t_rect rect, t_data *data);
+void			mini_map_helper(t_data *data);
+void			_draw_player(t_data *data, t_mini_map *map);
+void			coloriez(t_data *data);
 
-void		coloriez(t_data *data);
-
+// hook
+void			hook(t_data *data);
+void			map_hook_helper(t_data *data);
+void			_update_data(t_data *data);
+int				is_wall(int xinter, int yinter, t_map_data *data);
 #endif

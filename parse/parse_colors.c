@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 03:23:03 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:01:18 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ int	check_value(int value)
 	return (value < 0 || value > 255);
 }
 
+int ft_is_space(char c)
+{
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
+}
+
 int	ft_check(char *color)
 {
 	int	index;
@@ -33,7 +40,7 @@ int	ft_check(char *color)
 	index = 0;
 	while (color[index])
 	{
-		if (!ft_isdigit(color[index]) || )
+		if (!ft_isdigit(color[index]) && !ft_is_space(color[index]))
 			return (1);
 		index++;
 	}
@@ -43,9 +50,6 @@ int	ft_check(char *color)
 int	parse_color(char **color, int *red, int *green, int *blue)
 {
 	if (!color[0] || !color[1] || !color[2] || color[3])
-		return (1);
-	if (ft_strlen(color[0]) > 3 || ft_strlen(color[1]) > 3 \
-	|| ft_strlen(color[2]) > 3)
 		return (1);
 	if (ft_check(color[0]) || ft_check(color[1]) || ft_check(color[2]))
 		return (1);

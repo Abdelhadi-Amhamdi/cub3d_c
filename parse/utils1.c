@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 03:14:52 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 23:13:32 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ void	costumaize_map_data(t_map_data *map_data, char **map)
 	while (map[i])
 	{
 		if (!ft_strncmp(map[i], "NO ", 3))
-			map_data->north_img_path = ft_strdup(map[i] + 3);
+			map_data->north_img_path = ft_strtrim((map[i] + 3), " ");
 		else if (!ft_strncmp(map[i], "SO ", 3))
-			map_data->south_img_path = ft_strdup(map[i] + 3);
+			map_data->south_img_path = ft_strtrim((map[i] + 3), " ");
 		else if (!ft_strncmp(map[i], "WE ", 3))
-			map_data->west_img_path = ft_strdup(map[i] + 3);
+			map_data->west_img_path = ft_strtrim((map[i] + 3), " ");
 		else if (!ft_strncmp(map[i], "EA ", 3))
-			map_data->east_img_path = ft_strdup(map[i] + 3);
+			map_data->east_img_path = ft_strtrim((map[i] + 3), " ");
 		else if (!ft_strncmp(map[i], "F ", 2))
 			map_data->floor_color = ft_strdup(map[i] + 2);
 		else if (!ft_strncmp(map[i], "C ", 2))

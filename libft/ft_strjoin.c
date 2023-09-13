@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:33:44 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/08/09 21:30:20 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:58:10 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	if(!s1)
+	if (!s1)
 		s1 = ft_strdup("");
 	len = (ft_strlen(s1) + ft_strlen(s2));
 	str = (char *)malloc(len + 1);
