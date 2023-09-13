@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/11 18:11:57 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 15:09:37 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,6 @@ void	_draw_costum_map(t_data *data, t_mini_map map)
 		map.start_y++;
 		y++;
 	}
-}
-
-int	render_rect(t_rect rect, t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = rect.y;
-	while (i < rect.y + rect.height && \
-	i >= 0 && i < data->window_height)
-	{
-		j = rect.x;
-		while (j < rect.x + rect.width && \
-		j >= 0 && j < data->window_width)
-			mlx_put_pixel(data->img, j++, i, rect.color);
-		++i;
-	}
-	return (0);
 }
 
 t_rect	init_rect(int x, int y, int size, char item)
@@ -100,7 +82,7 @@ void	calc_start_and_end(t_mini_map *map, t_data *data)
 
 void	mini_map_helper(t_data *data)
 {
-	t_mini_map mini_map;
+	t_mini_map	mini_map;
 
 	if (data->map_type == NORMAL_MAP)
 		_draw_map(data->map_data, data);
@@ -120,8 +102,10 @@ void	_draw_player(t_data *data, t_mini_map *map)
 
 	if (data->map_type == COSUTM_MAP)
 	{
-		x = (((data->p_data->player_x / CUB_SIZE) - map->start_x) * CUB_SIZE) * MINI_MAP;
-		y = (((data->p_data->player_y / CUB_SIZE) - map->start_y) * CUB_SIZE) * MINI_MAP;
+		x = (((data->p_data->player_x / CUB_SIZE) - map->start_x) \
+		* CUB_SIZE) * MINI_MAP;
+		y = (((data->p_data->player_y / CUB_SIZE) - map->start_y) \
+		* CUB_SIZE) * MINI_MAP;
 	}
 	else
 	{
@@ -130,8 +114,8 @@ void	_draw_player(t_data *data, t_mini_map *map)
 	}
 	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
 	render_rect(rect, data);
-	draw_line(data, x + 2 , y + 2 , x + 2 + cos(data->p_data->player_Angle) \
-	* 15, y + 2 + sin(data->p_data->player_Angle) * 15);
+	draw_line(data, x + 2, y + 2, x + 2 + cos(data->p_data->player_angle) \
+	* 15, y + 2 + sin(data->p_data->player_angle) * 15);
 }
 
 void	_draw_map(t_map_data *m_data, t_data *data)

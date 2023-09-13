@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:36:41 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 00:43:01 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:06:59 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	init_ray_attr(t_data *data, t_line *line)
+{
+	if (line->v_dis < line->h_dis)
+	{
+		data->ray.distance = line->v_dis;
+		data->ray.is_verthit = 1;
+		data->ray.x_hit = line->v_hitx;
+		data->ray.y_hit = line->v_hity;
+	}
+	else
+	{
+		data->ray.distance = line->h_dis;
+		data->ray.x_hit = line->h_hitx;
+		data->ray.y_hit = line->h_hity;
+	}
+}
 
 float	normalize_angle(float angle)
 {
@@ -25,7 +42,8 @@ int	check_wall(t_data *data, t_map_data *m_data, float x, float y)
 	int	check_x;
 	int	check_y;
 
-	if (x <= 0 || x >= data->map_data->cols * CUB_SIZE || y <= 0 || y >= data->map_data->rows * CUB_SIZE)
+	if (x <= 0 || x >= data->map_data->cols * CUB_SIZE || \
+	y <= 0 || y >= data->map_data->rows * CUB_SIZE)
 		return (1);
 	check_x = (int)(floor(x / CUB_SIZE));
 	check_y = (int)(floor(y / CUB_SIZE));
