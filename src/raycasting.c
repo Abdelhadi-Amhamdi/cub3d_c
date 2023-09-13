@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/11 18:49:48 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/13 00:42:11 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ float	cast_horz(t_data *data, float angle, t_map_data *m_data, t_line *line)
 		line->delta_x *= -1;
 	line->horz_x = line->xinter;
 	line->horz_y = line->yinter;
-	while (line->horz_x >= 0 && line->horz_x <= data->window_width && \
-	line->horz_y >= 0 && line->horz_y <= data->window_height)
+	while (line->horz_x >= 0 && line->horz_y >= 0)
 	{
 		xcheck = line->horz_x;
 		ycheck = line->horz_y;
@@ -76,7 +75,7 @@ float	cast_vert(t_data *data, float angle, t_map_data *m_data, t_line *line)
 		line->delta_y *= -1;
 	line->vert_x = line->xinter;
 	line->vert_y = line->yinter;
-	while (line->vert_x >= 0 && line->vert_x <= data->window_width && line->vert_y >= 0 && line->vert_y <= data->window_height)
+	while (line->vert_x >= 0 && line->vert_y >= 0)
 	{
 		xcheck = line->vert_x;
 		if (data->ray.isleft)
