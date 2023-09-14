@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 14:21:58 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:14:45 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,25 @@ int	check_data(t_map_data *map_data)
 	return (0);
 }
 
+int check_player(t_map_data *data)
+{
+	if (data->player_x == 0 || data->player_y == 0)
+		return (1);
+	if (!data->map_body[data->player_y][data->player_x + 1] \
+	|| data->map_body[data->player_y][data->player_x + 1] == ' ')
+		return (1);
+	if (!data->map_body[data->player_y][data->player_x - 1] \
+	|| data->map_body[data->player_y][data->player_x - 1] == ' ')
+		return (1);
+	if (!data->map_body[data->player_y + 1][data->player_x] \
+	|| data->map_body[data->player_y + 1][data->player_x] == ' ')
+		return (1);
+	if (!data->map_body[data->player_y - 1][data->player_x] \
+	|| data->map_body[data->player_y - 1][data->player_x] == ' ')
+		return (1);
+	return (0);
+}
+
 t_map_data	*parser(int args_count, char **args_values)
 {
 	char		*map_filename;
@@ -84,7 +103,7 @@ t_map_data	*parser(int args_count, char **args_values)
 		return (print_error(NDATA), destroy_map_data(map_data), NULL);
 	if (parse_map_data(map_data))
 		return (destroy_map_data(map_data), NULL);
-	if (get_palyer_position(map_data))
+	if (get_palyer_position(map_data) || check_player(map_data))
 		return (destroy_map_data(map_data), print_error(NPLAYER), NULL);
 	return (map_data);
 }
