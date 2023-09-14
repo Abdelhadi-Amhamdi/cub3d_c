@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
+#    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/14 13:14:43 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/14 16:12:35 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 
 # ----- PATH && includes ---- #
 
-INC			= includes/
+INC			= include/
 RAY_CAST	= src/
 PARSE		= parse/
 PARSE		= parse/

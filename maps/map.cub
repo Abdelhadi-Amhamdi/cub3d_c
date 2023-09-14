@@ -1,9 +1,10 @@
-NO ./pics/bluestone.png
+NO ./pics/bluestonea.png
 SO ./pics/eagle.png
 WE ./pics/bluestone.png
 EA ./assets/EEE1152.png
 
 C 20,0,0
+C 255,255,255
 F 0,0,10
 
 1111111111111111111111111
