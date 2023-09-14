@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 23:29:43 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:26:07 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,11 @@ int				render_rect(t_rect rect, t_data *data);
 void			mini_map_helper(t_data *data);
 void			_draw_player(t_data *data, t_mini_map *map);
 void			coloriez(t_data *data);
+
+// clean
+void			ft_clean(t_data *data);
+void			destroy_m_data(t_map_data *data);
+void			destroy_imgs_data(t_img_data *data);
 
 // hook
 void			hook(t_data *data);

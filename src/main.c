@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 15:02:37 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:26:31 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	ft_clean(t_data *data)
+{	
+	destroy_m_data(data->map_data);
+	destroy_imgs_data(data->img_data);
+	free (data->p_data);
+	if (data->img)
+		mlx_delete_image(data->mlx, data->img);
+	free (data);
+	exit (0);
+}
 
 int	is_wall(int xinter, int yinter, t_map_data *data)
 {
@@ -37,6 +48,11 @@ void	key_handler(void *param)
 	_draw(data, data->map_data);
 }
 
+void test()
+{
+	system("leaks cub3d");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_map_data		*map_data;
@@ -50,12 +66,18 @@ int	main(int argc, char *argv[])
 	if (!map_data)
 		return (0);
 	p_data = init_player(map_data);
+	if (!p_data)
+		return (destroy_m_data(map_data), 0);
 	img_data = init_images(map_data);
 	if (!img_data)
-		return (0);
+		return (free(p_data), destroy_m_data(map_data), 0);
 	data = init_data(map_data, p_data, img_data);
+	if (!data)
+		return (free(p_data), destroy_imgs_data(img_data), \
+		destroy_m_data(map_data), 0);
 	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);
 	mlx_loop(data->mlx);
+	ft_clean(data);
 	return (0);
 }

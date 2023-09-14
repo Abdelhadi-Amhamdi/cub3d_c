@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 15:04:16 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/14 13:04:01 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	map_hook_helper(t_data *data)
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_3))
 		data->map_type = COSUTM_MAP;
 	else if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
-		exit (0);
+		ft_clean(data);
 }
 
 void	hook(t_data *data)
