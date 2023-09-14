@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 22:37:51 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:24:51 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int			parse_map_content(t_map_data *map_data);
 void		costumaize_map_data(t_map_data *map_data, char **map);
 int			get_palyer_position(t_map_data *map);
 
+
+// player
+int			check_player(t_map_data *data);
+
 // utils
 int			check_map_extension(char *filename);
 void		ft_free(char **tabs);
@@ -75,6 +79,7 @@ int			parse_color(char **color, int *red, int *green, int *blue);
 int			parse_colors_values(t_map_data *map_data);
 
 // map
+int			ft_is_space(char c);
 int			check_each_item(char item);
 char		**create_new_map(int rows, int cols, char **map);
 int			check_empty(int y, int x, t_map_data *map);

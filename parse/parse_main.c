@@ -6,16 +6,11 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:14:45 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:23:13 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	print_error(char *error)
-{
-	printf("ERROR : %s\n", error);
-}
 
 int	parse_images_paths(t_map_data *map_data)
 {
@@ -23,13 +18,6 @@ int	parse_images_paths(t_map_data *map_data)
 	|| !map_data->east_img_path || !map_data->west_img_path)
 		return (1);
 	return (0);
-}
-
-int	check_each_item(char item)
-{
-	return (item != WALL && item != N_PLAYER && item \
-	!= WH_SAPCE && item != EMPTY && item != S_PLAYER \
-	&& item != E_PLAYER && item != W_PLAYER);
 }
 
 int	parse_map_content(t_map_data *map_data)
@@ -58,25 +46,6 @@ int	check_data(t_map_data *map_data)
 	!map_data->south_img_path || !map_data->west_img_path || \
 	!map_data->east_img_path || !map_data->floor_color || \
 	!map_data->ceil_color)
-		return (1);
-	return (0);
-}
-
-int check_player(t_map_data *data)
-{
-	if (data->player_x == 0 || data->player_y == 0)
-		return (1);
-	if (!data->map_body[data->player_y][data->player_x + 1] \
-	|| data->map_body[data->player_y][data->player_x + 1] == ' ')
-		return (1);
-	if (!data->map_body[data->player_y][data->player_x - 1] \
-	|| data->map_body[data->player_y][data->player_x - 1] == ' ')
-		return (1);
-	if (!data->map_body[data->player_y + 1][data->player_x] \
-	|| data->map_body[data->player_y + 1][data->player_x] == ' ')
-		return (1);
-	if (!data->map_body[data->player_y - 1][data->player_x] \
-	|| data->map_body[data->player_y - 1][data->player_x] == ' ')
 		return (1);
 	return (0);
 }
