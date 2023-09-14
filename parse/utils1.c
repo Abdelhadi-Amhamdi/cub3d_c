@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 23:28:09 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:16:53 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ int	get_palyer_position(t_map_data *map)
 		{
 			if (is_player(x, y, map))
 			{
+				if (x == 0 || x == ((int)ft_strlen(map->map_body[y]) \
+				- 1) || y == 0 || y == (map->rows - 1))
+					return (1);
 				map->player_x = x;
 				map->player_y = y;
 				count++;

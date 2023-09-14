@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 23:27:54 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:21:58 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ t_map_data	*parser(int args_count, char **args_values)
 	if (parse_map_data(map_data))
 		return (destroy_map_data(map_data), NULL);
 	if (get_palyer_position(map_data))
-		return (print_error(NPLAYER), NULL);
+		return (destroy_map_data(map_data), print_error(NPLAYER), NULL);
 	return (map_data);
 }

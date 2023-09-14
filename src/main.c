@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/14 13:26:31 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:19:34 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(int argc, char *argv[])
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 
+	atexit(test);
 	if (argc != 2)
 		return (0);
 	map_data = parser(argc, argv);
