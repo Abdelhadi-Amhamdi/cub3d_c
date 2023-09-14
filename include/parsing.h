@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:24:51 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:26:01 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ t_map_data	*parser(int args_count, char **args_values);
 int			parse_map_content(t_map_data *map_data);
 void		costumaize_map_data(t_map_data *map_data, char **map);
 int			get_palyer_position(t_map_data *map);
-
 
 // player
 int			check_player(t_map_data *data);

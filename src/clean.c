@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:09:42 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 13:24:42 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:27:22 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,27 @@ void	destroy_imgs_data(t_img_data *data)
 	mlx_delete_texture(data->north);
 	mlx_delete_texture(data->south);
 	free(data);
+}
+
+t_rect	init_rect(int x, int y, int size, char item)
+{
+	t_rect	rect;
+
+	rect.x = x * size;
+	rect.y = y * size;
+	rect.width = size;
+	rect.height = size;
+	if (item == '0')
+		rect.color = 0x000000FF;
+	else if (item == '1')
+		rect.color = 0xFFFFFFFF;
+	if (item == 'P')
+	{
+		rect.color = 0xFFF3DAFF;
+		rect.width = 4;
+		rect.height = 4;
+		rect.x = x;
+		rect.y = y;
+	}
+	return (rect);
 }

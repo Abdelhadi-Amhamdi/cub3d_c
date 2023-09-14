@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/13 23:28:41 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:27:00 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,6 @@ void	_draw_costum_map(t_data *data, t_mini_map map)
 		map.start_y++;
 		y++;
 	}
-}
-
-t_rect	init_rect(int x, int y, int size, char item)
-{
-	t_rect	rect;
-
-	rect.x = x * size;
-	rect.y = y * size;
-	rect.width = size;
-	rect.height = size;
-	if (item == '0')
-		rect.color = 0x000000FF;
-	else if (item == '1')
-		rect.color = 0xFFFFFFFF;
-	if (item == 'P')
-	{
-		rect.color = 0xFFF3DAFF;
-		rect.width = 4;
-		rect.height = 4;
-		rect.x = x;
-		rect.y = y;
-	}
-	return (rect);
 }
 
 void	calc_start_and_end(t_mini_map *map, t_data *data)

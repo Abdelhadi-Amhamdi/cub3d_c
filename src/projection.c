@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 13:21:26 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:32:47 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ mlx_texture_t	*get_texture(t_ray ray, t_data *data)
 	return (NULL);
 }
 
+void	put_pixels_helper(t_txtr_data *tx_data, \
+t_data *data, int start, mlx_texture_t *txtr)
+{
+	tx_data->x_step = txtr->width / CUB_SIZE;
+	tx_data->x_offset = ((int)((double)data->ray.x_hit * \
+	tx_data->x_step) % txtr->width);
+	if (data->ray.is_verthit)
+	{
+		tx_data->x_offset = ((int)((double)data->ray.y_hit * \
+		tx_data->x_step) % txtr->width);
+	}
+	tx_data->y_step = (float)txtr->height / data->ray.wall_height;
+	tx_data->first_pixel = ((start - (data->window_height / 2) \
+	+ (data->ray.wall_height / 2)) * tx_data->y_step);
+}
+
 void	draw_strip(t_data *data, int id, int start, int end)
 {
 	t_txtr_data		texture_data;
@@ -45,17 +61,7 @@ void	draw_strip(t_data *data, int id, int start, int end)
 
 	txtr = get_texture(data->ray, data);
 	pixels = (uint32_t *)txtr->pixels;
-	texture_data.x_step = txtr->width / CUB_SIZE;
-	texture_data.x_offset = ((int)((double)data->ray.x_hit * \
-	texture_data.x_step) % txtr->width);
-	if (data->ray.is_verthit)
-	{
-		texture_data.x_offset = ((int)((double)data->ray.y_hit * \
-		texture_data.x_step) % txtr->width);
-	}
-	texture_data.y_step = (float)txtr->height / data->ray.wall_height;
-	texture_data.first_pixel = ((start - (data->window_height / 2) \
-	+ (data->ray.wall_height / 2)) * texture_data.y_step);
+	put_pixels_helper(&texture_data, data, start, txtr);
 	while (start < end)
 	{
 		texture_data.y_offset = (int)texture_data.first_pixel;
