@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 14:56:02 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:34:54 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,16 @@ t_img_data	*init_images(t_map_data *map_data)
 	img_data->east = mlx_load_png(map_data->east_img_path);
 	if (!img_data->south || !img_data->west || \
 	!img_data->east || !img_data->north)
-		return (NULL);
+	{
+		if (img_data->south)
+			mlx_delete_texture(img_data->south);
+		if (img_data->north)
+			mlx_delete_texture(img_data->north);
+		if (img_data->west)
+			mlx_delete_texture(img_data->west);
+		if (img_data->east)
+			mlx_delete_texture(img_data->east);
+		return (free (img_data), NULL);
+	}
 	return (img_data);
 }
