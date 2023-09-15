@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:22:20 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:13:27 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,23 @@ int	parse_color(char **color, int *red, int *green, int *blue)
 	return (0);
 }
 
+int check_color_str(char *str)
+{
+	int	index;
+
+	index = 0;
+	if (str[index] == ',' || !str[index])
+		return (1);
+	index++;
+	while (str[index])
+	{
+		if (str[index] == ',' && (str[index + 1] == ',' || !str[index + 1]))
+			return (1);
+		index++;
+	}
+	return (0);
+}
+
 int	parse_colors_values(t_map_data *map_data)
 {
 	int		red;
@@ -62,6 +79,8 @@ int	parse_colors_values(t_map_data *map_data)
 	char	**color;
 
 	if (!map_data->ceil_color || !map_data->floor_color)
+		return (1);
+	if (check_color_str(map_data->floor_color) || check_color_str(map_data->ceil_color))
 		return (1);
 	color = ft_split(map_data->floor_color, ',');
 	if (!color)
