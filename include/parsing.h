@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:26:01 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:33:06 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@
 # define WH_SAPCE 32
 # define EMPTY 48
 
-# define NPLAYER "no player, or more than one found!"
-# define NITEM "invalid item on the map"
-# define NWALLS "the map not sourended by walls"
-# define NEXTENSION "map filename extension not valid"
-# define NIMG "images missing or not valid"
-# define NCOLOR "rgb color missing or not valid"
-# define NDATA "game data missing or not completed"
-# define NMAP "empty file"
+# define NPLAYER "No Player, Or More Than One Found !"
+# define NITEM "Invalid Item On The Map !"
+# define NWALLS "The Map Not Sourended By Walls !"
+# define NEXTENSION "Map Filename Extension Not Valid !"
+# define NIMG "images missing or not valid !"
+# define NCOLOR "Rgb Color Missing Or Not Valid !"
+# define NDATA "Game Data Missing Or Not Completed !"
+# define NMAP "Empty file !"
+# define DDATA "Duplicate data in map !"
 
 typedef struct s_map_data
 {
@@ -55,7 +56,7 @@ typedef struct s_map_data
 // main
 t_map_data	*parser(int args_count, char **args_values);
 int			parse_map_content(t_map_data *map_data);
-void		costumaize_map_data(t_map_data *map_data, char **map);
+int			costumaize_map_data(t_map_data *map_data, char **map);
 int			get_palyer_position(t_map_data *map);
 
 // player
@@ -94,7 +95,6 @@ int			parse_images_paths(t_map_data *map_data);
 // formatter
 char		**read_map_file(char *file_name);
 int			parse_map_data(t_map_data *map_data);
-void		costumaize_map_data(t_map_data *map_data, char **map);
 
 void		print_error(char *error);
 
