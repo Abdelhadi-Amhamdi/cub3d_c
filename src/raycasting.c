@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 13:06:45 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/15 18:53:24 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ void	cast_horz(t_data *data, t_map_data *m_data, t_line *line)
 		{
 			line->h_hitx = line->next_x;
 			line->h_hity = ycheck;
-			break ;
+			line->h_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
+			line->next_x, line->next_y);
+			return ;
 		}
 		else
 		{
@@ -53,8 +55,7 @@ void	cast_horz(t_data *data, t_map_data *m_data, t_line *line)
 			line->next_y += line->delta_y;
 		}
 	}
-	line->h_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
-	line->next_x, line->next_y);
+	line->h_dis = INT_MAX;
 }
 
 void	cast_vert_helper(t_data *data, t_line *line)
@@ -90,7 +91,9 @@ void	cast_vert(t_data *data, t_map_data *m_data, t_line *line)
 		{
 			line->v_hitx = xcheck;
 			line->v_hity = line->next_y;
-			break ;
+			line->v_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
+			line->next_x, line->next_y);
+			return ;
 		}
 		else
 		{
@@ -98,8 +101,7 @@ void	cast_vert(t_data *data, t_map_data *m_data, t_line *line)
 			line->next_y += line->delta_y;
 		}
 	}
-	line->v_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
-	line->next_x, line->next_y);
+	line->v_dis = INT_MAX;
 }
 
 void	raycasting(t_data *data, t_map_data *m_data)

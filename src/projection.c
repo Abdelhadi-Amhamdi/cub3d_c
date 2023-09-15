@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:14:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/14 15:32:47 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:03:00 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	wall_projection(t_data *data, int id)
 	int		end;
 
 	distance_pp = (data->window_width / 2) / tan(data->fov / 2);
+	if (!data->ray.distance)
+		data->ray.distance = 5;
 	data->ray.wall_height = distance_pp * (CUB_SIZE / (data->ray.distance * \
 	cos(data->ray.rayangle - data->p_data->player_angle)));
 	start = (data->window_height / 2) - ((int)data->ray.wall_height / 2);
