@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:27:00 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 17:02:47 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	_draw_player(t_data *data, t_mini_map *map)
 	}
 	else
 	{
-		x = data->p_data->player_x * (float)MINI_MAP;
-		y = data->p_data->player_y * (float)MINI_MAP;
+		x = ((data->p_data->player_x / CUB_SIZE) * CUB_SIZE) * MINI_MAP;
+		y = ((data->p_data->player_y / CUB_SIZE) * CUB_SIZE) * MINI_MAP;
 	}
 	x -= 4;
 	y -= 4;

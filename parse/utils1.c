@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 14:16:53 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:24:44 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,33 @@ int	fill_map(t_map_data *map_data)
 	return (0);
 }
 
-void	costumaize_map_data(t_map_data *map_data, char **map)
+int	costumaize_map_data(t_map_data *map_data, char **map)
 {
 	int	i;
 
-	i = 0;
-	init_data_map(map_data);
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
-		if (!ft_strncmp(map[i], "NO ", 3))
+		if (!ft_strncmp(map[i], "NO ", 3) && !map_data->north_img_path)
 			map_data->north_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "SO ", 3))
+		else if (!ft_strncmp(map[i], "SO ", 3) && !map_data->south_img_path)
 			map_data->south_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "WE ", 3))
+		else if (!ft_strncmp(map[i], "WE ", 3) && !map_data->west_img_path)
 			map_data->west_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "EA ", 3))
+		else if (!ft_strncmp(map[i], "EA ", 3) && !map_data->east_img_path)
 			map_data->east_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "F ", 2))
+		else if (!ft_strncmp(map[i], "F ", 2) && !map_data->floor_color)
 			map_data->floor_color = ft_strdup(map[i] + 2);
-		else if (!ft_strncmp(map[i], "C ", 2))
+		else if (!ft_strncmp(map[i], "C ", 2) && !map_data->ceil_color)
 			map_data->ceil_color = ft_strdup(map[i] + 2);
-		else
+		else if (map[i][0] == '1')
 			break ;
-		i++;
+		else
+			return (1);
 	}
 	map_data->map_body = ft_tabs_dup(map + i);
 	ft_free(map);
+	return (0);
 }
 
 int	parse_map_data(t_map_data *map_data)

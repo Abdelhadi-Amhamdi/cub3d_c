@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:36:41 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 13:06:59 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/15 18:55:45 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ void	init_ray_attr(t_data *data, t_line *line)
 	if (line->v_dis < line->h_dis)
 	{
 		data->ray.distance = line->v_dis;
-		data->ray.is_verthit = 1;
+		data->ray.is_verthit = true;
 		data->ray.x_hit = line->v_hitx;
 		data->ray.y_hit = line->v_hity;
 	}
 	else
 	{
 		data->ray.distance = line->h_dis;
+		data->ray.is_verthit = false;
 		data->ray.x_hit = line->h_hitx;
 		data->ray.y_hit = line->h_hity;
 	}

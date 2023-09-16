@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:23:13 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:33:46 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ t_map_data	*parser(int args_count, char **args_values)
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
 		return (ft_free(map), NULL);
-	costumaize_map_data(map_data, map);
+	init_data_map(map_data);
+	if (costumaize_map_data(map_data, map))
+		return (print_error(DDATA), destroy_map_data(map_data), NULL);
 	if (check_data(map_data))
 		return (print_error(NDATA), destroy_map_data(map_data), NULL);
 	if (parse_map_data(map_data))

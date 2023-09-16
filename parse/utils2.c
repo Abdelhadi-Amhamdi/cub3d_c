@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:14:57 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:23:38 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:29:56 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	destroy_map_data(t_map_data *data)
 	free (data->north_img_path);
 	free (data->ceil_color);
 	free (data->floor_color);
-	ft_free(data->map_body);
+	if (data->map_body)
+		ft_free(data->map_body);
 	free (data);
 }
 

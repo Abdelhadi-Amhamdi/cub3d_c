@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/14 17:32:38 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:17:24 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,15 @@ void	key_handler(void *param)
 	data->p_data->move_dirc = 0;
 	_draw(data, data->map_data);
 }
+void	lol()
+{
+	system("leaks cub3d");
+}
+
+void test()
+{
+	system("leaks cub3d");
+}
 
 int	main(int argc, char *argv[])
 {
@@ -58,6 +67,7 @@ int	main(int argc, char *argv[])
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 
+	// atexit(lol);
 	if (argc != 2)
 		return (0);
 	map_data = parser(argc, argv);
