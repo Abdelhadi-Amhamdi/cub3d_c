@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:09:14 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:27:11 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_map_data
 	char	*east_img_path;
 	char	*floor_color;
 	char	*ceil_color;
-	int		floor_rgb;
-	int		ceil_rgb;
+	unsigned int		floor_rgb;
+	unsigned int		ceil_rgb;
 	char	**map_body;
 	int		rows;
 	int		cols;
@@ -78,7 +78,7 @@ char		**ft_tabs_dup(char **map);
 void		destroy_map_data(t_map_data *data);
 
 // colors
-void		calc_color(int *rgb, int r, int g, int b);
+void		calc_color(unsigned int *rgb, int r, int g, int b);
 int			check_value(int value);
 int			ft_check(char *color);
 int			parse_color(char **color, int *red, int *green, int *blue);
@@ -104,5 +104,6 @@ int			parse_map_data(t_map_data *map_data);
 
 void		print_error(char *error);
 int			is_data(char *str);
+int			is_valid_char(char c);
 
 #endif

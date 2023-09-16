@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:55:06 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:26:55 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	calc_color(int *rgb, int r, int g, int b)
+void	calc_color(unsigned int *rgb, int r, int g, int b)
 {
 	*rgb += r;
 	*rgb <<= 8;
