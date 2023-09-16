@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/15 15:58:41 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:54:33 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <math.h>
 # include <limits.h>
+// # include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
 # include "/Users/original/MLX42/include/MLX42/MLX42.h"
-// # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "parsing.h"
 

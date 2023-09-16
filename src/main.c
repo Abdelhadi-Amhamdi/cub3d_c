@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/16 18:40:07 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:54:12 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ void	key_handler(void *param)
 	data->p_data->turndirc = 0;
 	data->p_data->move_dirc = 0;
 	_draw(data, data->map_data);
+}
+void	lol()
+{
+	system("leaks cub3d");
 }
 
 void test()

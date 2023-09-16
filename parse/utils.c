@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:58:55 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 18:53:56 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:55:06 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ int	check_line_helper(char *line, int *data_found)
 
 	ret = check_line(line);
 	if (ret == DATA_ITEM && *data_found < 6)
-		*data_found++;
+		(*data_found)++;
 	else if ((ret == 0 && *data_found == 6))
-		*data_found++;
+		(*data_found)++;
 	else if (ret == EMPTY_LINE && *data_found == 7)
 		return (1);
 	else if (*data_found == 6 && ret == DATA_ITEM)

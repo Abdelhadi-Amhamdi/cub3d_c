@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/15 19:00:32 by original         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:24:26 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ void	_update_data_helper(t_data *data)
 	float			steps;
 	float			x;
 	float			y;
-
+	int				distance;
+	
+	distance = CUB_SIZE / 7;
 	player = data->p_data;
 	if (player->move_dirc)
 	{
@@ -82,7 +84,8 @@ void	_update_data_helper(t_data *data)
 		x = player->player_x + (cos(new_angle) * steps);
 		y = player->player_y + (sin(new_angle) * steps);
 		if (!is_wall(x, y, data->map_data) && !is_wall(x, player->player_y, \
-		data->map_data) && !is_wall(player->player_x, y, data->map_data))
+		data->map_data) && !is_wall(player->player_x, y, data->map_data) && \
+		!is_wall(x + distance, y + distance, data->map_data) && !is_wall(x - distance, y - distance, data->map_data))
 		{
 			player->player_x = round(x);
 			player->player_y = round(y);

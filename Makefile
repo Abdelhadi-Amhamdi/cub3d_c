@@ -6,7 +6,7 @@
 #    By: original <original@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/15 15:58:26 by original         ###   ########.fr        #
+#    Updated: 2023/09/16 19:55:29 by original         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT		= $(LIBFT_PATH)/libft.a
 
 # ----- PATH && includes ---- #
 
-INC			= includes/
+INC			= include/
 RAY_CAST	= src/
 PARSE		= parse/
 PARSE		= parse/
