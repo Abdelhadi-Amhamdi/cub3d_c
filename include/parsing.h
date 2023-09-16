@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:33:06 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 18:53:59 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define E_PLAYER 69
 # define WH_SAPCE 32
 # define EMPTY 48
+
+# define EMPTY_LINE -1
+# define DATA_ITEM 1
+# define INVALID_CHAR 2
 
 # define NPLAYER "No Player, Or More Than One Found !"
 # define NITEM "Invalid Item On The Map !"
