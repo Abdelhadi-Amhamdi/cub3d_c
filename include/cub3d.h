@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/16 19:54:33 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:24:26 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void			_draw_player(t_data *data, t_mini_map *map);
 void			coloriez(t_data *data);
 
 // clean
-void			ft_clean(t_data *data);
+void			ft_clean(void *d);
 void			destroy_m_data(t_map_data *data);
 void			destroy_imgs_data(t_img_data *data);
 
