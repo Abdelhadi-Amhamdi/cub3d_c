@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:24:44 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:08:39 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	costumaize_map_data(t_map_data *map_data, char **map)
 			map_data->ceil_color = ft_strdup(map[i] + 2);
 		else if (map[i][0] == '1')
 			break ;
-		else
+		else if (is_data(map[i]))
 			return (1);
 	}
 	map_data->map_body = ft_tabs_dup(map + i);

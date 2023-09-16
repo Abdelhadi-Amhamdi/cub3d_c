@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: original <original@student.42.fr>          +#+  +:+       +#+         #
+#    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/16 19:55:29 by original         ###   ########.fr        #
+#    Updated: 2023/09/16 20:27:57 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 # ---- libs ---------- #
 
 MLX42		= /Users/${USER}/MLX42/build/libmlx42.a
-# MLX42		= MLX42/build/libmlx42.a
 LIBFT		= $(LIBFT_PATH)/libft.a
 
 # ----- PATH && includes ---- #
@@ -29,10 +28,10 @@ RAY_CAST	= src/
 PARSE		= parse/
 PARSE		= parse/
 LIBFT_PATH	= libft
-I			= -I/usr/local/Cellar/glfw/3.3.8/include/GLFW
-L			= -L/usr/local/Cellar/glfw/3.3.8/lib
-# I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
-# L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
+# I			= -I/usr/local/Cellar/glfw/3.3.8/include/GLFW
+# L			= -L/usr/local/Cellar/glfw/3.3.8/lib
+I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
+L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
 
 BUILD_DIR	= build/
 
