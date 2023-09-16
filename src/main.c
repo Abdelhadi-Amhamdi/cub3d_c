@@ -6,14 +6,17 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/14 16:35:14 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:32:38 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	ft_clean(t_data *data)
+void	ft_clean(void *d)
 {
+	t_data	*data;
+
+	data = (t_data *)d;
 	destroy_m_data(data->map_data);
 	destroy_imgs_data(data->img_data);
 	free (data->p_data);
@@ -72,6 +75,7 @@ int	main(int argc, char *argv[])
 		destroy_m_data(map_data), 0);
 	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);
+	mlx_close_hook(data->mlx, ft_clean, data);
 	mlx_loop(data->mlx);
 	ft_clean(data);
 	return (0);
