@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:33:46 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:32:51 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_map_data	*parser(int args_count, char **args_values)
 		return (print_error(NEXTENSION), NULL);
 	map = read_map_file(map_filename);
 	if (!map)
-		return (print_error(NMAP), NULL);
+		return (NULL);
 	map_data = malloc(sizeof(t_map_data));
 	if (!map_data)
 		return (ft_free(map), NULL);

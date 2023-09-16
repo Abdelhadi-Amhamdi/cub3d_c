@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 18:53:59 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:09:14 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@
 # define NCOLOR "Rgb Color Missing Or Not Valid !"
 # define NDATA "Game Data Missing Or Not Completed !"
 # define NMAP "Empty file !"
+# define ELINE "Empty Line In Map !"
 # define DDATA "Duplicate data in map !"
+
 
 typedef struct s_map_data
 {
@@ -101,5 +103,6 @@ char		**read_map_file(char *file_name);
 int			parse_map_data(t_map_data *map_data);
 
 void		print_error(char *error);
+int			is_data(char *str);
 
 #endif

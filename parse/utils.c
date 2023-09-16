@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:58:55 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 19:55:06 by original         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:08:07 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,29 @@ void	init_data_map(t_map_data *data)
 	data->map_body = NULL;
 }
 
+int	is_data(char *str)
+{
+	if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3) \
+	|| !ft_strncmp(str, "EA ", 3) || !ft_strncmp(str, "WE ", 3) ||\
+	!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
+		return (1);
+	return (0);
+}
+
+int	is_valid_char(char c)
+{
+	if (c != '\n' && c != '1' && c != '0' && \
+	c != 'N' && c != 'E' && c != 'W' && \
+	c != 'S' && c != ' ')
+		return (0);
+	return (1);
+}
+
 int	check_line(char *line)
 {
 	int	i;
 
-	if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3) \
-	|| !ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) ||\
-	!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
+	if (is_data(line))
 		return (DATA_ITEM);
 	else if (line && line[0] == '\n')
 		return (EMPTY_LINE);
@@ -53,9 +69,7 @@ int	check_line(char *line)
 		i = 0;
 		while (line && line[i])
 		{
-			if (line[i] != '\n' && line[i] != '1' && line[i] != '0' && \
-			line[i] != 'N' && line[i] != 'E' && line[i] != 'W' && \
-			line[i] != 'S' && line[i] != ' ')
+			if (is_valid_char(line[i]))
 				return (INVALID_CHAR);
 			i++;
 		}
@@ -70,47 +84,61 @@ int	check_line_helper(char *line, int *data_found)
 	ret = check_line(line);
 	if (ret == DATA_ITEM && *data_found < 6)
 		(*data_found)++;
-	else if ((ret == 0 && *data_found == 6))
+	else if ((ret == 0 && *data_found > 5 && !(*data_found % 2)))
 		(*data_found)++;
-	else if (ret == EMPTY_LINE && *data_found == 7)
-		return (1);
+	else if (ret == EMPTY_LINE && *data_found > 5 && (*data_found % 2))
+		(*data_found)++;
 	else if (*data_found == 6 && ret == DATA_ITEM)
 		return (print_error(DDATA), 1);
 	else if (ret == INVALID_CHAR)
-		return (1);
+		return (print_error(NITEM), 1);
 	return (0);
 }
 
-char	**read_map_file(char *file_name)
+char	*read_all_map(int fd)
 {
-	int		fd;
-	char	*line;
-	char	*map;
-	char	**map_body;
-	char	*tmp;
 	int		data_found;
+	char	*map;
+	char	*tmp;
+	char	*line;
 	
 	data_found = 0;
-	fd = open(file_name, O_RDONLY, 0644);
-	if (fd == -1)
-		return (NULL);
 	map = calloc(1, 1);
 	line = get_next_line(fd);
+	if (!line)
+		return (print_error(NMAP), free(map), NULL);
 	while (line)
 	{
 		if (check_line_helper(line, &data_found))
-			return (NULL);
+			return (free(map), free(line), NULL);
 		tmp = map;
 		map = ft_strjoin(map, line);
 		free (tmp);
 		free (line);
 		line = get_next_line(fd);
 	}
+	if ((data_found % 2) && data_found != 7)
+		return (print_error(ELINE), free(map), NULL);
+	return (map);
+}
+
+char	**read_map_file(char *file_name)
+{
+	int		fd;
+	char	*map;
+	char	**map_body;
+
+	fd = open(file_name, O_RDONLY, 0644);
+	if (fd == -1)
+		return (NULL);
+	map = read_all_map(fd);
+	if (!map)
+		return (close(fd), NULL);
 	map_body = ft_split(map, '\n');
 	if (!map_body)
-		return (free(map), NULL);
+		return (free(map), close(fd), NULL);
 	free(map);
-	return (map_body);
+	return (close (fd), map_body);
 }
 
 int	ft_tabs_len(char **map)
