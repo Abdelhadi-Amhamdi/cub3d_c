@@ -6,7 +6,7 @@
 /*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:13:27 by original         ###   ########.fr       */
+/*   Updated: 2023/09/15 16:55:06 by original         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int	parse_colors_values(t_map_data *map_data)
 	if (!color)
 		return (1);
 	if (parse_color(color, &red, &green, &blue))
-		return (1);
+		return (ft_free(color), 1);
 	calc_color(&map_data->floor_rgb, red, green, blue);
 	ft_free(color);
 	color = ft_split(map_data->ceil_color, ',');
 	if (!color)
 		return (1);
 	if (parse_color(color, &red, &green, &blue))
-		return (1);
+		return (ft_free(color), 1);
 	calc_color(&map_data->ceil_rgb, red, green, blue);
 	ft_free(color);
 	return (0);

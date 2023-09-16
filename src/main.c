@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/15 11:31:02 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:09:07 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	key_handler(void *param)
 	_draw(data, data->map_data);
 }
 void	lol()
+{
+	system("leaks cub3d");
+}
+
+void test()
 {
 	system("leaks cub3d");
 }
