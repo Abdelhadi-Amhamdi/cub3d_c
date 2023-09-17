@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:58:55 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:08:07 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:18:14 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	check_line(char *line)
 		i = 0;
 		while (line && line[i])
 		{
-			if (is_valid_char(line[i]))
+			if (!is_valid_char(line[i]))
 				return (INVALID_CHAR);
 			i++;
 		}
@@ -90,7 +90,7 @@ int	check_line_helper(char *line, int *data_found)
 		(*data_found)++;
 	else if (*data_found == 6 && ret == DATA_ITEM)
 		return (print_error(DDATA), 1);
-	else if (ret == INVALID_CHAR)
+	else if (ret == INVALID_CHAR || (!ret && *data_found < 6))
 		return (print_error(NITEM), 1);
 	return (0);
 }
