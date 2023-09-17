@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/16 20:24:31 by original         ###   ########.fr       */
+/*   Updated: 2023/09/17 11:35:08 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,6 @@ void	key_handler(void *param)
 	data->p_data->move_dirc = 0;
 	_draw(data, data->map_data);
 }
-void	lol()
-{
-	system("leaks cub3d");
-}
 
 void test()
 {
@@ -69,7 +65,7 @@ int	main(int argc, char *argv[])
 
 	// atexit(test);
 	if (argc != 2)
-		return (0);
+		return (print_error(INVALID),0);
 	map_data = parser(argc, argv);
 	if (!map_data)
 		return (0);
@@ -85,7 +81,6 @@ int	main(int argc, char *argv[])
 		destroy_m_data(map_data), 0);
 	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);
-	mlx_close_hook(data->mlx, ft_clean, data);
 	mlx_loop(data->mlx);
 	ft_clean(data);
 	return (0);

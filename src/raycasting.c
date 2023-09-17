@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/15 19:21:15 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/17 09:27:31 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ void	raycasting(t_data *data, t_map_data *m_data)
 	t_line	line;
 
 	id = 0;
-	line.v_dis = 0;
-	line.h_dis = 0;
+	line.v_dis = INT_MAX;
+	line.h_dis = INT_MAX;
 	data->ray.rayangle = data->p_data->player_angle - (data->fov / 2);
 	while (id < data->num_rays)
 	{
@@ -123,7 +123,7 @@ void	raycasting(t_data *data, t_map_data *m_data)
 		check_angle_dir(data, data->ray.rayangle, id);
 		if (data->ray.rayangle != M_PI && data->ray.rayangle != (M_PI * 2) && data->ray.rayangle != 0)
 			cast_horz(data, m_data, &line);
-		if (data->ray.rayangle != (M_PI / 2) && data->ray.rayangle != (1.5 * M_PI))
+		if (data->ray.rayangle != (M_PI * 0.5) && data->ray.rayangle != (1.5 * M_PI))
 			cast_vert(data, m_data, &line);
 		init_ray_attr(data, &line);
 		wall_projection(data, id);

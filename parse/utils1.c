@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:08:39 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:22:35 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	costumaize_map_data(t_map_data *map_data, char **map)
 			map_data->floor_color = ft_strdup(map[i] + 2);
 		else if (!ft_strncmp(map[i], "C ", 2) && !map_data->ceil_color)
 			map_data->ceil_color = ft_strdup(map[i] + 2);
-		else if (map[i][0] == '1')
+		else if (!is_data(map[i]) && map[i][0] != '\n' && is_valid_char(map[i][0]))
 			break ;
 		else if (is_data(map[i]))
 			return (1);
