@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/17 09:27:31 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/17 11:08:56 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	cast_horz(t_data *data, t_map_data *m_data, t_line *line)
 			line->h_hity = ycheck;
 			line->h_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
 			line->next_x, line->next_y);
-			if(line->h_dis == 0)
-				puts("hor is 0");
 			return ;
 		}
 		else
@@ -95,8 +93,6 @@ void	cast_vert(t_data *data, t_map_data *m_data, t_line *line)
 			line->v_hity = line->next_y;
 			line->v_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
 			line->next_x, line->next_y);
-			if(line->v_dis == 0)
-				puts("hor is 0");
 			return ;
 		}
 		else
@@ -114,11 +110,11 @@ void	raycasting(t_data *data, t_map_data *m_data)
 	t_line	line;
 
 	id = 0;
-	line.v_dis = INT_MAX;
-	line.h_dis = INT_MAX;
 	data->ray.rayangle = data->p_data->player_angle - (data->fov / 2);
 	while (id < data->num_rays)
 	{
+		line.v_dis = INT_MAX;
+		line.h_dis = INT_MAX;
 		data->ray.rayangle = normalize_angle(data->ray.rayangle);
 		check_angle_dir(data, data->ray.rayangle, id);
 		if (data->ray.rayangle != M_PI && data->ray.rayangle != (M_PI * 2) && data->ray.rayangle != 0)

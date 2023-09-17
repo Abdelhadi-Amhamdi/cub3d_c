@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/14 16:34:54 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/17 10:46:46 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,10 @@ t_player_data	*init_player(t_map_data *map_data)
 	player_data->turndirc = 0;
 	player_data->walkdirc = 0;
 	player_data->move_dirc = 0;
+	player_data->more_speed = 0;
 	player_data->player_angle = player_angle(map_data);
 	player_data->turnspeed = 2 * (M_PI / 180);
-	player_data->walkspeed = CUB_SIZE / 7;
+	player_data->walkspeed = CUB_SIZE / 10;
 	return (player_data);
 }
 
