@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:21:18 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/17 11:08:56 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ void	cast_horz(t_data *data, t_map_data *m_data, t_line *line)
 	float	ycheck;
 
 	cast_horz_helper(data, line);
-	while (line->next_x >= 0 && line->next_y >= 0 && line->next_x \
-	< m_data->cols * CUB_SIZE && line->next_y < m_data->rows * CUB_SIZE)
+	while (line->next_x >= 0 && line->next_y >= 0)
 	{
 		ycheck = line->next_y;
 		if (data->ray.isup)
@@ -83,8 +82,7 @@ void	cast_vert(t_data *data, t_map_data *m_data, t_line *line)
 	float	xcheck;
 
 	cast_vert_helper(data, line);
-	while (line->next_x >= 0 && line->next_y >= 0 && line->next_x \
-	< m_data->cols * CUB_SIZE && line->next_y < m_data->rows * CUB_SIZE)
+	while (line->next_x >= 0 && line->next_y >= 0)
 	{
 		xcheck = line->next_x;
 		if (data->ray.isleft)

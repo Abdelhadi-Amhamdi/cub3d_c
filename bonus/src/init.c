@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:08:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/17 10:46:46 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_player_data *p_data, t_img_data *m_data)
 	data->img_data = m_data;
 	data->map_data = map_data;
 	data->map_type = COSUTM_MAP;
+	mlx_set_cursor_mode(data->mlx, MLX_MOUSE_HIDDEN);
+	mlx_get_mouse_pos(data->mlx, &data->mouse_x, &data->mouse_x);
 	return (data);
 }
 

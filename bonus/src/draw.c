@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:11:59 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:12:16 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void	_draw(t_data *data, t_map_data *m_data)
 	data->window_height);
 	coloriez(data);
 	raycasting(data, m_data);
+	mini_map_helper(data);
 	mlx_image_to_window(data->mlx, data->img, 0, 0);
 }
