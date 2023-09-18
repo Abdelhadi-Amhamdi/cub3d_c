@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 21:59:28 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 22:02:54 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,20 @@ void	coloriez(t_data *data)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	mini_map_helper(t_data *data)
+{
+	t_mini_map	mini_map;
+
+	if (data->map_type == NORMAL_MAP)
+		_draw_map(data->map_data, data);
+	else if (data->map_type == COSUTM_MAP)
+	{
+		calc_start_and_end(&mini_map, data);
+		_draw_costum_map(data, mini_map);
+		_draw_player(data, &mini_map);
 	}
 }
 
