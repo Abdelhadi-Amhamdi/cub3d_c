@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 13:19:33 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:22:19 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_line(t_data *data, t_line *line)
 	if (fabs(line->h_dis) < fabs(line->v_dis))
 		step = fabs(line->v_dis);
 	i = 0;
-	while (i <= step)
+	while (i < step)
 	{
 		if (line->next_x >= 0 && line->next_x < data->window_width && \
 		line->next_y >= 0 && line->next_y < data->window_height)
