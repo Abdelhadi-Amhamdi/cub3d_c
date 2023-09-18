@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/17 11:04:03 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 14:05:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	_update_data(t_data *data)
 	if (player->walkdirc)
 	{
 		steps = player->walkdirc * (player->walkspeed * (player->more_speed ? 2 : 1));
-		x = player->player_x + (cos(player->player_angle) * steps);
+		x = player->player_x + (cos(player->player_angle) * steps );
 		y = player->player_y + (sin(player->player_angle) * steps);
 		if (check_new_positions(x, y, data))
 		{
