@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/17 10:26:39 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:22:13 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ float			normalize_angle(float angle);
 void			wall_projection(t_data *data, int id);
 void			init_ray_attr(t_data *data, t_line *line);
 
-void			draw_line(t_data	*data, int x0, int y0, int x1, int y1);
+void			draw_line(t_data *data, t_line *line);
 void			_draw(t_data *data, t_map_data *m_data);
 void			_draw_map(t_map_data *m_data, t_data *data);
 int				render_rect(t_rect rect, t_data *data);
@@ -167,4 +167,10 @@ void			hook(t_data *data);
 void			map_hook_helper(t_data *data);
 void			_update_data(t_data *data);
 int				is_wall(int xinter, int yinter, t_map_data *data);
+
+// mini map
+void			_draw_map(t_map_data *m_data, t_data *data);
+void			calc_start_and_end(t_mini_map *map, t_data *data);
+void			_draw_player(t_data *data, t_mini_map *map);
+void			_draw_costum_map(t_data *data, t_mini_map map);
 #endif

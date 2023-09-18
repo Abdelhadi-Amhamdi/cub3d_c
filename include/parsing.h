@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/17 11:34:27 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:19:52 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,21 @@
 # define DDATA "Duplicate data in map !"
 # define INVALID "Invalid arguments"
 
-
 typedef struct s_map_data
 {
-	char	*north_img_path;
-	char	*south_img_path;
-	char	*west_img_path;
-	char	*east_img_path;
-	char	*floor_color;
-	char	*ceil_color;
+	char				*north_img_path;
+	char				*south_img_path;
+	char				*west_img_path;
+	char				*east_img_path;
+	char				*floor_color;
+	char				*ceil_color;
 	unsigned int		floor_rgb;
 	unsigned int		ceil_rgb;
-	char	**map_body;
-	int		rows;
-	int		cols;
-	int		player_x;
-	int		player_y;
+	char				**map_body;
+	int					rows;
+	int					cols;
+	int					player_x;
+	int					player_y;
 }	t_map_data;
 
 // main
@@ -107,4 +106,12 @@ void		print_error(char *error);
 int			is_data(char *str);
 int			is_valid_char(char c);
 
+// parse_utils
+void		ft_free(char **tabs);
+void		init_data_map(t_map_data *data);
+int			is_data(char *str);
+int			check_line(char *line);
+
+// color_utils
+void		calc_color(unsigned int *rgb, int r, int g, int b);
 #endif

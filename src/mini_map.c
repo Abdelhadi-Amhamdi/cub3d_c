@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 15:49:46 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 17:02:47 by original         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:21:54 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,26 @@ void	calc_start_and_end(t_mini_map *map, t_data *data)
 		map->end_x = data->map_data->cols;
 }
 
-void	mini_map_helper(t_data *data)
+void	init_line(t_line *line, t_data *data, int x, int y)
 {
-	t_mini_map	mini_map;
+	float	step;
 
-	if (data->map_type == NORMAL_MAP)
-		_draw_map(data->map_data, data);
-	else if (data->map_type == COSUTM_MAP)
-	{
-		calc_start_and_end(&mini_map, data);
-		_draw_costum_map(data, mini_map);
-		_draw_player(data, &mini_map);
-	}
+	line->h_dis = (x + 2 + cos(data->p_data->player_angle) * 15) - (x + 2);
+	line->v_dis = (y + 2 + sin(data->p_data->player_angle) * 15) - (y + 2);
+	step = fabs(line->h_dis);
+	if (fabs(line->h_dis) < fabs(line->v_dis))
+		step = fabs(line->v_dis);
+	line->delta_x = line->h_dis / step;
+	line->delta_y = line->v_dis / step;
+	line->next_x = (x + 2);
+	line->next_y = (y + 2);
 }
 
 void	_draw_player(t_data *data, t_mini_map *map)
 {
 	int		x;
 	int		y;
+	t_line	line;
 	t_rect	rect;
 
 	if (data->map_type == COSUTM_MAP)
@@ -93,8 +95,8 @@ void	_draw_player(t_data *data, t_mini_map *map)
 	y -= 4;
 	rect = init_rect(x, y, 4 * MINI_MAP, 'P');
 	render_rect(rect, data);
-	draw_line(data, x + 2, y + 2, x + 2 + cos(data->p_data->player_angle) \
-	* 15, y + 2 + sin(data->p_data->player_angle) * 15);
+	init_line(&line, data, x, y);
+	draw_line(data, &line);
 }
 
 void	_draw_map(t_map_data *m_data, t_data *data)

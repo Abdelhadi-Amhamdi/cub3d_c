@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:22:35 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:01:51 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	fill_map(t_map_data *map_data)
 {
 	char	**new_map;
 
-	get_rows_and_cols(map_data->map_body, &map_data->rows, &map_data->cols);
+	get_rows_and_cols(map_data->map_body, &map_data->rows, \
+	&map_data->cols);
 	new_map = create_new_map(map_data->rows, \
 	map_data->cols, map_data->map_body);
 	ft_free(map_data->map_body);
@@ -51,14 +52,14 @@ int	costumaize_map_data(t_map_data *map_data, char **map)
 			map_data->floor_color = ft_strdup(map[i] + 2);
 		else if (!ft_strncmp(map[i], "C ", 2) && !map_data->ceil_color)
 			map_data->ceil_color = ft_strdup(map[i] + 2);
-		else if (!is_data(map[i]) && map[i][0] != '\n' && is_valid_char(map[i][0]))
+		else if (!is_data(map[i]) && map[i][0] != '\n' && \
+		is_valid_char(map[i][0]))
 			break ;
 		else if (is_data(map[i]))
 			return (1);
 	}
 	map_data->map_body = ft_tabs_dup(map + i);
-	ft_free(map);
-	return (0);
+	return (ft_free(map), 0);
 }
 
 int	parse_map_data(t_map_data *map_data)

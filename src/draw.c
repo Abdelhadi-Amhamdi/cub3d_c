@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/13 15:53:50 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:19:33 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,22 @@ int	render_rect(t_rect rect, t_data *data)
 	return (0);
 }
 
-int	ft_abs(int n)
+void	draw_line(t_data *data, t_line *line)
 {
-	if (n < 0)
-		return (n * (-1));
-	return (n);
-}
-
-void	draw_line(t_data *data, int x0, int y0, int x1, int y1)
-{
-	t_line	line;
-	int		step;
 	int		i;
-	int		dx;
-	int		dy;
+	float	step;
 
-	dx = x1 - x0;
-	dy = y1 - y0;
-	step = ft_abs(dx);
-	if (ft_abs(dx) < ft_abs(dy))
-		step = ft_abs(dy);
-	line.delta_x = dx / (float)step;
-	line.delta_y = dy / (float)step;
-	line.next_x = x0;
-	line.next_y = y0;
+	step = fabs(line->h_dis);
+	if (fabs(line->h_dis) < fabs(line->v_dis))
+		step = fabs(line->v_dis);
 	i = 0;
-	while (i < step)
+	while (i <= step)
 	{
-		if (line.next_x >= 0 && line.next_x < data->window_width && \
-		line.next_y >= 0 && line.next_y < data->window_height)
-			mlx_put_pixel(data->img, line.next_x, line.next_y, 0xFFFFFFFF);
-		line.next_x += line.delta_x;
-		line.next_y += line.delta_y;
+		if (line->next_x >= 0 && line->next_x < data->window_width && \
+		line->next_y >= 0 && line->next_y < data->window_height)
+			mlx_put_pixel(data->img, line->next_x, line->next_y, 0xFFFFFFFF);
+		line->next_x += line->delta_x;
+		line->next_y += line->delta_y;
 		i++;
 	}
 }
@@ -90,6 +74,20 @@ void	coloriez(t_data *data)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	mini_map_helper(t_data *data)
+{
+	t_mini_map	mini_map;
+
+	if (data->map_type == NORMAL_MAP)
+		_draw_map(data->map_data, data);
+	else if (data->map_type == COSUTM_MAP)
+	{
+		calc_start_and_end(&mini_map, data);
+		_draw_costum_map(data, mini_map);
+		_draw_player(data, &mini_map);
 	}
 }
 
