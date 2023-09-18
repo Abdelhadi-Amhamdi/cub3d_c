@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/17 10:40:24 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:27:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define W_HEIGHT 1000
 # define MINI_MAP 0.3
 # define CUB_SIZE 64
-# define COSTUM_SIZE 10
+# define COSTUM_SIZE 6
 
 # define NORMAL_MAP 1
 # define COSUTM_MAP 2

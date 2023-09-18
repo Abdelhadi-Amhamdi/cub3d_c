@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 14:13:40 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:26:06 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	ft_clean(void *d)
 	exit (0);
 }
 
-int	is_wall(int xinter, int yinter, t_map_data *data)
-{
-	int	new_x;
-	int	new_y;
+// int	is_wall(int xinter, int yinter, t_map_data *data)
+// {
+// 	int	new_x;
+// 	int	new_y;
 
-	new_x = (int)round(xinter / CUB_SIZE);
-	new_y = (int)round(yinter / CUB_SIZE);
-	if (new_x < 0 || new_x >= data->cols || new_y < 0 || new_y >= data->rows)
-		return (1);
-	return (data->map_body[new_y][new_x] == '1');
-}
+// 	new_x = (int)ceil(xinter / CUB_SIZE);
+// 	new_y = (int)ceil(yinter / CUB_SIZE);
+// 	if (new_x < 0 || new_x >= data->cols || new_y < 0 || new_y >= data->rows)
+// 		return (1);
+// 	return (data->map_body[new_y][new_x] == '1');
+// }
 
 void	key_handler(void *param)
 {

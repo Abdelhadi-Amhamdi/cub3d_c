@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 11:36:41 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/15 18:55:45 by original         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:29:57 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	check_wall(t_data *data, t_map_data *m_data, float x, float y)
 	int	check_x;
 	int	check_y;
 
-	if (x <= 0 || x >= data->map_data->cols * CUB_SIZE || \
-	y <= 0 || y >= data->map_data->rows * CUB_SIZE)
+	if (x < 0 || x >= data->map_data->cols * CUB_SIZE || \
+	y < 0 || y >= data->map_data->rows * CUB_SIZE)
 		return (1);
 	check_x = (int)(floor(x / CUB_SIZE));
 	check_y = (int)(floor(y / CUB_SIZE));

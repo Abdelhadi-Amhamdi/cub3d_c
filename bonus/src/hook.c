@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 14:05:41 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:19:29 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,11 @@ int	check_new_positions(float x, float y, t_data *data)
 
 	player = data->p_data;
 	distance = CUB_SIZE / 7;
-	if (!is_wall(x, y, data->map_data) && !is_wall(x, player->player_y, data->map_data) \
-	&& !is_wall(player->player_x, y, data->map_data) && !is_wall(x + distance, y + distance, \
-	 data->map_data) && !is_wall(x - distance, y - distance, data->map_data) && \
-	!is_wall(x + distance, player->player_y, data->map_data) && !is_wall(player->player_x, y \
-	+ distance, data->map_data) && !is_wall(x - distance, player->player_y, data->map_data) \
-	&& !is_wall(player->player_x, y - distance, data->map_data))
+	if (!check_wall(data, data->map_data, x, y) && !check_wall(data, data->map_data, x, player->player_y) \
+	&& !check_wall(data, data->map_data, player->player_x, y) && !check_wall(data, data->map_data, x + \
+	distance, y + distance) && !check_wall(data, data->map_data, x - distance, y - distance) && \
+	!check_wall(data, data->map_data, x , y - distance) && !check_wall(data, data->map_data, x - distance, y) \
+	&& !check_wall(data, data->map_data, x + distance, y) && !check_wall(data, data->map_data, x, y + distance))
 			return (1);
 	return (0);
 }
