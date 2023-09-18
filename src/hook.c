@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 20:50:14 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 21:57:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	check_new_positions(float x, float y, t_data *data)
 	!is_wall(x + distance, player->player_y, data->map_data) && !is_wall(player->player_x, y \
 	+ distance, data->map_data) && !is_wall(x - distance, player->player_y, data->map_data) \
 	&& !is_wall(player->player_x, y - distance, data->map_data))
-			return (1);
+		return (1);
 	return (0);
 }
 
@@ -58,6 +58,7 @@ void	_update_data_helper(t_data *data)
 	float			steps;
 	float			x;
 	float			y;
+
 	player = data->p_data;
 	if (player->move_dirc)
 	{
@@ -90,8 +91,10 @@ void	_update_data(t_data *data)
 	}
 	if (player->walkdirc)
 	{
-		steps = player->walkdirc * (player->walkspeed * (player->more_speed ? 2 : 1));
-		x = player->player_x + (cos(player->player_angle) * steps );
+		steps = player->walkdirc * player->walkspeed;
+		if (player->more_speed)
+			steps *= 2;
+		x = player->player_x + (cos(player->player_angle) * steps);
 		y = player->player_y + (sin(player->player_angle) * steps);
 		if (check_new_positions(x, y, data))
 		{
