@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:21:18 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:50:55 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	cast_horz(t_data *data, t_map_data *m_data, t_line *line)
 		{
 			line->h_hitx = line->next_x;
 			line->h_hity = ycheck;
-			line->h_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
-			line->next_x, line->next_y);
+			line->h_dis = cal_distance(data->p_data->player_x, \
+			data->p_data->player_y, line->next_x, line->next_y);
 			return ;
 		}
 		else
@@ -93,8 +93,8 @@ void	cast_vert(t_data *data, t_map_data *m_data, t_line *line)
 		{
 			line->v_hitx = xcheck;
 			line->v_hity = line->next_y;
-			line->v_dis = cal_distance(data->p_data->player_x, data->p_data->player_y, \
-			line->next_x, line->next_y);
+			line->v_dis = cal_distance(data->p_data->player_x, \
+			data->p_data->player_y, line->next_x, line->next_y);
 			return ;
 		}
 		else
@@ -119,9 +119,11 @@ void	raycasting(t_data *data, t_map_data *m_data)
 		line.h_dis = INT_MAX;
 		data->ray.rayangle = normalize_angle(data->ray.rayangle);
 		check_angle_dir(data, data->ray.rayangle, id);
-		if (data->ray.rayangle != M_PI && data->ray.rayangle != (M_PI * 2) && data->ray.rayangle != 0)
+		if (data->ray.rayangle != M_PI && data->ray.rayangle != \
+		(M_PI * 2) && data->ray.rayangle != 0)
 			cast_horz(data, m_data, &line);
-		if (data->ray.rayangle != (M_PI * 0.5) && data->ray.rayangle != (1.5 * M_PI))
+		if (data->ray.rayangle != (M_PI * 0.5) && data->ray.rayangle != \
+		(1.5 * M_PI))
 			cast_vert(data, m_data, &line);
 		init_ray_attr(data, &line);
 		wall_projection(data, id);

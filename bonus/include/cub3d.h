@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:27:41 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/18 20:53:37 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,6 @@ void			draw_line(t_data	*data, int x0, int y0, int x1, int y1);
 void			_draw(t_data *data, t_map_data *m_data);
 void			_draw_map(t_map_data *m_data, t_data *data);
 int				render_rect(t_rect rect, t_data *data);
-void			mini_map_helper(t_data *data);
 void			_draw_player(t_data *data, t_mini_map *map);
 void			coloriez(t_data *data);
 
@@ -166,5 +165,4 @@ void			destroy_imgs_data(t_img_data *data);
 void			hook(t_data *data);
 void			map_hook_helper(t_data *data);
 void			_update_data(t_data *data);
-int				is_wall(int xinter, int yinter, t_map_data *data);
 #endif
