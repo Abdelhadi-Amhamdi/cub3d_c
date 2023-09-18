@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 12:50:59 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:24:43 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	is_wall(int xinter, int yinter, t_map_data *data)
 	int	new_x;
 	int	new_y;
 
-	new_x = (int)floor(xinter / CUB_SIZE);
-	new_y = (int)floor(yinter / CUB_SIZE);
+	new_x = (int)round(xinter / CUB_SIZE);
+	new_y = (int)round(yinter / CUB_SIZE);
 	if (new_x < 0 || new_x >= data->cols || new_y < 0 || new_y >= data->rows)
 		return (1);
 	return (data->map_body[new_y][new_x] == '1');
@@ -48,6 +48,7 @@ void	key_handler(void *param)
 	data->p_data->walkdirc = 0;
 	data->p_data->turndirc = 0;
 	data->p_data->move_dirc = 0;
+	data->p_data->more_speed = 0;
 	_draw(data, data->map_data);
 }
 

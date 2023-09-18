@@ -6,7 +6,7 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 13:22:13 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:25:42 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_ray
 typedef struct s_player_data
 {
 	int		walkspeed;
+	int		more_speed;
 	float	turnspeed;
 	int		turndirc;
 	int		walkdirc;
