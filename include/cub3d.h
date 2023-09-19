@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:44:04 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:00:31 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <math.h>
 # include <limits.h>
-# include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
-// # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
+// # include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
+# include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
 # include "../libs/libft/libft.h"
 # include "parsing.h"
 
