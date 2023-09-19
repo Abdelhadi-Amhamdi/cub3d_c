@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:08:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:06:43 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ t_player_data *p_data, t_img_data *m_data)
 	get_responive_sizes(data, map_data);
 	data->fov = 60 * (M_PI / 180);
 	data->mlx = mlx_init(data->window_width, data->window_height, "cube", true);
+	if (data->mlx == NULL)
+	{
+		print_error("mlx_init failed");
+		ft_clean(data);
+	}
 	data->num_rays = data->window_width;
 	data->img = NULL;
 	data->p_data = p_data;
