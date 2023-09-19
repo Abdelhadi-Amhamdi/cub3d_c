@@ -6,7 +6,7 @@
 #    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/19 10:56:08 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/19 11:05:06 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,17 @@ PARSE		= parse/
 PARSE		= parse/
 BONUS		= bonus/
 LIBFT_PATH	= libs/libft
-# I			= -I/usr/local/Cellar/glfw/3.3.8/include/GLFW
-# L			= -L/usr/local/Cellar/glfw/3.3.8/lib
 I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
 L			= -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib
 
 BUILD_DIR	= build/
 
 # ---- files ------ #
+
+RAYCASTING_H	= $(INC)cub3d.h
+PARSING_H		= $(INC)parsing.h
+RAYCASTING_BH	= $(BONUS)$(INC)cub3d_bonus.h
+PARSING_BH		= $(BONUS)$(INC)parsing_bonus.h
 
 src			= main.c init.c raycasting.c draw.c raycasting_utils.c projection.c hook.c clean.c
 srcs		= $(addprefix $(RAY_CAST), $(src))
@@ -69,16 +72,16 @@ all : $(LIBFT) $(BUILD_DIR) $(NAME)
 
 bonus : $(LIBFT) $(BUILD_DIR) $(NAME_BONUS)
 
-$(BUILD_DIR)%.o: $(RAY_CAST)%.c
+$(BUILD_DIR)%.o: $(RAY_CAST)%.c $(RAYCASTING_H)
 	$(CC) $< -c -o $@
 	
-$(BUILD_DIR)%.o: $(PARSE)%.c
+$(BUILD_DIR)%.o: $(PARSE)%.c $(PARSING_H)
 	$(CC) $< -c -o $@
 	
-$(BUILD_DIR)%.o: $(BONUS)$(RAY_CAST)%.c
+$(BUILD_DIR)%.o: $(BONUS)$(RAY_CAST)%.c $(RAYCASTING_BH)
 	$(CC) $< -c -o $@
 	
-$(BUILD_DIR)%.o: $(BONUS)$(PARSE)%.c
+$(BUILD_DIR)%.o: $(BONUS)$(PARSE)%.c $(PARSING_BH)
 	$(CC) $< -c -o $@
 
 $(BUILD_DIR):

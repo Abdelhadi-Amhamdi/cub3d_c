@@ -6,12 +6,12 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:53:45 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:06:00 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -33,7 +33,6 @@
 # define NORMAL_MAP 1
 # define COSUTM_MAP 2
 # define NONE_MAP 3
-
 
 typedef struct s_line
 {
