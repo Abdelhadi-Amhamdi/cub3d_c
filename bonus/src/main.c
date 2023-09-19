@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 20:26:06 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:07:28 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,6 @@ void	key_handler(void *param)
 	data->p_data->more_speed = 0;
 	_draw(data, data->map_data);
 }
-
-// void test()
-// {
-// 	system("leaks cub3d");
-// }
 
 int	main(int argc, char *argv[])
 {

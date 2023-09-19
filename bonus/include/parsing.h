@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:27:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:17:58 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,21 @@
 # define ELINE "Empty Line In Map !"
 # define DDATA "Duplicate data in map !"
 
-
 typedef struct s_map_data
 {
-	char	*north_img_path;
-	char	*south_img_path;
-	char	*west_img_path;
-	char	*east_img_path;
-	char	*floor_color;
-	char	*ceil_color;
+	char				*north_img_path;
+	char				*south_img_path;
+	char				*west_img_path;
+	char				*east_img_path;
+	char				*floor_color;
+	char				*ceil_color;
 	unsigned int		floor_rgb;
 	unsigned int		ceil_rgb;
-	char	**map_body;
-	int		rows;
-	int		cols;
-	int		player_x;
-	int		player_y;
+	char				**map_body;
+	int					rows;
+	int					cols;
+	int					player_x;
+	int					player_y;
 }	t_map_data;
 
 // main

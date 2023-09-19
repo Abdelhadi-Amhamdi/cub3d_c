@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:09:42 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/14 15:27:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:09:45 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,26 @@ t_rect	init_rect(int x, int y, int size, char item)
 		rect.y = y;
 	}
 	return (rect);
+}
+
+int	check_new_positions(float x, float y, t_data *data)
+{
+	int				distance;
+	t_player_data	*player;
+
+	player = data->p_data;
+	distance = CUB_SIZE / 7;
+	if (!is_wall(x, y, data->map_data) && !is_wall(x, player->player_y, \
+	data->map_data) && !is_wall(player->player_x, y, data->map_data) \
+	&& !is_wall(x + distance, y + distance, data->map_data) && \
+	!is_wall(x - distance, y - distance, data->map_data))
+		return (1);
+	return (0);
+}
+
+int	ft_abs(int n)
+{
+	if (n < 0)
+		return (n * (-1));
+	return (n);
 }

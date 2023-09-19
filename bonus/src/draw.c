@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 22:02:54 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:09:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,6 @@ int	render_rect(t_rect rect, t_data *data)
 		++i;
 	}
 	return (0);
-}
-
-int	ft_abs(int n)
-{
-	if (n < 0)
-		return (n * (-1));
-	return (n);
 }
 
 void	draw_line(t_data *data, t_line *line)

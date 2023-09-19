@@ -6,20 +6,11 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 21:26:55 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:16:16 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	calc_color(unsigned int *rgb, int r, int g, int b)
-{
-	*rgb += r;
-	*rgb <<= 8;
-	*rgb += g;
-	*rgb <<= 8;
-	*rgb += b;
-}
 
 int	check_value(int value)
 {
@@ -54,7 +45,7 @@ int	parse_color(char **color, int *red, int *green, int *blue)
 	return (0);
 }
 
-int check_color_str(char *str)
+int	check_color_str(char *str)
 {
 	int	index;
 
@@ -80,7 +71,8 @@ int	parse_colors_values(t_map_data *map_data)
 
 	if (!map_data->ceil_color || !map_data->floor_color)
 		return (1);
-	if (check_color_str(map_data->floor_color) || check_color_str(map_data->ceil_color))
+	if (check_color_str(map_data->floor_color) || \
+	check_color_str(map_data->ceil_color))
 		return (1);
 	color = ft_split(map_data->floor_color, ',');
 	if (!color)

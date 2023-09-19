@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 22:04:40 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:16:46 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ void			check_angle_dir(t_data *data, float angle, int id);
 float			cal_distance(float x1, float y1, float x2, float y2);
 int				check_wall(t_data *data, t_map_data *m_data, float x, float y);
 void			calc_start_and_end(t_mini_map *map, t_data *data);
-void	_draw_costum_map(t_data *data, t_mini_map map);
+void			_draw_costum_map(t_data *data, t_mini_map map);
 float			normalize_angle(float angle);
 void			wall_projection(t_data *data, int id);
 void			init_ray_attr(t_data *data, t_line *line);

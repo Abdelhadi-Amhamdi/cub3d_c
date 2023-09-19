@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 20:19:29 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:09:07 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,22 +66,6 @@ void	hook(t_data *data)
 	mouse_hook_helper(data);
 }
 
-int	check_new_positions(float x, float y, t_data *data)
-{
-	int				distance;
-	t_player_data	*player;
-
-	player = data->p_data;
-	distance = CUB_SIZE / 7;
-	if (!check_wall(data, data->map_data, x, y) && !check_wall(data, data->map_data, x, player->player_y) \
-	&& !check_wall(data, data->map_data, player->player_x, y) && !check_wall(data, data->map_data, x + \
-	distance, y + distance) && !check_wall(data, data->map_data, x - distance, y - distance) && \
-	!check_wall(data, data->map_data, x , y - distance) && !check_wall(data, data->map_data, x - distance, y) \
-	&& !check_wall(data, data->map_data, x + distance, y) && !check_wall(data, data->map_data, x, y + distance))
-			return (1);
-	return (0);
-}
-
 void	_update_data_helper(t_data *data)
 {
 	t_player_data	*player;
@@ -122,8 +106,10 @@ void	_update_data(t_data *data)
 	}
 	if (player->walkdirc)
 	{
-		steps = player->walkdirc * (player->walkspeed * (player->more_speed ? 2 : 1));
-		x = player->player_x + (cos(player->player_angle) * steps );
+		steps = player->walkdirc * player->walkspeed;
+		if (player->more_speed)
+			steps *= 2;
+		x = player->player_x + (cos(player->player_angle) * steps);
 		y = player->player_y + (sin(player->player_angle) * steps);
 		if (check_new_positions(x, y, data))
 		{

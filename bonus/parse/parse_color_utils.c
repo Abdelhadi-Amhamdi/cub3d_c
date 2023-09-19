@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   parse_color_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/18 14:20:31 by aagouzou          #+#    #+#             */
-/*   Updated: 2022/11/01 10:52:29 by aagouzou         ###   ########.fr       */
+/*   Created: 2023/09/19 10:16:03 by aamhamdi          #+#    #+#             */
+/*   Updated: 2023/09/19 10:16:12 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/cub3d.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	calc_color(unsigned int *rgb, int r, int g, int b)
 {
-	if (s == NULL || fd < 0)
-		return ;
-	while (*s)
-	{
-		write(fd, s, 1);
-		s++;
-	}
+	*rgb += r;
+	*rgb <<= 8;
+	*rgb += g;
+	*rgb <<= 8;
+	*rgb += b;
 }
