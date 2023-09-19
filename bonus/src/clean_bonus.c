@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   clean_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 13:09:42 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 10:09:45 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:54:25 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	destroy_m_data(t_map_data *data)
 {
@@ -54,6 +54,18 @@ t_rect	init_rect(int x, int y, int size, char item)
 		rect.y = y;
 	}
 	return (rect);
+}
+
+int	is_wall(int xinter, int yinter, t_map_data *data)
+{
+	int	new_x;
+	int	new_y;
+
+	new_x = (int)round(xinter / CUB_SIZE);
+	new_y = (int)round(yinter / CUB_SIZE);
+	if (new_x < 0 || new_x >= data->cols || new_y < 0 || new_y >= data->rows)
+		return (1);
+	return (data->map_body[new_y][new_x] == '1');
 }
 
 int	check_new_positions(float x, float y, t_data *data)

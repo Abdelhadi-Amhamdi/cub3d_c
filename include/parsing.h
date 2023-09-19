@@ -6,14 +6,14 @@
 /*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/18 13:19:52 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:25:54 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
-# include "../libft/libft.h"
+# include "../libs/libft/libft.h"
 # include "cub3d.h"
 # include <stdlib.h>
 # include <stdio.h>

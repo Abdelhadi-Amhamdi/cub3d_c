@@ -6,7 +6,7 @@
 #    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/19 10:41:44 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/19 10:56:08 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,11 +45,11 @@ srcs		= $(addprefix $(RAY_CAST), $(src))
 p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c parse_utils.c color_utils.c 
 p_srcs		= $(addprefix $(PARSE), $(p_src))
 
-b_files		= main_bonus.c init_bonus.c raycasting_bonus.c draw_bonus.c raycasting_utils_bonus.c projection_bonus.c hook_bonus.c clean_bonus.c
+b_files		= main_bonus.c init_bonus.c raycasting_bonus.c mini_map_bonus.c draw_bonus.c raycasting_utils_bonus.c projection_bonus.c hook_bonus.c clean_bonus.c
 b_src		= $(addprefix $(RAY_CAST), $(b_files))
 b_srcs		= $(addprefix $(BONUS), b_src)
 
-b_p_files		= parse_main_bonus.c utils_bonus.c utils1_bonus.c parse_colors_bonus.c parse_content_bonus.c utils2_bonus.c parse_utils_bonus.c color_utils_bonus.c 
+b_p_files		= parse_main_bonus.c utils_bonus.c utils1_bonus.c parse_colors_bonus.c parse_content_bonus.c utils2_bonus.c parse_utils_bonus.c parse_color_utils_bonus.c 
 b_p_src		= $(addprefix $(PARSE), $(b_p_files))
 b_p_srcs		= $(addprefix $(BONUS), b_p_src)
 
@@ -57,8 +57,8 @@ b_p_srcs		= $(addprefix $(BONUS), b_p_src)
 obj 		= $(src:.c=.o) $(p_src:.c=.o)
 objs 		= $(addprefix $(BUILD_DIR), $(obj))
 
-p_obj		= $(b_files:.c=.o) $(b_p_files:.c=.o)
-p_objs		= $(addprefix $(BUILD_DIR), $(p_obj))
+b_obj		= $(b_files:.c=.o) $(b_p_files:.c=.o)
+b_objs		= $(addprefix $(BUILD_DIR), $(b_obj))
 
 # ---- RULES ---- #
 
@@ -66,6 +66,8 @@ $(BUILD_DIR)%.o: %.c
 	$(CC) $< -c -o $@ $(I)
 
 all : $(LIBFT) $(BUILD_DIR) $(NAME)
+
+bonus : $(LIBFT) $(BUILD_DIR) $(NAME_BONUS)
 
 $(BUILD_DIR)%.o: $(RAY_CAST)%.c
 	$(CC) $< -c -o $@
@@ -90,8 +92,6 @@ $(NAME_BONUS) : $(b_objs)
 
 $(LIBFT):
 	make -s -C $(LIBFT_PATH)
-
-bonus : $(NAME_BONUS)
 
 clean :
 	rm -rf $(BUILD_DIR)

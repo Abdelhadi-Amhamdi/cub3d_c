@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:16:46 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:53:45 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <math.h>
 # include <limits.h>
 # include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
-# include "parsing.h"
+// # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
+# include "../../libs/libft/libft.h"
+# include "parsing_bonus.h"
 
 # define W_WIDTH 1600
 # define W_HEIGHT 1000
@@ -32,6 +33,7 @@
 # define NORMAL_MAP 1
 # define COSUTM_MAP 2
 # define NONE_MAP 3
+
 
 typedef struct s_line
 {
@@ -167,4 +169,5 @@ void			destroy_imgs_data(t_img_data *data);
 void			hook(t_data *data);
 void			map_hook_helper(t_data *data);
 void			_update_data(t_data *data);
+int				check_new_positions(float x, float y, t_data *data);
 #endif
