@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
+#    By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/18 13:21:54 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/19 10:37:40 by aagouzou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ INC			= include/
 RAY_CAST	= src/
 PARSE		= parse/
 PARSE		= parse/
-LIBFT_PATH	= libft
+LIBFT_PATH	= ../libs/libft
 # I			= -I/usr/local/Cellar/glfw/3.3.8/include/GLFW
 # L			= -L/usr/local/Cellar/glfw/3.3.8/lib
 I			= -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include/GLFW
@@ -37,10 +37,10 @@ BUILD_DIR	= build/
 
 # ---- files ------ #
 
-src			= main.c init.c mini_map.c raycasting.c draw.c raycasting_utils.c projection.c hook.c clean.c
+src			= main_bonus.c init_bonus.c mini_map_bonus.c raycasting_bonus.c draw_bonus.c raycasting_utils_bonus.c projection_bonus.c hook_bonus.c clean_bonus.c
 srcs		= $(addprefix $(RAY_CAST), $(src))
 
-p_src		= parse_main.c utils.c utils1.c parse_colors.c parse_content.c utils2.c
+p_src		= parse_main_bonus.c utils_bonus.c utils1_bonus.c parse_colors_bonus.c parse_content_bonus.c utils2_bonus.c
 p_srcs		= $(addprefix $(PARSE), $(p_src))
 
 obj 		= $(src:.c=.o) $(p_src:.c=.o)
