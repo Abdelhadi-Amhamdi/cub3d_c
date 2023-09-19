@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 11:08:09 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:15:09 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_clean(void *d)
 	free (data->p_data);
 	if (data->img)
 		mlx_delete_image(data->mlx, data->img);
+	mlx_terminate(data->mlx);
 	free (data);
 	exit (0);
 }
@@ -40,6 +41,11 @@ void	key_handler(void *param)
 	_draw(data, data->map_data);
 }
 
+void	test()
+{
+	system("leaks cub3d");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_map_data		*map_data;
@@ -47,6 +53,7 @@ int	main(int argc, char *argv[])
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 
+	atexit(test);
 	if (argc != 2)
 		return (print_error(INVALID), 0);
 	map_data = parser(argc, argv);
@@ -62,8 +69,8 @@ int	main(int argc, char *argv[])
 	if (!data)
 		return (free(p_data), destroy_imgs_data(img_data), \
 		destroy_m_data(map_data), 0);
-	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);
+	mlx_close_hook(data->mlx, ft_clean, data);
 	mlx_loop(data->mlx);
 	ft_clean(data);
 	return (0);

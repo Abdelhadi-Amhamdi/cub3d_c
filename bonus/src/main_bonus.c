@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 15:00:55 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:15:01 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_clean(void *d)
 	free (data->p_data);
 	if (data->img)
 		mlx_delete_image(data->mlx, data->img);
+	mlx_terminate(data->mlx);
 	free (data);
 	exit (0);
 }
@@ -70,8 +71,8 @@ int	main(int argc, char *argv[])
 	if (!data)
 		return (free(p_data), destroy_imgs_data(img_data), \
 		destroy_m_data(map_data), 0);
-	_draw(data, map_data);
 	mlx_loop_hook(data->mlx, key_handler, data);
+	mlx_close_hook(data->mlx, ft_clean, data);
 	mlx_loop(data->mlx);
 	ft_clean(data);
 	return (0);
