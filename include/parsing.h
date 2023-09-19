@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 10:25:54 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:52:11 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,13 @@ typedef struct s_map_data
 	int					player_y;
 }	t_map_data;
 
-// main
 t_map_data	*parser(int args_count, char **args_values);
 int			parse_map_content(t_map_data *map_data);
 int			costumaize_map_data(t_map_data *map_data, char **map);
 int			get_palyer_position(t_map_data *map);
 
-// player
 int			check_player(t_map_data *data);
 
-// utils
 int			check_map_extension(char *filename);
 void		ft_free(char **tabs);
 void		init_data_map(t_map_data *data);
@@ -77,14 +74,12 @@ int			ft_tabs_len(char **map);
 char		**ft_tabs_dup(char **map);
 void		destroy_map_data(t_map_data *data);
 
-// colors
 void		calc_color(unsigned int *rgb, int r, int g, int b);
 int			check_value(int value);
 int			ft_check(char *color);
 int			parse_color(char **color, int *red, int *green, int *blue);
 int			parse_colors_values(t_map_data *map_data);
 
-// map
 int			ft_is_space(char c);
 int			check_each_item(char item);
 char		**create_new_map(int rows, int cols, char **map);
@@ -95,10 +90,8 @@ void		get_rows_and_cols(char **map, int *rows, int *cols);
 int			fill_map(t_map_data *map_data);
 int			parse_map_data(t_map_data *map_data);
 
-// imgs
 int			parse_images_paths(t_map_data *map_data);
 
-// formatter
 char		**read_map_file(char *file_name);
 int			parse_map_data(t_map_data *map_data);
 
@@ -106,12 +99,10 @@ void		print_error(char *error);
 int			is_data(char *str);
 int			is_valid_char(char c);
 
-// parse_utils
 void		ft_free(char **tabs);
 void		init_data_map(t_map_data *data);
 int			is_data(char *str);
 int			check_line(char *line);
 
-// color_utils
 void		calc_color(unsigned int *rgb, int r, int g, int b);
 #endif

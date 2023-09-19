@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:53:45 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:05:23 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -19,8 +19,8 @@
 # include <limits.h>
 # include <math.h>
 # include <limits.h>
-# include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
-// # include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
+// # include "/Users/aamhamdi/MLX42/include/MLX42/MLX42.h"
+# include "/Users/aagouzou/MLX42/include/MLX42/MLX42.h"
 # include "../../libs/libft/libft.h"
 # include "parsing_bonus.h"
 
@@ -33,7 +33,6 @@
 # define NORMAL_MAP 1
 # define COSUTM_MAP 2
 # define NONE_MAP 3
-
 
 typedef struct s_line
 {
@@ -131,18 +130,15 @@ typedef struct s_txtr_data
 	double		first_pixel;
 }	t_txtr_data;
 
-// init
 t_img_data		*init_images(t_map_data *map_data);
 t_data			*init_data(t_map_data *map_data, t_player_data *p_data, \
 t_img_data	*m_data);
 t_player_data	*init_player(t_map_data *map_data);
 t_rect			init_rect(int x, int y, int size, char item);
 
-// utils
 float			player_angle(t_map_data *map_data);
 void			get_responive_sizes(t_data *data, t_map_data *map_data);
 
-//raycasting
 void			raycasting(t_data *data, t_map_data *m_data);
 void			check_angle_dir(t_data *data, float angle, int id);
 float			cal_distance(float x1, float y1, float x2, float y2);
@@ -160,14 +156,13 @@ int				render_rect(t_rect rect, t_data *data);
 void			_draw_player(t_data *data, t_mini_map *map);
 void			coloriez(t_data *data);
 
-// clean
 void			ft_clean(void *d);
 void			destroy_m_data(t_map_data *data);
 void			destroy_imgs_data(t_img_data *data);
 
-// hook
 void			hook(t_data *data);
 void			map_hook_helper(t_data *data);
 void			_update_data(t_data *data);
 int				check_new_positions(float x, float y, t_data *data);
+float			get_angle_offset(int x0, int x1, int width);
 #endif

@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:21 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:33 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:00:28 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ void	mouse_hook_helper(t_data *data)
 	>= 0 && new_mouse_y <= data->window_height)
 	{
 		if (new_mouse_x < data->mouse_x)
-			data->p_data->turndirc = -1;
+			data->p_data->player_angle -= \
+			get_angle_offset(data->mouse_x, new_mouse_x, data->window_width);
 		else
-			data->p_data->turndirc = 1;
+			data->p_data->player_angle += \
+			get_angle_offset(new_mouse_x, data->mouse_x, data->window_width);
 		data->mouse_x = new_mouse_x;
 	}
 	if (new_mouse_x >= data->window_width || new_mouse_x <= 0)
-		mlx_set_mouse_pos(data->mlx, data->window_width / 2, new_mouse_y);
+		data->mouse_x = data->window_width / 2;
 }
 
 void	map_hook_helper(t_data *data)
