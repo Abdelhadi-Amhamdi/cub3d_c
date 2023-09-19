@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 11:05:28 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:51:43 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,18 +130,15 @@ typedef struct s_txtr_data
 	double		first_pixel;
 }	t_txtr_data;
 
-// init
 t_img_data		*init_images(t_map_data *map_data);
 t_data			*init_data(t_map_data *map_data, t_player_data *p_data, \
 t_img_data	*m_data);
 t_player_data	*init_player(t_map_data *map_data);
 t_rect			init_rect(int x, int y, int size, char item);
 
-// utils
 float			player_angle(t_map_data *map_data);
 void			get_responive_sizes(t_data *data, t_map_data *map_data);
 
-//raycasting
 void			raycasting(t_data *data, t_map_data *m_data);
 void			check_angle_dir(t_data *data, float angle, int id);
 float			cal_distance(float x1, float y1, float x2, float y2);
@@ -158,18 +155,14 @@ void			mini_map_helper(t_data *data);
 void			_draw_player(t_data *data, t_mini_map *map);
 void			coloriez(t_data *data);
 
-// clean
 void			ft_clean(void *d);
 void			destroy_m_data(t_map_data *data);
 void			destroy_imgs_data(t_img_data *data);
 
-// hook
 void			hook(t_data *data);
 void			map_hook_helper(t_data *data);
 void			_update_data(t_data *data);
-int				is_wall(int xinter, int yinter, t_map_data *data);
 
-// mini map
 void			_draw_map(t_map_data *m_data, t_data *data);
 void			calc_start_and_end(t_mini_map *map, t_data *data);
 void			_draw_player(t_data *data, t_mini_map *map);
