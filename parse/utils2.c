@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: original <original@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 17:14:57 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/15 16:29:56 by original         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:03:14 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_is_space(char c)
 
 void	print_error(char *error)
 {
-	printf("ERROR : %s\n", error);
+	printf("Error\n%s\n", error);
 }
 
 int	check_player(t_map_data *data)

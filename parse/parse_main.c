@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/16 20:32:51 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:19:59 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ t_map_data	*parser(int args_count, char **args_values)
 	char		**map;
 	t_map_data	*map_data;
 
-	if (args_count == 1)
-		return (NULL);
 	map_filename = args_values[1];
 	if (check_map_extension(map_filename))
 		return (print_error(NEXTENSION), NULL);

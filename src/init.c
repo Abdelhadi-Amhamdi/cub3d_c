@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 15:08:22 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:24:52 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_player_data	*init_player(t_map_data *map_data)
 	return (player_data);
 }
 
-// protect mlx_init && mlx_new_img
 t_data	*init_data(t_map_data *map_data, \
 t_player_data *p_data, t_img_data *m_data)
 {
