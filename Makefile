@@ -6,7 +6,7 @@
 #    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/19 11:05:06 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/20 21:50:20 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@
 
 NAME		= cub3d
 NAME_BONUS	= cub3d_bonus
-CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math #-fsanitize=address
+CC			= cc -g -Wall -Wextra -Werror -o3 -ffast-math
 MLX			= -framework Cocoa -framework OpenGL -framework IOKit -lglfw
 
 # ---- libs ---------- #
 
-MLX42		= /Users/${USER}/MLX42/build/libmlx42.a
+MLX42		= MLX42/build/libmlx42.a
 LIBFT		= $(LIBFT_PATH)/libft.a
 
 # ----- PATH && includes ---- #
