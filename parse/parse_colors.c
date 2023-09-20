@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:43:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/18 13:10:21 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:05:42 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,16 @@ int	check_value(int value)
 int	ft_check(char *color)
 {
 	int	index;
+	int	is_dig;
 
 	index = 0;
+	is_dig = 0;
 	while (color[index])
 	{
+		if (ft_isdigit(color[index]) && is_dig)
+			return (1);
+		if (ft_isdigit(color[index]) && ft_is_space(color[index + 1]))
+			is_dig = 1;
 		if (!ft_isdigit(color[index]) && !ft_is_space(color[index]))
 			return (1);
 		index++;
