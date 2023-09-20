@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/20 21:32:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:29:49 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void	key_handler(void *param)
 	_draw(data, data->map_data);
 }
 
+void test()
+{
+	system("leaks cub3d");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_map_data		*map_data;
@@ -48,6 +53,7 @@ int	main(int argc, char *argv[])
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 
+	atexit(test);
 	if (argc != 2)
 		return (print_error(INVALID), 0);
 	map_data = parser(argv);

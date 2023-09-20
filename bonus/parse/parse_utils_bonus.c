@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 10:13:19 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:08 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:35:17 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	ft_free(char **tabs)
 
 int	is_data(char *str)
 {
-	if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3) \
-	|| !ft_strncmp(str, "EA ", 3) || !ft_strncmp(str, "WE ", 3) || \
-	!ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
+	if (is_valid_data(str, "NO ", 3) || is_valid_data(str, "SO ", 3) \
+	|| is_valid_data(str, "EA ", 3) || is_valid_data(str, "WE ", 3) || \
+	is_valid_data(str, "F ", 2) || is_valid_data(str, "C ", 2))
 		return (1);
 	return (0);
 }

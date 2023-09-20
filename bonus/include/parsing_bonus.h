@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 12:51:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:34:41 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,7 @@ int			parse_map_data(t_map_data *map_data);
 void		print_error(char *error);
 int			is_data(char *str);
 int			is_valid_char(char c);
+
+int			is_valid_data(char *str, char *cmp, size_t len);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/20 21:31:27 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:33:13 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int			is_valid_char(char c);
 void		ft_free(char **tabs);
 void		init_data_map(t_map_data *data);
 int			is_data(char *str);
+int			is_valid_data(char *str, char *cmp, size_t len);
 int			check_line(char *line);
 
 void		calc_color(unsigned int *rgb, int r, int g, int b);

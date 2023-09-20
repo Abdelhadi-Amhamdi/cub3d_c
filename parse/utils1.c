@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:46:24 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/18 13:01:51 by aagouzou         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:32:44 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,17 @@ int	costumaize_map_data(t_map_data *map_data, char **map)
 	i = -1;
 	while (map[++i])
 	{
-		if (!ft_strncmp(map[i], "NO ", 3) && !map_data->north_img_path)
-			map_data->north_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "SO ", 3) && !map_data->south_img_path)
-			map_data->south_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "WE ", 3) && !map_data->west_img_path)
-			map_data->west_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "EA ", 3) && !map_data->east_img_path)
-			map_data->east_img_path = ft_strtrim((map[i] + 3), " ");
-		else if (!ft_strncmp(map[i], "F ", 2) && !map_data->floor_color)
+		if (is_valid_data(map[i], "NO ", 3) && !map_data->north_img_path)
+			map_data->north_img_path = ft_strtrim((map[i] + 3), " \t");
+		else if (is_valid_data(map[i], "SO ", 3) && !map_data->south_img_path)
+			map_data->south_img_path = ft_strtrim((map[i] + 3), " \t");
+		else if (is_valid_data(map[i], "WE ", 3) && !map_data->west_img_path)
+			map_data->west_img_path = ft_strtrim((map[i] + 3), " \t");
+		else if (is_valid_data(map[i], "EA ", 3) && !map_data->east_img_path)
+			map_data->east_img_path = ft_strtrim((map[i] + 3), " \t");
+		else if (is_valid_data(map[i], "F ", 2) && !map_data->floor_color)
 			map_data->floor_color = ft_strdup(map[i] + 2);
-		else if (!ft_strncmp(map[i], "C ", 2) && !map_data->ceil_color)
+		else if (is_valid_data(map[i], "C ", 2) && !map_data->ceil_color)
 			map_data->ceil_color = ft_strdup(map[i] + 2);
 		else if (!is_data(map[i]) && map[i][0] != '\n' && \
 		is_valid_char(map[i][0]))

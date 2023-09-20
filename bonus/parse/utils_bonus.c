@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:58:55 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 22:38:49 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,19 @@ int	check_line(char *line)
 	return (0);
 }
 
-int	check_line_helper(char *line, int *data_found)
+int	check_line_helper(char **line, int *data_found)
 {
-	int	ret;
+	int		ret;
+	char	*tmp;
 
-	ret = check_line(line);
+	ret = check_line(*line);
 	if (ret == DATA_ITEM && *data_found < 6)
+	{
+		tmp = *line;
+		*line = ft_strtrim(tmp, " \t");
+		free (tmp);
 		(*data_found)++;
+	}
 	else if ((ret == 0 && *data_found > 5 && !(*data_found % 2)))
 		(*data_found)++;
 	else if (ret == EMPTY_LINE && *data_found > 5 && (*data_found % 2))
@@ -78,7 +84,7 @@ char	*read_all_map(int fd)
 		return (print_error(NMAP), free(map), NULL);
 	while (line)
 	{
-		if (check_line_helper(line, &data_found))
+		if (check_line_helper(&line, &data_found))
 			return (free(map), free(line), NULL);
 		tmp = map;
 		map = ft_strjoin(map, line);
