@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:26:37 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/18 20:50:55 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:57:21 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ void	cast_horz_helper(t_data *data, t_line *line)
 	line->delta_y = CUB_SIZE;
 	if (data->ray.isup)
 		line->delta_y *= -1;
-	line->delta_x = CUB_SIZE / tan(data->ray.rayangle);
-	if (data->ray.isleft && line->delta_x > 0)
-		line->delta_x *= -1;
-	else if (data->ray.isright && line->delta_x < 0)
-		line->delta_x *= -1;
+	line->delta_x = line->delta_y / tan(data->ray.rayangle);
 	line->next_x = line->xinter;
 	line->next_y = line->yinter;
 }
@@ -69,11 +65,7 @@ void	cast_vert_helper(t_data *data, t_line *line)
 	line->delta_x = CUB_SIZE;
 	if (data->ray.isleft)
 		line->delta_x *= -1;
-	line->delta_y = CUB_SIZE * tan(data->ray.rayangle);
-	if (data->ray.isup && line->delta_y > 0)
-		line->delta_y *= -1;
-	else if (data->ray.isdown && line->delta_y < 0)
-		line->delta_y *= -1;
+	line->delta_y = line->delta_x * tan(data->ray.rayangle);
 	line->next_x = line->xinter;
 	line->next_y = line->yinter;
 }

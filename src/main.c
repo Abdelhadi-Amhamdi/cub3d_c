@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 11:08:09 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:03:47 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ void	key_handler(void *param)
 	_draw(data, data->map_data);
 }
 
+void	lol(void)
+{
+	system("leaks cub3d");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_map_data		*map_data;
@@ -47,6 +52,7 @@ int	main(int argc, char *argv[])
 	t_player_data	*p_data;
 	t_img_data		*img_data;
 
+	atexit(lol);
 	if (argc != 2)
 		return (print_error(INVALID), 0);
 	map_data = parser(argc, argv);
