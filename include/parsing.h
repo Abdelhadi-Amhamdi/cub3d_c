@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:59:08 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/19 12:52:11 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:31:27 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_map_data
 	int					player_y;
 }	t_map_data;
 
-t_map_data	*parser(int args_count, char **args_values);
+t_map_data	*parser(char **args_values);
 int			parse_map_content(t_map_data *map_data);
 int			costumaize_map_data(t_map_data *map_data, char **map);
 int			get_palyer_position(t_map_data *map);

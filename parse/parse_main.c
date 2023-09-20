@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:53:16 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/20 21:19:59 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:31:13 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	check_data(t_map_data *map_data)
 	return (0);
 }
 
-t_map_data	*parser(int args_count, char **args_values)
+t_map_data	*parser(char **args_values)
 {
 	char		*map_filename;
 	char		**map;

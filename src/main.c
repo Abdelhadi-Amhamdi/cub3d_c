@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:38:19 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/20 21:19:45 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:32:11 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (print_error(INVALID), 0);
-	map_data = parser(argc, argv);
+	map_data = parser(argv);
 	if (!map_data)
 		return (0);
 	p_data = init_player(map_data);

@@ -6,21 +6,11 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:41:47 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:39 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:29:19 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
-
-void	get_responive_sizes(t_data *data, t_map_data *map_data)
-{
-	data->window_width = map_data->cols * CUB_SIZE;
-	if (W_WIDTH < data->window_width)
-		data->window_width = W_WIDTH;
-	data->window_height = map_data->rows * CUB_SIZE;
-	if (W_HEIGHT < data->window_height)
-		data->window_height = W_HEIGHT;
-}
 
 float	player_angle(t_map_data *map_data)
 {
@@ -61,7 +51,6 @@ t_player_data	*init_player(t_map_data *map_data)
 	return (player_data);
 }
 
-// protect mlx_init && mlx_new_img
 t_data	*init_data(t_map_data *map_data, \
 t_player_data *p_data, t_img_data *m_data)
 {
@@ -70,9 +59,15 @@ t_player_data *p_data, t_img_data *m_data)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (NULL);
-	get_responive_sizes(data, map_data);
+	data->window_height = W_HEIGHT;
+	data->window_width = W_WIDTH;
 	data->fov = 60 * (M_PI / 180);
 	data->mlx = mlx_init(data->window_width, data->window_height, "cube", true);
+	if (data->mlx == NULL)
+	{
+		print_error("mlx_init failed");
+		ft_clean(data);
+	}
 	data->num_rays = data->window_width;
 	data->img = NULL;
 	data->p_data = p_data;

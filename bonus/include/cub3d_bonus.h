@@ -6,7 +6,7 @@
 /*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 11:59:36 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 15:01:09 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/20 21:35:24 by aamhamdi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ t_player_data	*init_player(t_map_data *map_data);
 t_rect			init_rect(int x, int y, int size, char item);
 
 float			player_angle(t_map_data *map_data);
-void			get_responive_sizes(t_data *data, t_map_data *map_data);
 
 void			raycasting(t_data *data, t_map_data *m_data);
 void			check_angle_dir(t_data *data, float angle, int id);

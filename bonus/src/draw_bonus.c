@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 13:36:45 by aagouzou          #+#    #+#             */
-/*   Updated: 2023/09/19 10:47:27 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:10:49 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,17 @@ void	_draw(t_data *data, t_map_data *m_data)
 		mlx_delete_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, data->window_width, \
 	data->window_height);
+	if (data->img == NULL)
+	{
+		print_error("mlx_new_image failed");
+		ft_clean(data);
+	}
 	coloriez(data);
 	raycasting(data, m_data);
 	mini_map_helper(data);
-	mlx_image_to_window(data->mlx, data->img, 0, 0);
+	if (mlx_image_to_window(data->mlx, data->img, 0, 0) == -1)
+	{
+		print_error("mlx_image_to_window failed");
+		ft_clean(data);
+	}
 }
