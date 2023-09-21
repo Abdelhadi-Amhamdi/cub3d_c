@@ -3,7 +3,7 @@ SO ./assets/SSS1152.png
 WE ./assets/WWW1152.png
 EA ./assets/EEE1152.png
 
-F20,0,0
+F 20,0,0
 C 0,0,10
 
 1111111111111111111111111
