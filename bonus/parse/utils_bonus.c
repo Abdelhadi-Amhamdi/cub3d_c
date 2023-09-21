@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aagouzou <aagouzou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 18:58:55 by aamhamdi          #+#    #+#             */
-/*   Updated: 2023/09/20 22:38:49 by aamhamdi         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:29:31 by aagouzou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char	**read_map_file(char *file_name)
 
 	fd = open(file_name, O_RDONLY, 0644);
 	if (fd == -1)
-		return (NULL);
+		return (print_error("File Not Found !"), NULL);
 	map = read_all_map(fd);
 	if (!map)
 		return (close(fd), NULL);
