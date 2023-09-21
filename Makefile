@@ -6,7 +6,7 @@
 #    By: aamhamdi <aamhamdi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/27 04:28:13 by aamhamdi          #+#    #+#              #
-#    Updated: 2023/09/20 21:50:20 by aamhamdi         ###   ########.fr        #
+#    Updated: 2023/09/21 10:07:03 by aamhamdi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ b_p_files		= parse_main_bonus.c utils_bonus.c utils1_bonus.c parse_colors_bonus.
 b_p_src		= $(addprefix $(PARSE), $(b_p_files))
 b_p_srcs		= $(addprefix $(BONUS), b_p_src)
 
+MLX_DIR =	MLX42/
 
 obj 		= $(src:.c=.o) $(p_src:.c=.o)
 objs 		= $(addprefix $(BUILD_DIR), $(obj))
@@ -68,9 +69,12 @@ b_objs		= $(addprefix $(BUILD_DIR), $(b_obj))
 $(BUILD_DIR)%.o: %.c
 	$(CC) $< -c -o $@ $(I)
 
-all : $(LIBFT) $(BUILD_DIR) $(NAME)
+all : $(MLX42) $(LIBFT) $(BUILD_DIR) $(NAME)
 
-bonus : $(LIBFT) $(BUILD_DIR) $(NAME_BONUS)
+bonus : $(MLX42) $(LIBFT) $(BUILD_DIR) $(NAME_BONUS)
+
+$(MLX42) :
+	cmake $(MLX_DIR) -B $(MLX_DIR)build && cmake --build $(MLX_DIR)build -j4 
 
 $(BUILD_DIR)%.o: $(RAY_CAST)%.c $(RAYCASTING_H)
 	$(CC) $< -c -o $@
